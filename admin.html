@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6f9;
+}
+
+/* LOGIN PAGE */
+#loginPage {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #1e293b;
+}
+
+.login-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* DASHBOARD */
+#dashboard {
+  display: none;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  position: fixed;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.main {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.section {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.table {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.feedback, .arrivals {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.logout {
+  margin-top: 30px;
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+  <div class="login-box">
+    <img src="images/logo.png" style="width:80px; margin-bottom:10px;">
+    <h2>Admin Login</h2>
+
+    <input type="email" id="email" placeholder="Admin Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="sidebar">
+    <img src="images/logo.png" style="width:120px; margin-bottom:15px;">
+    <h3>Admin Panel</h3>
+
+    <a href="#">Dashboard</a>
+    <a href="#">Bookings</a>
+    <a href="#">Guests</a>
+    <a href="#">Rooms</a>
+    <a href="#">Messages</a>
+    <a href="#">Settings</a>
+
+    <!-- COMPANY EMAIL DISPLAY -->
+    <p style="font-size:12px; margin-top:20px;">
+      📧 shangrilaviewhotel@gmail.com
+    </p>
+
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="main">
+    <h1>Welcome, Admin</h1>
+
+    <div class="cards">
+      <div class="card"><h3>Total Bookings</h3><p id="bookings">0</p></div>
+      <div class="card"><h3>Checked-in</h3><p>0</p></div>
+      <div class="card"><h3>Pending</h3><p>0</p></div>
+      <div class="card"><h3>Status</h3><p>Active</p></div>
+    </div>
+
+    <div class="section">
+      <div class="table">
+        <h3>Recent Bookings</h3>
+        <table>
+          <tr><th>Name</th><th>Room</th><th>Check-in</th><th>Check-out</th></tr>
+          <tbody id="bookingTable"></tbody>
+        </table>
+      </div>
+
+      <div class="feedback">
+        <h3>Guest Feedback</h3>
+        <p>"Great stay!" - Angela</p>
+        <p>"Nice service" - Mark</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="table">
+        <h3>Room Occupancy</h3>
+        <p>(Chart placeholder)</p>
+      </div>
+
+      <div class="arrivals">
+        <h3>Upcoming Arrivals</h3>
+        <ul id="arrivalsList"></ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE",
+  authDomain: "shangrila-booking.firebaseapp.com",
+  projectId: "shangrila-booking",
+  storageBucket: "shangrila-booking.firebasestorage.app",
+  messagingSenderId: "981170210173",
+  appId: "1:981170210173:web:4d74cb3f6109fe1c0a3814",
+  measurementId: "G-ZYB3J8BW72"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// LOGIN
+function login() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  auth.signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+
+    // 🔐 ONLY COMPANY ADMIN EMAIL ALLOWED
+    if(userCredential.user.email !== "shangrilaviewhotel@gmail.com"){
+      alert("Not authorized");
+      auth.signOut();
+      return;
+    }
+
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+
+  })
+  .catch(err => {
+    alert(err.message);
+  });
+}
+
+// LOGOUT
+function logout() {
+  auth.signOut();
+}
+
+// AUTO LOGIN
+auth.onAuthStateChanged(user => {
+  if(user){
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadBookings();
+  } else {
+    document.getElementById('loginPage').style.display = 'flex';
+    document.getElementById('dashboard').style.display = 'none';
+  }
+});
+
+// LOAD BOOKINGS
+function loadBookings() {
+  const table = document.getElementById('bookingTable');
+  const arrivalsList = document.getElementById('arrivalsList');
+
+  table.innerHTML = "";
+  arrivalsList.innerHTML = "";
+
+  db.collection("bookings").get().then(snapshot => {
+
+    document.getElementById('bookings').innerText = snapshot.size;
+
+    snapshot.forEach(doc => {
+      const b = doc.data();
+
+      table.innerHTML += `
+        <tr>
+          <td>${b.name || ''}</td>
+          <td>${b.room || ''}</td>
+          <td>${b.checkIn || ''}</td>
+          <td>${b.checkOut || ''}</td>
+        </tr>
+      `;
+
+      arrivalsList.innerHTML += `
+        <li>${b.name} - ${b.room}</li>
+      `;
+    });
+
+  });
+}
+
+</script>
+
+</body>
+</html>
