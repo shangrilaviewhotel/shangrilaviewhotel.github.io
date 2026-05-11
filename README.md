@@ -3,7 +3,7 @@
 Official website for Shangri-La View Hotel, located in Rumuosi Victory Estate, Airport Road, Port Harcourt, Nigeria.
 
 ## 🌐 Live Website
-
+https://tobi1533.github.io/shangrila-view-hotel/
 
 ## 📌 Features
 - Modern and responsive design
