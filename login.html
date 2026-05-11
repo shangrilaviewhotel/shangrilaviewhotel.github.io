@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login - Shangri-La</title>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0a1f44, #132c5c);
+  color: white;
+}
+
+.container {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 15px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+}
+
+.signup-btn {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.login-btn {
+  background: #d4af37;
+}
+
+.google-btn {
+  background: #fff;
+  color: #000;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Login</h2>
+
+<input type="email" id="email" placeholder="Email" required>
+<input type="password" id="password" placeholder="Password" required>
+
+<button class="signup-btn" onclick="signup()">Sign Up</button>
+<button class="login-btn" onclick="login()">Login</button>
+
+<button class="google-btn" onclick="googleLogin()">Continue with Google</button>
+
+</div>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE",
+  authDomain: "shangrila-booking.firebaseapp.com",
+  projectId: "shangrila-booking",
+  storageBucket: "shangrila-booking.appspot.com",
+  messagingSenderId: "981170210173",
+  appId: "1:981170210173:web:4d74cb3f6109fe1c0a3814"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+// SIGNUP
+function signup() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      window.location.href = "booking.html";
+    })
+    .catch(e => alert(e.message));
+}
+
+// LOGIN
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then(() => {
+      window.location.href = "booking.html";
+    })
+    .catch(e => alert(e.message));
+}
+
+// ✅ GOOGLE LOGIN (FIXED FOR MOBILE + DESKTOP)
+function googleLogin() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    auth.signInWithRedirect(provider);
+  } else {
+    auth.signInWithPopup(provider)
+      .then(() => {
+        window.location.href = "booking.html";
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+}
+
+// ✅ HANDLE REDIRECT RESULT (VERY IMPORTANT)
+window.onload = function () {
+  auth.getRedirectResult()
+    .then((result) => {
+      if (result.user) {
+        window.location.href = "booking.html";
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+</script>
+
+</body>
+</html>
