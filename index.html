@@ -49,12 +49,17 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: url('hotel4.JPG') no-repeat center center fixed;
+  background: url('hotel4.JPG') no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
   color: white;
   overflow-x: hidden;
   position: relative;
+}
+
+@media (min-width: 769px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 /* ===== MULTI-LAYERED BACKGROUND WITH PARALLAX ===== */
@@ -72,7 +77,7 @@ body::before {
   z-index: -2;
 }
 
-/* ===== LIVING AMBIENT EFFECT ===== */
+/* ===== LIVING AMBIENT EFFECT (OPTIMIZED) ===== */
 body::after {
   content: "";
   position: fixed;
@@ -87,16 +92,15 @@ body::after {
   z-index: -1;
   animation: ambientPulse 12s ease-in-out infinite;
   pointer-events: none;
+  will-change: opacity;
 }
 
 @keyframes ambientPulse {
   0%, 100% { 
     opacity: 0.6;
-    filter: blur(0px);
   }
   50% { 
     opacity: 1;
-    filter: blur(1px);
   }
 }
 
@@ -121,7 +125,7 @@ nav {
   border-bottom: 2px solid rgba(212, 175, 55, 0.3);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   z-index: 1000;
-  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: slideInDown 0.8s ease-out;
 }
 
 @keyframes slideInDown {
@@ -144,17 +148,17 @@ nav img {
     0 0 30px rgba(196, 30, 58, 0.6),
     0 0 60px rgba(212, 175, 55, 0.3),
     inset 0 0 20px rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
   border: 3px solid rgba(212, 175, 55, 0.4);
+  will-change: transform, box-shadow;
 }
 
 nav img:hover {
-  transform: scale(1.15) rotate(8deg);
+  transform: scale(1.1) rotate(5deg);
   box-shadow: 
-    0 0 50px rgba(196, 30, 58, 0.9),
-    0 0 80px rgba(212, 175, 55, 0.5),
-    inset 0 0 20px rgba(255, 255, 255, 0.3);
-  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
+    0 0 40px rgba(196, 30, 58, 0.8),
+    0 0 60px rgba(212, 175, 55, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 nav h2 {
@@ -189,13 +193,13 @@ nav a::before {
   width: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--primary));
-  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: width 0.3s ease;
   box-shadow: 0 0 15px rgba(196, 30, 58, 0.6);
 }
 
 nav a:hover {
   color: var(--accent);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 nav a:hover::before {
@@ -283,12 +287,17 @@ nav a:hover::before {
 .hero {
   height: 100vh;
   background: url('hotelEN.jpg') center/cover no-repeat;
-  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 769px) {
+  .hero {
+    background-attachment: fixed;
+  }
 }
 
 .hero::before {
@@ -318,7 +327,7 @@ nav a:hover::before {
     0 0 60px rgba(196, 30, 58, 0.2);
   position: relative;
   z-index: 2;
-  animation: zoomInScale 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: zoomInScale 0.8s ease-out;
 }
 
 @keyframes zoomInScale {
@@ -374,7 +383,7 @@ nav a:hover::before {
   text-decoration: none;
   font-weight: 700;
   display: inline-block;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   box-shadow: 
     0 15px 40px rgba(196, 30, 58, 0.4),
     0 0 30px rgba(196, 30, 58, 0.2);
@@ -385,6 +394,7 @@ nav a:hover::before {
   letter-spacing: 1px;
   font-size: 13px;
   animation: fadeInUp 1.2s ease 0.6s both;
+  will-change: transform, box-shadow;
 }
 
 .btn::before {
@@ -395,7 +405,7 @@ nav a:hover::before {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-  transition: left 0.5s ease;
+  transition: left 0.4s ease;
 }
 
 .btn:hover::before {
@@ -403,15 +413,11 @@ nav a:hover::before {
 }
 
 .btn:hover {
-  transform: translateY(-5px) scale(1.08);
+  transform: translateY(-3px) scale(1.05);
   box-shadow: 
-    0 25px 60px rgba(196, 30, 58, 0.6),
-    0 0 50px rgba(212, 175, 55, 0.4);
+    0 20px 50px rgba(196, 30, 58, 0.5),
+    0 0 40px rgba(212, 175, 55, 0.3);
   border-color: var(--accent);
-}
-
-.btn:active {
-  transform: translateY(-2px) scale(1.05);
 }
 
 /* ===== SECTION STYLING ===== */
@@ -478,9 +484,10 @@ nav a:hover::before {
   width: 300px;
   margin: 0 10px;
   flex-shrink: 0;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
+  will-change: transform;
 }
 
 .slide::before {
@@ -504,19 +511,20 @@ nav a:hover::before {
   border-radius: 12px;
   margin-bottom: 5px;
   display: block;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
     0 15px 40px rgba(0, 0, 0, 0.3),
     0 0 30px rgba(196, 30, 58, 0.2);
   border: 2px solid rgba(212, 175, 55, 0.2);
+  will-change: transform, filter;
 }
 
 .slide:hover img {
-  transform: scale(1.12) perspective(1000px) rotateY(5deg);
-  filter: brightness(1.15) saturate(1.2);
+  transform: scale(1.08);
+  filter: brightness(1.1) saturate(1.1);
   box-shadow: 
-    0 30px 80px rgba(196, 30, 58, 0.4),
-    0 0 50px rgba(212, 175, 55, 0.5);
+    0 20px 60px rgba(196, 30, 58, 0.3),
+    0 0 30px rgba(212, 175, 55, 0.3);
   border-color: var(--accent);
 }
 
@@ -866,7 +874,7 @@ nav a:hover::before {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-10px);
   }
 }
 
@@ -1125,7 +1133,7 @@ nav a:hover::before {
 
 <!-- CAC BADGE -->
 <div class="cac-badge" onclick="openCACModal()">
-  <img src="your-cac-logo.jpg" alt="CAC Certified">
+  <img src="your-cac-logo.png" alt="CAC Certified">
   <div class="cac-tooltip">Verify CAC</div>
 </div>
 
@@ -1135,7 +1143,7 @@ nav a:hover::before {
     <button class="cac-modal-close" onclick="closeCACModal()">&times;</button>
     <img src="your-cac-certificate.png" alt="CAC Certificate">
     <h3>✓ Business Certified</h3>
-    <p><strong>Registration:</strong>8072563</p>
+    <p><strong>Registration:</strong> Your CAC Registration Number</p>
     <p><strong>Status:</strong> Verified & Active</p>
     <p>This business is officially registered with the Corporate Affairs Commission (CAC) of Nigeria. Your trust and confidence matter to us.</p>
     <a href="https://www.cac.gov.ng/" target="_blank" class="cac-verify-btn">Verify on CAC Portal</a>
