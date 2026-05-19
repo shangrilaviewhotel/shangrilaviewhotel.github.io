@@ -1253,19 +1253,20 @@ function showSite() {
   document.getElementById("content").style.display = "block";
 }
 
-// CAC Modal Functions
-function openCACModal(){
+/* ===== CAC MODAL ===== */
+function openCACModal() {
   document.getElementById('cacModal').classList.add('active');
 }
 
-function closeCACModal(){
+function closeCACModal() {
   document.getElementById('cacModal').classList.remove('active');
 }
 
-// Close modal when clicking outside
-window.addEventListener('click',function(e){
+/* CLOSE CAC MODAL WHEN CLICKING OUTSIDE */
+window.addEventListener('click', function(e) {
   const modal = document.getElementById('cacModal');
-  if(e.target === modal){
+
+  if (e.target === modal) {
     closeCACModal();
   }
 });
@@ -1273,113 +1274,232 @@ window.addEventListener('click',function(e){
 document.addEventListener("DOMContentLoaded", showSite);
 setTimeout(showSite, 5000);
 
-/* SLIDER DRAG AND PAUSE FUNCTIONALITY */
+/* =========================================================
+   SLIDER + LIGHTBOX SYSTEM
+========================================================= */
+
 const slider = document.querySelector('.slider');
 const slideTrack = document.querySelector('.slide-track');
+
 let isDown = false;
-let startX;
-let scrollLeft;
+let startX = 0;
+let currentTranslate = 0;
+let movedDistance = 0;
 let isDragging = false;
 
 if (slider && slideTrack) {
+
+  /* ===== DRAG START ===== */
   slider.addEventListener('mousedown', (e) => {
+
     isDown = true;
     isDragging = false;
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slideTrack.style.transform ? parseFloat(slideTrack.style.transform.split('(')[1]) : 0;
+    movedDistance = 0;
+
+    startX = e.pageX;
+
     slideTrack.classList.add('paused');
   });
 
+  /* ===== DRAG MOVE ===== */
   slider.addEventListener('mousemove', (e) => {
+
     if (!isDown) return;
+
     e.preventDefault();
-    isDragging = true;
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX);
-    slideTrack.style.transform = `translateX(${scrollLeft + walk}px)`;
+
+    const walk = e.pageX - startX;
+
+    movedDistance = Math.abs(walk);
+
+    if (movedDistance > 5) {
+      isDragging = true;
+    }
+
+    slideTrack.style.transform =
+      `translateX(${currentTranslate + walk}px)`;
   });
 
-  slider.addEventListener('mouseup', () => {
+  /* ===== DRAG END ===== */
+  slider.addEventListener('mouseup', (e) => {
+
+    if (!isDown) return;
+
+    const walk = e.pageX - startX;
+
+    currentTranslate += walk;
+
     isDown = false;
-    if (!isDragging) {
-      slideTrack.classList.remove('paused');
-    }
+
+    setTimeout(() => {
+      isDragging = false;
+    }, 50);
   });
 
   slider.addEventListener('mouseleave', () => {
     isDown = false;
-    if (!isDragging) {
-      slideTrack.classList.remove('paused');
-    }
   });
 
-  /* HOVER PAUSE */
+  /* ===== HOVER PAUSE ===== */
   slider.addEventListener('mouseenter', () => {
-    if (!isDown) {
-      slideTrack.classList.add('paused');
-    }
+    slideTrack.classList.add('paused');
   });
 
   slider.addEventListener('mouseleave', () => {
-    if (!isDragging && !isDown) {
-      slideTrack.classList.remove('paused');
-    }
+    slideTrack.classList.remove('paused');
   });
 
-  /* CLICK TO ENLARGE */
+  /* =========================================================
+     LIGHTBOX
+  ========================================================= */
+
+  const images = [
+    'room.JPG',
+    'vipbar.JPG',
+    'lobby.JPG',
+    'hotelFVV.jpg',
+    'wideR.JPG',
+    'bushbar.JPG'
+  ];
+
   const slides = document.querySelectorAll('.slide img');
+
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightboxImage');
-  const lightboxClose = document.querySelector('.lightbox-close');
-  const lightboxPrev = document.querySelector('.lightbox-prev');
-  const lightboxNext = document.querySelector('.lightbox-next');
+
+  const lightboxClose =
+    document.querySelector('.lightbox-close');
+
+  const lightboxPrev =
+    document.querySelector('.lightbox-prev');
+
+  const lightboxNext =
+    document.querySelector('.lightbox-next');
+
   let currentImageIndex = 0;
 
+  /* ===== OPEN LIGHTBOX ===== */
   slides.forEach((img, index) => {
-    img.addEventListener('click', (e) => {
-      if (isDragging) return; // Don't open if dragging
-      currentImageIndex = index % 6; // Only 6 unique images
-      openLightbox(img.src);
+
+    img.addEventListener('click', () => {
+
+      if (isDragging) return;
+
+      currentImageIndex = index % images.length;
+
+      updateLightboxImage();
+
+      lightbox.style.display = 'block';
     });
+
   });
 
-  function openLightbox(src) {
-    lightboxImage.src = src;
-    lightbox.style.display = 'block';
+  /* ===== UPDATE IMAGE ===== */
+  function updateLightboxImage() {
+
+    lightboxImage.style.opacity = "0";
+
+    setTimeout(() => {
+
+      lightboxImage.src = images[currentImageIndex];
+
+      lightboxImage.style.opacity = "1";
+
+    }, 100);
   }
 
+  /* ===== CLOSE LIGHTBOX ===== */
   function closeLightbox() {
     lightbox.style.display = 'none';
   }
 
   lightboxClose.addEventListener('click', closeLightbox);
 
+  /* ===== CLICK OUTSIDE TO CLOSE ===== */
   lightbox.addEventListener('click', (e) => {
+
     if (e.target === lightbox) {
       closeLightbox();
     }
   });
 
-  lightboxPrev.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex - 1 + 6) % 6;
-    const images = ['room.JPG', 'vipbar.JPG', 'lobby.JPG', 'hotelFVV.jpg', 'wideR.JPG', 'bushbar.JPG'];
-    openLightbox(images[currentImageIndex]);
+  /* ===== PREVIOUS IMAGE ===== */
+  lightboxPrev.addEventListener('click', (e) => {
+
+    e.stopPropagation();
+
+    currentImageIndex--;
+
+    if (currentImageIndex < 0) {
+      currentImageIndex = images.length - 1;
+    }
+
+    updateLightboxImage();
   });
 
-  lightboxNext.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex + 1) % 6;
-    const images = ['room.JPG', 'vipbar.JPG', 'lobby.JPG', 'hotelFVV.jpg', 'wideR.JPG', 'bushbar.JPG'];
-    openLightbox(images[currentImageIndex]);
+  /* ===== NEXT IMAGE ===== */
+  lightboxNext.addEventListener('click', (e) => {
+
+    e.stopPropagation();
+
+    currentImageIndex++;
+
+    if (currentImageIndex >= images.length) {
+      currentImageIndex = 0;
+    }
+
+    updateLightboxImage();
   });
 
-  /* KEYBOARD NAVIGATION */
+  /* ===== KEYBOARD CONTROLS ===== */
   document.addEventListener('keydown', (e) => {
+
     if (lightbox.style.display === 'block') {
-      if (e.key === 'ArrowLeft') lightboxPrev.click();
-      if (e.key === 'ArrowRight') lightboxNext.click();
-      if (e.key === 'Escape') closeLightbox();
+
+      if (e.key === 'ArrowLeft') {
+        lightboxPrev.click();
+      }
+
+      if (e.key === 'ArrowRight') {
+        lightboxNext.click();
+      }
+
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
     }
   });
+
+  /* ===== TOUCH SUPPORT FOR MOBILE ===== */
+
+  let touchStartX = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+
+    touchStartX = e.touches[0].clientX;
+
+    slideTrack.classList.add('paused');
+
+  }, { passive: true });
+
+  slider.addEventListener('touchmove', (e) => {
+
+    const touchX = e.touches[0].clientX;
+
+    const walk = touchX - touchStartX;
+
+    slideTrack.style.transform =
+      `translateX(${currentTranslate + walk}px)`;
+
+  }, { passive: true });
+
+  slider.addEventListener('touchend', (e) => {
+
+    currentTranslate +=
+      (e.changedTouches[0].clientX - touchStartX);
+
+  });
+
 }
 </script>
 </div>
