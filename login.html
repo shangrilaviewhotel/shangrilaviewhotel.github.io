@@ -1,37 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Login — Shangri-La View Hotel</title>
+<title>Admin Login | Shangri-La View Hotel</title>
 
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 
 <style>
 
-:root{
---navy:#142848;
---gold:#D4AF37;
---crimson:#C41E3A;
-}
-
-
 *{
+margin:0;
+padding:0;
 box-sizing:border-box;
 }
 
 
 body{
 
-margin:0;
 height:100vh;
-
 display:flex;
 align-items:center;
 justify-content:center;
@@ -40,35 +35,39 @@ font-family:'Montserrat',sans-serif;
 
 background:
 linear-gradient(
-135deg,
-#0b1935,
-#142848,
-#0c172e
-);
+rgba(5,10,30,.85),
+rgba(5,10,30,.95)
+),
+url("hotelEN.jpg");
+
+background-size:cover;
+background-position:center;
 
 color:white;
 
 }
 
 
-
-.container{
+.login-box{
 
 width:380px;
 
-padding:40px;
+padding:45px;
 
 background:
 rgba(255,255,255,.08);
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(20px);
 
-border-radius:20px;
+border-radius:25px;
+
+border:1px solid rgba(212,175,55,.4);
 
 box-shadow:
-0 20px 60px rgba(0,0,0,.5);
+0 30px 80px rgba(0,0,0,.6),
+0 0 40px rgba(212,175,55,.2);
 
-border:1px solid rgba(255,255,255,.15);
+text-align:center;
 
 }
 
@@ -76,24 +75,14 @@ border:1px solid rgba(255,255,255,.15);
 
 .logo{
 
-width:70px;
-height:70px;
+width:80px;
+height:80px;
 
 border-radius:50%;
 
-border:2px solid var(--gold);
+border:3px solid #D4AF37;
 
-display:flex;
-align-items:center;
-justify-content:center;
-
-margin:auto;
-
-font-family:'Playfair Display',serif;
-
-font-size:24px;
-
-color:var(--gold);
+margin-bottom:20px;
 
 }
 
@@ -103,22 +92,46 @@ h1{
 
 font-family:'Playfair Display',serif;
 
-text-align:center;
+font-size:32px;
 
-margin:20px 0 5px;
+background:
+linear-gradient(
+90deg,
+#D4AF37,
+white,
+#C41E3A
+);
+
+-webkit-background-clip:text;
+
+color:transparent;
+
+margin-bottom:10px;
 
 }
 
 
 .subtitle{
 
-text-align:center;
-
 font-size:13px;
 
-opacity:.7;
+color:#ddd;
 
 margin-bottom:30px;
+
+text-transform:uppercase;
+
+letter-spacing:2px;
+
+}
+
+
+
+.input-box{
+
+position:relative;
+
+margin-bottom:20px;
 
 }
 
@@ -128,17 +141,33 @@ input{
 
 width:100%;
 
-padding:14px;
-
-margin-bottom:15px;
-
-border-radius:10px;
+padding:15px;
 
 border:none;
 
-font-size:14px;
-
 outline:none;
+
+border-radius:10px;
+
+font-size:15px;
+
+background:white;
+
+}
+
+
+
+.password-toggle{
+
+position:absolute;
+
+right:15px;
+
+top:15px;
+
+cursor:pointer;
+
+color:#333;
 
 }
 
@@ -148,7 +177,7 @@ button{
 
 width:100%;
 
-padding:14px;
+padding:15px;
 
 border:none;
 
@@ -158,189 +187,162 @@ cursor:pointer;
 
 font-weight:700;
 
-margin-top:10px;
+text-transform:uppercase;
+
+letter-spacing:1px;
+
+background:
+linear-gradient(
+135deg,
+#D4AF37,
+#b8860b
+);
+
+color:#000;
+
+transition:.3s;
+
+}
+
+
+button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 15px 40px rgba(212,175,55,.5);
 
 }
 
 
 
-.login{
+#message{
 
-background:var(--gold);
+margin-top:20px;
 
-color:#111;
+font-size:14px;
 
-}
-
-
-
-.google{
-
-background:white;
-
-color:#111;
+color:#ffcccc;
 
 }
 
-
-
-.forgot{
-
-text-align:right;
-
-font-size:12px;
-
-margin-top:-8px;
-
-cursor:pointer;
-
-color:#e8ce7a;
-
-}
-
-
-
-.status{
-
-text-align:center;
-
-margin-top:15px;
-
-font-size:13px;
-
-color:#ffdddd;
-
-}
-
-
-
-.loading{
-
-opacity:.6;
-
-pointer-events:none;
-
-}
 
 
 .footer{
 
-text-align:center;
-
-font-size:11px;
-
-opacity:.6;
-
 margin-top:25px;
+
+font-size:12px;
+
+color:#aaa;
 
 }
 
 
+
 </style>
 
-</head>
 
+</head>
 
 
 <body>
 
 
-
-<div class="container">
-
-
-<div class="logo">
-SL
-</div>
+<div class="login-box">
 
 
-<h1>
-Admin Portal
-</h1>
+<img src="hlogo.png" class="logo">
 
 
-<div class="subtitle">
-Shangri-La View Hotel Management System
-</div>
+<h1>Admin Portal</h1>
+
+<p class="subtitle">
+Shangri-La View Hotel
+</p>
 
 
+<div class="input-box">
 
 <input 
-id="email"
 type="email"
+id="email"
 placeholder="Admin Email"
 >
 
 
-<input
-id="password"
-type="password"
-placeholder="Password"
->
-
-
-
-<div class="forgot" onclick="forgotPassword()">
-Forgot password?
 </div>
 
 
 
-<button 
-class="login"
-onclick="login()"
-id="loginBtn">
+<div class="input-box">
+
+<input 
+type="password"
+id="password"
+placeholder="Password"
+>
+
+
+<span 
+class="password-toggle"
+onclick="togglePassword()">
+👁
+</span>
+
+
+</div>
+
+
+
+<button onclick="login()">
 
 Login
 
 </button>
 
 
-
-<button 
-class="google"
-onclick="googleLogin()"
-id="googleBtn">
-
-Continue with Google
-
-</button>
-
-
-
-<div id="status" class="status"></div>
+<p id="message"></p>
 
 
 
 <div class="footer">
 
-Restricted administrator access only
+Authorized Personnel Only
 
 </div>
 
 
 </div>
-
 
 
 
 <script>
 
 
+// FIREBASE CONFIG
+
 const firebaseConfig = {
 
+apiKey: "AIzaSyCvcC5ysf6JpJlwmUJBEvXZBl-NSiVD7pw",
 
-apiKey: "AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE",
+authDomain:
+"shangrilaviewhotel-d0b66.firebaseapp.com",
 
-authDomain: "shangrila-booking.firebaseapp.com",
+projectId:
+"shangrilaviewhotel-d0b66",
 
-projectId: "shangrila-booking",
+storageBucket:
+"shangrilaviewhotel-d0b66.firebasestorage.app",
 
-storageBucket: "shangrila-booking.appspot.com",
+messagingSenderId:
+"991707133444",
 
-messagingSenderId: "981170210173",
+appId:
+"1:991707133444:web:54b3bd19b63775e90ce751",
 
-appId: "1:981170210173:web:4d74cb3f6109fe1c0a3814"
+measurementId:
+"G-1XQ7L6LM2F"
 
 };
 
@@ -353,37 +355,70 @@ const auth=firebase.auth();
 
 
 
-
-// CHANGE THESE EMAILS
-
-const ADMIN_EMAILS=[
-
-"Shangrilaviewhotel@gmail.com",
-
-"akeem.fatai15@gmail.com"
-
-];
+const ADMIN_EMAIL =
+"akeem.fatai15@gmail.com";
 
 
 
+// LOGIN FUNCTION
 
-function showMessage(msg){
+function login(){
 
-document.getElementById("status").innerHTML=msg;
+
+const email =
+document.getElementById("email").value.trim();
+
+
+const password =
+document.getElementById("password").value;
+
+
+
+const message =
+document.getElementById("message");
+
+
+
+if(!email || !password){
+
+message.innerHTML =
+"Enter email and password";
+
+return;
 
 }
 
 
 
+message.innerHTML="Checking access...";
 
-function checkAdmin(user){
 
 
-if(
-ADMIN_EMAILS.includes(user.email)
-){
+auth.signInWithEmailAndPassword(email,password)
+
+.then((userCredential)=>{
+
+
+const user=userCredential.user;
+
+
+
+if(user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase()){
+
+
+message.style.color="#D4AF37";
+
+message.innerHTML=
+"Access granted...";
+
+
+setTimeout(()=>{
 
 window.location.href="admin.html";
+
+},1000);
+
+
 
 }
 
@@ -392,103 +427,54 @@ else{
 
 auth.signOut();
 
-showMessage(
-"Access denied. Admin account required."
-);
+
+message.innerHTML=
+"Unauthorized account";
 
 
 }
 
-
-}
-
-
-
-
-
-function login(){
-
-
-const email=
-document.getElementById("email").value;
-
-
-const password=
-document.getElementById("password").value;
-
-
-
-if(!email||!password){
-
-showMessage(
-"Enter email and password"
-);
-
-return;
-
-}
-
-
-
-document.body.classList.add("loading");
-
-
-
-auth
-.signInWithEmailAndPassword(email,password)
-
-.then(result=>{
-
-
-checkAdmin(result.user);
 
 
 })
 
+
 .catch(error=>{
 
 
-showMessage(error.message);
-
-
-document.body.classList.remove("loading");
+message.innerHTML=
+error.message;
 
 
 });
 
 
+
 }
 
 
 
 
-function googleLogin(){
+// SHOW PASSWORD
+
+function togglePassword(){
 
 
-
-const provider=
-new firebase.auth.GoogleAuthProvider();
-
+const password =
+document.getElementById("password");
 
 
-auth
-.signInWithPopup(provider)
+if(password.type==="password"){
 
-.then(result=>{
+password.type="text";
 
+}
 
-checkAdmin(result.user);
+else{
 
+password.type="password";
 
-})
-
-.catch(error=>{
-
-
-showMessage(error.message);
-
-
-});
+}
 
 
 }
@@ -496,63 +482,20 @@ showMessage(error.message);
 
 
 
-
-function forgotPassword(){
-
-
-const email=
-document.getElementById("email").value;
+// CHECK EXISTING SESSION
 
 
-
-if(!email){
-
-showMessage(
-"Enter your email first"
-);
-
-return;
-
-}
+auth.onAuthStateChanged((user)=>{
 
 
-
-auth.sendPasswordResetEmail(email)
-
-.then(()=>{
-
-showMessage(
-"Password reset email sent"
-);
-
-
-})
-
-.catch(error=>{
-
-showMessage(error.message);
-
-});
-
-
-}
-
-
-
-
-
-// If already logged in
-
-auth.onAuthStateChanged(user=>{
-
-
-if(user && ADMIN_EMAILS.includes(user.email)){
+if(user && user.email.toLowerCase()===ADMIN_EMAIL.toLowerCase()){
 
 
 window.location.href="admin.html";
 
 
 }
+
 
 
 });
