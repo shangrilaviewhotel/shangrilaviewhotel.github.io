@@ -1119,6 +1119,39 @@ nav a:hover::before {
     font-size: 20px;
   }
 }
+  /* ===== LOGIN BUTTON ===== */
+.login-btn {
+  background: linear-gradient(135deg, var(--accent), #b8860b);
+  color: #000 !important;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 700 !important;
+  box-shadow:
+    0 10px 30px rgba(212,175,55,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, white, var(--accent));
+  color: #000 !important;
+  box-shadow:
+    0 15px 40px rgba(212,175,55,0.7);
+}
+
+/* Mobile login button */
+@media(max-width:768px){
+
+.login-btn {
+  width:100%;
+  text-align:center;
+  margin-top:15px;
+}
+
+}
 </style>
 
 </head>
@@ -1165,7 +1198,12 @@ nav a:hover::before {
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <a href="gallery.html">Gallery</a>
-  </div>
+
+    <!-- LOGIN BUTTON -->
+    <a href="login.html" class="login-btn">
+        ADMIN Login
+    </a>
+</div>
 </nav>
 
 <!-- HERO -->
