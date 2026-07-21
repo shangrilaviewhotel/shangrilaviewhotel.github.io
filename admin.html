@@ -16,6 +16,58 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 
 <style>
+   /* MOBILE HAMBURGER MENU */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 2000;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background: var(--navy-deep);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 900;
+}
+
+.mobile-overlay.show {
+  display: block;
+}
+
+
+@media (max-width:900px) {
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: 0.3s ease;
+    z-index: 1000;
+  }
+
+  .main {
+    margin-left:0;
+    padding:25px 15px;
+  }
+
+}
 /* ============================================================
    DESIGN TOKENS — matches shangrilaviewhotel.github.io branding
    ============================================================ */
@@ -193,7 +245,11 @@ body { margin: 0; font-family: var(--font-body); background: var(--paper); color
 </head>
 
 <body>
+<button class="mobile-menu-btn" onclick="toggleMenu()">
+☰
+</button>
 
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
 <!-- ============================================================
      DASHBOARD SHELL — no login gate, loads straight in
      ============================================================ -->
@@ -795,6 +851,33 @@ async function deleteRoom(id) {
     toast("Couldn't delete this room.", true);
   }
 }
+   function toggleMenu(){
+
+  const sidebar = document.querySelector(".sidebar");
+  const overlay = document.getElementById("mobileOverlay");
+
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("show");
+
+}
+
+
+// close menu automatically after selecting a page on mobile
+document.querySelectorAll(".nav-link").forEach(link=>{
+  link.addEventListener("click",()=>{
+
+    if(window.innerWidth <= 900){
+
+      document.querySelector(".sidebar")
+      .classList.remove("open");
+
+      document.getElementById("mobileOverlay")
+      .classList.remove("show");
+
+    }
+
+  });
+});
 </script>
 
 </body>
