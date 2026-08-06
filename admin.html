@@ -266,12 +266,17 @@ body { margin: 0; font-family: var(--font-body); background: var(--paper); color
     <a class="nav-link" data-view="bookings" onclick="showView('bookings')">📅 Bookings</a>
     <a class="nav-link" data-view="guests" onclick="showView('guests')">👥 Guests</a>
     <a class="nav-link" data-view="settings" onclick="showView('settings')">⚙️ Settings</a>
+     <a class="nav-link"
+   data-view="ai"
+   onclick="showView('ai')">
+🤖 AI Assistant
+</a>
   </div>
 
   <div class="main">
 
     <!-- ---------------- DASHBOARD VIEW ---------------- -->
-    <div class="view active" id="view-dashboard">
+    <div class="view" id="view-ai">
       <h1 class="page-title">Welcome back</h1>
       <p class="page-sub">Here's what's happening at Shangri-La View Hotel today.</p>
 
