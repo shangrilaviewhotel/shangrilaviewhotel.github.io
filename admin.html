@@ -915,7 +915,8 @@ document.querySelectorAll(".nav-link").forEach(link=>{
 
   });
 });
-   function runAI() {
+  async function runAI() {
+
     const prompt = document.getElementById("aiPrompt").value.trim();
 
     if (!prompt) {
@@ -923,9 +924,35 @@ document.querySelectorAll(".nav-link").forEach(link=>{
         return;
     }
 
-    document.getElementById("aiResponse").innerHTML =
-        "<strong>You:</strong> " + prompt +
-        "<br><br><em>AI integration coming soon...</em>";
+    const output = document.getElementById("aiResponse");
+
+    output.innerHTML = "Thinking...";
+
+    try {
+
+        const res = await fetch("http://localhost:3000/ai", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: prompt
+            })
+        });
+
+        const data = await res.json();
+
+        output.innerHTML = data.reply;
+
+    } catch (err) {
+
+        output.innerHTML =
+            "<span style='color:red'>Unable to connect to AI server.</span>";
+
+        console.error(err);
+
+    }
+
 }
 </script>
 
