@@ -320,6 +320,35 @@ body { margin: 0; font-family: var(--font-body); background: var(--paper); color
     </div>
          <!-- ---------------- AI VIEW ---------------- -->
 <div class="view" id="view-ai">
+
+    <h1 class="page-title">AI Assistant</h1>
+    <p class="page-sub">
+        Manage your hotel using natural language.
+    </p>
+
+    <div class="panel">
+        <h3>Hotel AI Assistant</h3>
+
+        <textarea id="aiPrompt"
+            placeholder="Example:
+• Add Room 205
+• Increase Deluxe room prices by 10%
+• Show today's bookings
+• Mark Room 102 as maintenance"
+            style="width:100%;height:140px;padding:12px;border:1px solid var(--border);border-radius:8px;resize:vertical;"></textarea>
+
+        <br><br>
+
+        <button class="btn btn--primary" onclick="runAI()">
+            Ask AI
+        </button>
+
+        <div id="aiResponse"
+            style="margin-top:20px;padding:15px;background:#f8f8f8;border-radius:8px;min-height:100px;">
+            AI responses will appear here.
+        </div>
+    </div>
+
 </div>
 
     <!-- ---------------- ROOMS VIEW ---------------- -->
@@ -886,6 +915,18 @@ document.querySelectorAll(".nav-link").forEach(link=>{
 
   });
 });
+   function runAI() {
+    const prompt = document.getElementById("aiPrompt").value.trim();
+
+    if (!prompt) {
+        toast("Please enter a command.", true);
+        return;
+    }
+
+    document.getElementById("aiResponse").innerHTML =
+        "<strong>You:</strong> " + prompt +
+        "<br><br><em>AI integration coming soon...</em>";
+}
 </script>
 
 </body>
