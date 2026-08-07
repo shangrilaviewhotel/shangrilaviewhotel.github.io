@@ -919,11 +919,6 @@ document.querySelectorAll(".nav-link").forEach(link=>{
 
     const prompt = document.getElementById("aiPrompt").value.trim();
 
-    if (!prompt) {
-        toast("Please enter a command.", true);
-        return;
-    }
-
     const output = document.getElementById("aiResponse");
 
     output.innerHTML = "Thinking...";
@@ -940,16 +935,19 @@ document.querySelectorAll(".nav-link").forEach(link=>{
             })
         });
 
+        console.log("Status:", res.status);
+
         const data = await res.json();
+
+        console.log(data);
 
         output.innerHTML = data.reply;
 
-    } catch (err) {
-
-        output.innerHTML =
-            "<span style='color:red'>Unable to connect to AI server.</span>";
+    } catch(err) {
 
         console.error(err);
+
+        output.innerHTML = err.message;
 
     }
 
