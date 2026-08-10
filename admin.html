@@ -369,12 +369,15 @@ body { margin: 0; font-family: var(--font-body); background: var(--paper); color
       </div>
     </div>
 
-    <!-- ---------------- BOOKINGS VIEW (placeholder — next phase) ---------------- -->
+    <!-- ---------------- BOOKINGS VIEW ---------------- -->
     <div class="view" id="view-bookings">
       <h1 class="page-title">Bookings</h1>
-      <div class="coming-soon">
-        <h3>Full booking management is next</h3>
-        <p>Calendar view, check-in/out, payment status, and invoices. For now, see the Dashboard's Recent Bookings table.</p>
+      <p class="page-sub" id="bookingCountLabel">Loading booking enquiries…</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Guest</th><th>Room</th><th>Stay</th><th>Contact</th><th>Status</th><th></th></tr></thead>
+          <tbody id="bookingsManagementTable"></tbody>
+        </table>
       </div>
     </div>
 
@@ -415,7 +418,7 @@ body { margin: 0; font-family: var(--font-body); background: var(--paper); color
           <label>Room Type</label>
           <select id="f_type">
             <option>Standard</option><option>Deluxe</option><option>Super Deluxe</option>
-            <option>Suite</option><option>Presidential suits</option>
+            <option>Suites</option><option>Presidential suits</option>
           </select>
         </div>
         <div class="field"><label>Price (per night, ₦)</label><input type="number" id="f_price" placeholder="45000"></div>
@@ -496,6 +499,7 @@ function showView(name) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.getElementById('view-' + name).classList.add('active');
   document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.dataset.view === name));
+  if (name === 'bookings') loadBookings();
 }
 
 /* ============================================================
@@ -541,6 +545,8 @@ function parseDate(str) {
 }
 
 function bookingStatus(b) {
+  if (b.status === 'pending') return { label: 'Pending', cls: 'badge--upcoming' };
+  if (b.status === 'cancelled') return { label: 'Cancelled', cls: 'badge--past' };
   const today = new Date(); today.setHours(0,0,0,0);
   const checkIn = parseDate(b.checkIn);
   const checkOut = parseDate(b.checkOut);
@@ -548,6 +554,82 @@ function bookingStatus(b) {
   if (checkOut && today >= checkIn && today <= checkOut) return { label: 'Staying', cls: 'badge--staying' };
   if (today < checkIn) return { label: 'Upcoming', cls: 'badge--upcoming' };
   return { label: 'Past', cls: 'badge--past' };
+}
+
+let adminBookings = [];
+
+async function loadBookings() {
+  try {
+    const snap = await db.collection('bookings').orderBy('createdAt', 'desc').get();
+    adminBookings = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    renderBookingsManagement();
+  } catch (err) {
+    console.error(err);
+    document.getElementById('bookingCountLabel').textContent = 'Could not load booking enquiries.';
+  }
+}
+
+function renderBookingsManagement() {
+  const body = document.getElementById('bookingsManagementTable');
+  document.getElementById('bookingCountLabel').textContent = `${adminBookings.length} booking enquir${adminBookings.length === 1 ? 'y' : 'ies'}`;
+
+  if (!adminBookings.length) {
+    body.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px; color:var(--ink-muted);">No booking enquiries yet.</td></tr>';
+    return;
+  }
+
+  body.innerHTML = adminBookings.map(booking => {
+    const status = bookingStatus(booking);
+    const action = booking.status === 'pending'
+      ? `<button class="btn btn--primary" onclick="confirmBooking('${booking.id}')">Confirm</button>`
+      : '';
+    return `<tr>
+      <td><strong>${escapeHtml(booking.name || '—')}</strong><br><small>${escapeHtml(booking.message || '')}</small></td>
+      <td>${escapeHtml(booking.room || booking.roomNumber || '—')}</td>
+      <td>${escapeHtml(booking.checkIn || '—')}<br>${escapeHtml(booking.checkOut || '—')}</td>
+      <td>${escapeHtml(booking.email || '—')}<br>${escapeHtml(booking.phone || '')}</td>
+      <td><span class="badge ${status.cls}">${status.label}</span></td>
+      <td>${action}</td>
+    </tr>`;
+  }).join('');
+}
+
+function datesOverlap(firstCheckIn, firstCheckOut, secondCheckIn, secondCheckOut) {
+  return firstCheckIn < secondCheckOut && firstCheckOut > secondCheckIn;
+}
+
+async function confirmBooking(id) {
+  const booking = adminBookings.find(item => item.id === id);
+  if (!booking || booking.status !== 'pending') return;
+
+  const [roomSnap, bookingsSnap] = await Promise.all([
+    db.collection('rooms').where('roomNumber', '==', booking.roomNumber).get(),
+    db.collection('bookings').where('roomNumber', '==', booking.roomNumber).get()
+  ]);
+  const room = roomSnap.docs[0] && roomSnap.docs[0].data();
+  const hasConflict = bookingsSnap.docs
+    .map(doc => ({ id: doc.id, ...doc.data() }))
+    .some(existing => existing.id !== id && existing.status === 'confirmed' &&
+      datesOverlap(booking.checkIn, booking.checkOut, existing.checkIn, existing.checkOut));
+
+  const roomDetailsMatch = room && room.type === booking.roomType && Number(room.price) === Number(booking.price);
+  if (!roomDetailsMatch || room.status === 'maintenance' || room.status === 'occupied' || hasConflict) {
+    toast('This room is not available for those dates.', true);
+    return;
+  }
+
+  try {
+    await db.collection('bookings').doc(id).update({
+      status: 'confirmed',
+      confirmedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    toast('Booking confirmed.');
+    await Promise.all([loadBookings(), loadDashboard()]);
+  } catch (err) {
+    console.error(err);
+    toast("Couldn't confirm this booking.", true);
+  }
 }
 
 function renderDashboardStats(bookings, rooms) {
@@ -931,7 +1013,7 @@ async function seedInitialRooms() {
     { roomNumber: "306", type: "Super Deluxe", price: 25000 },
     { roomNumber: "307", type: "Deluxe", price: 22000 },
     { roomNumber: "308", type: "Super Deluxe", price: 25000 },
-    { roomNumber: "309", type: "Suite", price: 30000 }
+    { roomNumber: "309", type: "Suites", price: 30000 }
   ];
 
   try {
