@@ -683,6 +683,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqlpaqk';
 const bookingForm = document.getElementById('bookingForm');
 const bookingFeedback = document.getElementById('bookingFeedback');
 const bookingSubmit = document.getElementById('bookingSubmit');
@@ -722,6 +723,12 @@ bookingForm.addEventListener('submit', async (event) => {
   bookingSubmit.textContent = 'Sending enquiry…';
 
   try {
+    const notificationData = new FormData(bookingForm);
+    notificationData.append('roomNumber', roomMatch[1]);
+    notificationData.append('roomType', roomMatch[2]);
+    notificationData.append('price', roomMatch[3].replace(/,/g, ''));
+    notificationData.append('status', 'pending');
+
     await db.collection('bookings').add({
       name: document.getElementById('bookingName').value.trim(),
       email: document.getElementById('bookingEmail').value.trim(),
@@ -739,7 +746,19 @@ bookingForm.addEventListener('submit', async (event) => {
     });
 
     bookingForm.reset();
-    showBookingFeedback('Thank you. Your booking enquiry has been received. The hotel will confirm availability shortly.');
+    try {
+      const notificationResponse = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: notificationData
+      });
+
+      if (!notificationResponse.ok) throw new Error('Formspree notification failed.');
+      showBookingFeedback('Thank you. Your booking enquiry has been received. The hotel will confirm availability shortly.');
+    } catch (notificationError) {
+      console.error(notificationError);
+      showBookingFeedback('Your booking enquiry was received. The hotel will confirm availability shortly.');
+    }
   } catch (error) {
     console.error(error);
     showBookingFeedback('We could not send your enquiry. Please try again or use WhatsApp.', true);
