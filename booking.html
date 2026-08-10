@@ -605,7 +605,7 @@ button:active {
   <div class="form-box">
     <h2>Book Your Stay</h2>
 
-    <form id="bookingForm">
+    <form id="bookingForm" action="https://formspree.io/f/maqlpaqk" method="POST">
       <input type="text" id="bookingName" name="name" placeholder="Full Name" required>
       <input type="email" id="bookingEmail" name="email" placeholder="Email Address" required>
       <input type="tel" id="bookingPhone" name="phone" placeholder="Phone Number" required>
@@ -647,6 +647,11 @@ button:active {
 
       <textarea id="bookingMessage" name="message" placeholder="Additional Message" rows="4"></textarea>
 
+      <input type="hidden" id="formRoomNumber" name="roomNumber">
+      <input type="hidden" id="formRoomType" name="roomType">
+      <input type="hidden" id="formPrice" name="price">
+      <input type="hidden" name="status" value="pending">
+
       <button id="bookingSubmit" type="submit">Reserve Now</button>
     </form>
     <p id="bookingFeedback" aria-live="polite" style="display:none; margin-top:16px; line-height:1.5;"></p>
@@ -683,7 +688,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqlpaqk';
 const bookingForm = document.getElementById('bookingForm');
 const bookingFeedback = document.getElementById('bookingFeedback');
 const bookingSubmit = document.getElementById('bookingSubmit');
@@ -723,12 +727,6 @@ bookingForm.addEventListener('submit', async (event) => {
   bookingSubmit.textContent = 'Sending enquiry…';
 
   try {
-    const notificationData = new FormData(bookingForm);
-    notificationData.append('roomNumber', roomMatch[1]);
-    notificationData.append('roomType', roomMatch[2]);
-    notificationData.append('price', roomMatch[3].replace(/,/g, ''));
-    notificationData.append('status', 'pending');
-
     await db.collection('bookings').add({
       name: document.getElementById('bookingName').value.trim(),
       email: document.getElementById('bookingEmail').value.trim(),
@@ -745,23 +743,11 @@ bookingForm.addEventListener('submit', async (event) => {
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     });
 
-    bookingForm.reset();
-    try {
-      const notificationResponse = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: notificationData
-      });
-
-      if (!notificationResponse.ok) {
-        const errorData = await notificationResponse.json().catch(() => ({}));
-        throw new Error(errorData.errors ? errorData.errors.map(item => item.message).join(' ') : 'Formspree notification failed.');
-      }
-      showBookingFeedback('Thank you. Your booking enquiry has been received. The hotel will confirm availability shortly.');
-    } catch (notificationError) {
-      console.error(notificationError);
-      showBookingFeedback('Your booking enquiry was saved, but the email notification could not be sent. Please contact the hotel on WhatsApp.', true);
-    }
+    document.getElementById('formRoomNumber').value = roomMatch[1];
+    document.getElementById('formRoomType').value = roomMatch[2];
+    document.getElementById('formPrice').value = roomMatch[3].replace(/,/g, '');
+    bookingForm.submit();
+    return;
   } catch (error) {
     console.error(error);
     showBookingFeedback('We could not send your enquiry. Please try again or use WhatsApp.', true);
