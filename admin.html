@@ -488,6 +488,7 @@ const db = firebase.firestore();
 loadDashboard();
 loadRooms();
 
+seedInitialRooms();
 /* ============================================================
    NAVIGATION
    ============================================================ */
@@ -896,6 +897,116 @@ async function deleteRoom(id) {
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 
+}
+   /* ============================================================
+   INITIAL ROOM SETUP — 24 ROOMS FROM SHANGRI-LA VIEW PRICE LIST
+   Safe to run more than once: existing room numbers are skipped.
+   ============================================================ */
+
+async function seedInitialRooms() {
+
+  const initialRooms = [
+    { roomNumber: "101", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "102", type: "Deluxe", price: 22000 },
+    { roomNumber: "103", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "104", type: "Deluxe", price: 22000 },
+    { roomNumber: "105", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "106", type: "Deluxe", price: 22000 },
+    { roomNumber: "107", type: "Standard", price: 18000 },
+
+    { roomNumber: "201", type: "Deluxe", price: 22000 },
+    { roomNumber: "202", type: "Deluxe", price: 22000 },
+    { roomNumber: "203", type: "Deluxe", price: 22000 },
+    { roomNumber: "204", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "205", type: "Deluxe", price: 22000 },
+    { roomNumber: "206", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "207", type: "Deluxe", price: 22000 },
+    { roomNumber: "208", type: "Deluxe", price: 22000 },
+
+    { roomNumber: "301", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "302", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "303", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "304", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "305", type: "Deluxe", price: 22000 },
+    { roomNumber: "306", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "307", type: "Deluxe", price: 22000 },
+    { roomNumber: "308", type: "Super Deluxe", price: 25000 },
+    { roomNumber: "309", type: "Suite", price: 30000 }
+  ];
+
+  try {
+
+    // Get all existing rooms
+    const existingSnap = await db.collection('rooms').get();
+
+    const existingRoomNumbers = new Set(
+      existingSnap.docs.map(doc => String(doc.data().roomNumber))
+    );
+
+    // Only create rooms that don't already exist
+    const roomsToCreate = initialRooms.filter(
+      room => !existingRoomNumbers.has(room.roomNumber)
+    );
+
+    if (!roomsToCreate.length) {
+      console.log("All initial rooms already exist.");
+      return;
+    }
+
+    const batch = db.batch();
+
+    roomsToCreate.forEach(room => {
+
+      const roomRef = db.collection('rooms').doc();
+
+      batch.set(roomRef, {
+        roomNumber: room.roomNumber,
+        type: room.type,
+        price: room.price,
+
+        discountPrice: null,
+
+        capacity: 2,
+
+        status: "available",
+
+        description: "",
+
+        featured: false,
+
+        amenities: [],
+
+        images: [],
+
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+
+    });
+
+    await batch.commit();
+
+    console.log(
+      `${roomsToCreate.length} room(s) successfully created.`
+    );
+
+    toast(`${roomsToCreate.length} rooms added successfully.`);
+
+    // Refresh the admin page's room list
+    await loadRooms();
+
+    // Refresh dashboard room statistics
+    await loadDashboard();
+
+  } catch (err) {
+
+    console.error("Error creating initial rooms:", err);
+
+    toast(
+      "Couldn't create the initial rooms. Check the console.",
+      true
+    );
+  }
 }
 
 
