@@ -746,7 +746,7 @@ bookingForm.addEventListener('submit', async (event) => {
     document.getElementById('formRoomNumber').value = roomMatch[1];
     document.getElementById('formRoomType').value = roomMatch[2];
     document.getElementById('formPrice').value = roomMatch[3].replace(/,/g, '');
-    bookingForm.submit();
+    HTMLFormElement.prototype.submit.call(bookingForm);
     return;
   } catch (error) {
     console.error(error);
