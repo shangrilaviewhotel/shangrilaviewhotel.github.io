@@ -753,11 +753,14 @@ bookingForm.addEventListener('submit', async (event) => {
         body: notificationData
       });
 
-      if (!notificationResponse.ok) throw new Error('Formspree notification failed.');
+      if (!notificationResponse.ok) {
+        const errorData = await notificationResponse.json().catch(() => ({}));
+        throw new Error(errorData.errors ? errorData.errors.map(item => item.message).join(' ') : 'Formspree notification failed.');
+      }
       showBookingFeedback('Thank you. Your booking enquiry has been received. The hotel will confirm availability shortly.');
     } catch (notificationError) {
       console.error(notificationError);
-      showBookingFeedback('Your booking enquiry was received. The hotel will confirm availability shortly.');
+      showBookingFeedback('Your booking enquiry was saved, but the email notification could not be sent. Please contact the hotel on WhatsApp.', true);
     }
   } catch (error) {
     console.error(error);
