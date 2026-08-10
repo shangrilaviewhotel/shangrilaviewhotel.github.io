@@ -6,6 +6,8 @@
 <title>Book a Room - Shangri-La View Hotel</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <style>
 * {
@@ -603,12 +605,12 @@ button:active {
   <div class="form-box">
     <h2>Book Your Stay</h2>
 
-    <form action="https://formspree.io/f/maqlpaqk" method="POST">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
+    <form id="bookingForm">
+      <input type="text" id="bookingName" name="name" placeholder="Full Name" required>
+      <input type="email" id="bookingEmail" name="email" placeholder="Email Address" required>
+      <input type="tel" id="bookingPhone" name="phone" placeholder="Phone Number" required>
 
-      <select name="room" required>
+      <select id="bookingRoom" name="room" required>
   <option value="">Select Room Number & Type</option>
 
   <option>Room 101 - Super Deluxe - ₦25,000</option>
@@ -640,13 +642,14 @@ button:active {
 
 </select>
 
-      <input type="date" name="checkin" placeholder="Check-in Date" required>
-      <input type="date" name="checkout" placeholder="Check-out Date" required>
+      <input type="date" id="bookingCheckIn" name="checkin" placeholder="Check-in Date" required>
+      <input type="date" id="bookingCheckOut" name="checkout" placeholder="Check-out Date" required>
 
-      <textarea name="message" placeholder="Additional Message" rows="4"></textarea>
+      <textarea id="bookingMessage" name="message" placeholder="Additional Message" rows="4"></textarea>
 
-      <button type="submit">Reserve Now</button>
+      <button id="bookingSubmit" type="submit">Reserve Now</button>
     </form>
+    <p id="bookingFeedback" aria-live="polite" style="display:none; margin-top:16px; line-height:1.5;"></p>
 
     <div class="divider">OR</div>
 
@@ -666,6 +669,84 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
     document.getElementById("navLinks").classList.remove("active");
   });
+});
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE",
+  authDomain: "shangrila-booking.firebaseapp.com",
+  projectId: "shangrila-booking",
+  storageBucket: "shangrila-booking.firebasestorage.app",
+  messagingSenderId: "981170210173",
+  appId: "1:981170210173:web:4d74cb3f6109fe1c0a3814",
+  measurementId: "G-ZYB3J8BW72"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const bookingForm = document.getElementById('bookingForm');
+const bookingFeedback = document.getElementById('bookingFeedback');
+const bookingSubmit = document.getElementById('bookingSubmit');
+
+function showBookingFeedback(message, isError = false) {
+  bookingFeedback.textContent = message;
+  bookingFeedback.style.display = 'block';
+  bookingFeedback.style.color = isError ? '#ffd0d7' : '#fff3b0';
+}
+
+function selectRoomFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const roomNumber = params.get('roomNumber');
+  if (!roomNumber) return;
+
+  const option = [...document.getElementById('bookingRoom').options]
+    .find(item => item.text.startsWith(`Room ${roomNumber} -`));
+  if (option) option.selected = true;
+}
+
+selectRoomFromQuery();
+
+bookingForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const checkIn = document.getElementById('bookingCheckIn').value;
+  const checkOut = document.getElementById('bookingCheckOut').value;
+  const selectedRoom = document.getElementById('bookingRoom').value;
+  const roomMatch = /^Room\s+(\d+)\s+-\s+(.+?)\s+-\s+₦([\d,]+)$/.exec(selectedRoom);
+
+  if (!roomMatch || !checkIn || !checkOut || checkOut <= checkIn) {
+    showBookingFeedback('Please select a room and enter a valid check-in and check-out date.', true);
+    return;
+  }
+
+  bookingSubmit.disabled = true;
+  bookingSubmit.textContent = 'Sending enquiry…';
+
+  try {
+    await db.collection('bookings').add({
+      name: document.getElementById('bookingName').value.trim(),
+      email: document.getElementById('bookingEmail').value.trim(),
+      phone: document.getElementById('bookingPhone').value.trim(),
+      room: selectedRoom,
+      roomNumber: roomMatch[1],
+      roomType: roomMatch[2],
+      price: Number(roomMatch[3].replace(/,/g, '')),
+      checkIn,
+      checkOut,
+      message: document.getElementById('bookingMessage').value.trim(),
+      status: 'pending',
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    bookingForm.reset();
+    showBookingFeedback('Thank you. Your booking enquiry has been received. The hotel will confirm availability shortly.');
+  } catch (error) {
+    console.error(error);
+    showBookingFeedback('We could not send your enquiry. Please try again or use WhatsApp.', true);
+  } finally {
+    bookingSubmit.disabled = false;
+    bookingSubmit.textContent = 'Reserve Now';
+  }
 });
 </script>
 
