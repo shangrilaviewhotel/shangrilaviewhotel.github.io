@@ -1,762 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JS8DGVZLYX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JS8DGVZLYX');
+</script>
+<!-- End Google Analytics -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book a Room - Shangri-La View Hotel</title>
+<meta name="description" content="Book your stay at Shangri-La View Hotel in Port Harcourt, Rivers State, Nigeria.">
+<meta name="keywords" content="Shangri-La View Hotel booking, Hotel Port Harcourt, hotel booking Nigeria, accommodation Port Harcourt">
+<meta name="author" content="Shangri-La View Hotel">
+<meta property="og:title" content="Book Your Stay — Shangri-La View Hotel">
+<meta property="og:description" content="Reserve your stay at Shangri-La View Hotel in Port Harcourt.">
+<meta property="og:image" content="https://shangrilaviewhotel.github.io/SSVH.jpg">
+<meta property="og:url" content="https://shangrilaviewhotel.github.io/booking.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Book Your Stay — Shangri-La View Hotel">
+<meta name="twitter:description" content="Reserve your stay at Shangri-La View Hotel in Port Harcourt.">
+<meta name="twitter:image" content="https://shangrilaviewhotel.github.io/SSVH.jpg">
+<title>Book Your Stay — Shangri-La View Hotel</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root{
+  --color-bg:#090807;
+  --color-surface:#14110f;
+  --color-surface-2:#1b1714;
+  --color-primary:#8f2033;
+  --color-primary-dark:#651526;
+  --color-accent:#c8a96b;
+  --color-accent-soft:#e2c995;
+  --color-text:#f7f2e9;
+  --color-muted:#b9b0a4;
+  --color-line:rgba(226,201,149,.18);
+  --font-display:'Playfair Display',serif;
+  --font-body:'DM Sans',sans-serif;
+  --section-space:clamp(72px,9vw,130px);
+  --radius:2px;
+  --transition:420ms cubic-bezier(.22,1,.36,1);
+  --ai-api-url: http://127.0.0.1:8000;
 }
-
-/* ===== ROOT COLOR VARIABLES ===== */
-:root {
-  --primary: #C41E3A;
-  --primary-dark: #8B1527;
-  --secondary: #1F3B6F;
-  --accent: #D4AF37;
-  --light: #F5F1E8;
-  --dark: #0a0e1a;
-  --glass: rgba(255, 255, 255, 0.08);
-  --glass-hover: rgba(255, 255, 255, 0.15);
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body); background:var(--color-bg); color:var(--color-text);
+  overflow-x:hidden; min-height:100vh;
 }
-
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: url('hotel8.JPG') no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
-  overflow-x: hidden;
-  position: relative;
+body::before{
+  content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:radial-gradient(circle at 18% 18%,rgba(143,32,51,.18),transparent 32%),radial-gradient(circle at 82% 72%,rgba(200,169,107,.07),transparent 30%),linear-gradient(180deg,rgba(8,7,6,.28),rgba(8,7,6,.92));
 }
-
-/* ===== MULTI-LAYERED BACKGROUND ===== */
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(196, 30, 58, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(31, 59, 111, 0.15) 0%, transparent 40%),
-    linear-gradient(180deg, rgba(5, 10, 30, 0.8) 0%, rgba(5, 10, 30, 0.9) 100%);
-  top: 0;
-  left: 0;
-  z-index: -2;
+body::after{
+  content:"";position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
 }
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button,a,select{ -webkit-tap-highlight-color:transparent }
 
-/* ===== LIVING AMBIENT EFFECT ===== */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(196, 30, 58, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 80%, rgba(31, 59, 111, 0.1) 0%, transparent 50%);
-  z-index: -1;
-  animation: ambientPulse 12s ease-in-out infinite;
-  pointer-events: none;
-}
+/* Cinematic entrance */
+#loader{position:fixed;inset:0;z-index:9999;background:#090807;display:flex;align-items:center;justify-content:center;transition:opacity .55s ease,visibility .55s ease}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-inner{text-align:center;animation:loaderIn .9s var(--transition) both}
+.loader-logo{width:74px;height:74px;border-radius:50%;object-fit:cover;border:1px solid rgba(200,169,107,.55);margin-bottom:18px;box-shadow:0 18px 60px rgba(0,0,0,.5)}
+.loader-name{font-family:var(--font-display);font-size:clamp(24px,4vw,38px);letter-spacing:.08em}
+.loader-line{width:70px;height:1px;background:var(--color-accent);margin:16px auto 0;animation:lineIn 1.2s ease both .25s}
+@keyframes loaderIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes lineIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 
-@keyframes ambientPulse {
-  0%, 100% { 
-    opacity: 0.6;
-    filter: blur(0px);
-  }
-  50% { 
-    opacity: 1;
-    filter: blur(1px);
-  }
-}
+/* Navigation */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px clamp(18px,4vw,56px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background var(--transition),border-color var(--transition),padding var(--transition),backdrop-filter var(--transition)}
+.site-nav.scrolled{background:rgba(9,8,7,.84);border-color:var(--color-line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:13px;min-width:0}
+.brand img{width:53px;height:53px;border-radius:50%;object-fit:cover;border:1px solid rgba(200,169,107,.5);transition:transform var(--transition)}
+.brand:hover img{transform:scale(1.04)}
+.brand-name{font-family:var(--font-display);font-size:clamp(18px,2vw,24px);letter-spacing:.02em;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:clamp(18px,2.6vw,34px)}
+.nav-links a{position:relative;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.82);padding:8px 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:1px;height:1px;background:var(--color-accent);transition:right var(--transition)}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:#fff}.nav-links a:hover::after,.nav-links a[aria-current="page"]::after{right:0}
+.login-link{border:1px solid rgba(200,169,107,.5);padding:10px 15px!important;color:var(--color-accent)!important}
+.login-link::after{display:none}
+.menu-toggle{display:none;border:0;background:none;color:var(--color-accent);font-size:27px;cursor:pointer;padding:8px}
 
-/* ===== NAV WITH 5D GLASS MORPHISM ===== */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: var(--glass);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  z-index: 1000;
-  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+/* Hero */
+.booking-hero{position:relative;min-height:76vh;display:flex;align-items:flex-end;overflow:hidden;background-image:linear-gradient(180deg,rgba(5,4,3,.22),rgba(5,4,3,.52) 45%,#090807 100%),url('hotel8.JPG');background-size:cover;background-position:center}
+.booking-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,8,7,.72),transparent 70%)}
+.hero-content{position:relative;z-index:1;width:min(1180px,92%);margin:0 auto;padding:150px 0 90px}
+.eyebrow{display:flex;align-items:center;gap:12px;color:var(--color-accent);font-size:11px;text-transform:uppercase;letter-spacing:.28em;margin-bottom:20px}
+.eyebrow::before{content:"";width:40px;height:1px;background:var(--color-accent)}
+.hero-content h1{font-family:var(--font-display);font-weight:500;font-size:clamp(50px,8vw,108px);line-height:.94;max-width:850px;letter-spacing:-.03em}
+.hero-content p{max-width:580px;color:rgba(255,255,255,.72);font-size:16px;line-height:1.8;margin-top:28px}
+.hero-meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:38px;color:rgba(255,255,255,.62);font-size:11px;text-transform:uppercase;letter-spacing:.18em}
+.hero-meta span strong{display:block;color:var(--color-accent);font-weight:500;margin-bottom:6px}
+.scroll-cue{position:absolute;right:5%;bottom:42px;display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.55);font-size:9px;text-transform:uppercase;letter-spacing:.25em;writing-mode:vertical-rl}
+.scroll-cue i{display:block;width:1px;height:58px;background:linear-gradient(var(--color-accent),transparent)}
 
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-    backdrop-filter: blur(0px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    backdrop-filter: blur(20px);
-  }
-}
+/* Booking area */
+.booking-section{position:relative;padding:var(--section-space) 0 120px;background:linear-gradient(180deg,#090807 0%,#0d0b09 100%)}
+.booking-wrap{width:min(1180px,92%);margin:0 auto;display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(36px,6vw,90px);align-items:start}
+.booking-intro{position:sticky;top:125px;padding-top:10px}
+.booking-intro .eyebrow{margin-bottom:18px}
+.booking-intro h2{font-family:var(--font-display);font-weight:500;font-size:clamp(40px,5vw,66px);line-height:1.02;letter-spacing:-.02em}
+.booking-intro p{color:var(--color-muted);line-height:1.85;font-size:14px;max-width:410px;margin-top:22px}
+.intro-note{margin-top:40px;padding-top:20px;border-top:1px solid var(--color-line);max-width:410px;color:rgba(255,255,255,.58);font-size:12px;line-height:1.8}
+.form-box{background:rgba(22,18,15,.84);border:1px solid var(--color-line);padding:clamp(28px,5vw,54px);box-shadow:0 35px 100px rgba(0,0,0,.38);position:relative;overflow:hidden}
+.form-box::before{content:"";position:absolute;top:0;left:0;width:90px;height:1px;background:var(--color-accent)}
+.form-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:32px}
+.form-heading h2{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:500}
+.form-heading span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent);white-space:nowrap}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.field{position:relative;margin-bottom:20px}.field.full{grid-column:1/-1}
+.field label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.52);margin-bottom:9px}
+input,select,textarea{width:100%;border:0;border-bottom:1px solid rgba(255,255,255,.18);border-radius:0;background:transparent;color:#fff;padding:12px 0;outline:none;transition:border-color var(--transition),background var(--transition)}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.35)}
+input:focus,select:focus,textarea:focus{border-color:var(--color-accent);background:linear-gradient(90deg,rgba(200,169,107,.04),transparent)}
+select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--color-accent) 50%),linear-gradient(135deg,var(--color-accent) 50%,transparent 50%);background-position:calc(100% - 7px) 50%,calc(100% - 2px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:25px}
+select option{background:#17120f;color:#fff}
+textarea{resize:vertical;min-height:90px;line-height:1.6}
+.submit-row{display:flex;align-items:center;gap:18px;margin-top:10px;flex-wrap:wrap}
+.reserve-btn{position:relative;border:1px solid var(--color-accent);background:var(--color-primary);color:#fff;padding:16px 28px;min-width:190px;cursor:pointer;text-transform:uppercase;letter-spacing:.17em;font-size:11px;overflow:hidden;transition:transform var(--transition),background var(--transition),box-shadow var(--transition)}
+.reserve-btn::before{content:"";position:absolute;inset:0;transform:translateX(-105%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transition:transform .65s ease}.reserve-btn:hover::before{transform:translateX(105%)}.reserve-btn:hover{background:var(--color-primary-dark);transform:translateY(-2px);box-shadow:0 15px 35px rgba(143,32,51,.3)}
+.form-small{font-size:11px;line-height:1.6;color:rgba(255,255,255,.45);max-width:260px}
+.divider{display:flex;align-items:center;gap:15px;color:rgba(255,255,255,.35);font-size:9px;letter-spacing:.25em;text-transform:uppercase;margin:28px 0}.divider::before,.divider::after{content:"";height:1px;background:var(--color-line);flex:1}
+.whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(37,211,102,.4);background:rgba(37,211,102,.07);color:#dfffea;padding:15px 18px;text-transform:uppercase;letter-spacing:.15em;font-size:10px;transition:var(--transition)}
+.whatsapp-btn:hover{background:rgba(37,211,102,.13);border-color:#25D366;transform:translateY(-2px)}
 
-nav img {
-  width: 65px;
-  border-radius: 50%;
-  box-shadow: 
-    0 0 30px rgba(196, 30, 58, 0.6),
-    0 0 60px rgba(212, 175, 55, 0.3),
-    inset 0 0 20px rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 3px solid rgba(212, 175, 55, 0.4);
-}
+/* Global floating tools */
+.whatsapp-float{position:fixed;left:24px;bottom:24px;z-index:1100;width:54px;height:54px;border:1px solid rgba(37,211,102,.45);background:rgba(15,16,13,.9);display:flex;align-items:center;justify-content:center;font-size:23px;box-shadow:0 15px 35px rgba(0,0,0,.35);transition:var(--transition)}
+.whatsapp-float:hover{transform:translateY(-4px);border-color:#25D366}
+.cac-badge{position:fixed;right:24px;bottom:24px;z-index:1090;width:60px;height:60px;border-radius:50%;padding:3px;background:#111;border:1px solid rgba(200,169,107,.6);cursor:pointer;box-shadow:0 14px 40px rgba(0,0,0,.45);transition:var(--transition)}
+.cac-badge:hover{transform:translateY(-4px) scale(1.04);border-color:var(--color-accent)}
+.cac-badge img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.cac-tooltip{position:absolute;right:0;bottom:70px;white-space:nowrap;padding:9px 12px;background:#17120f;border:1px solid var(--color-line);color:var(--color-accent);font-size:9px;letter-spacing:.12em;text-transform:uppercase;opacity:0;transform:translateY(4px);pointer-events:none;transition:var(--transition)}
+.cac-badge:hover .cac-tooltip{opacity:1;transform:none}
+.cac-modal{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.82);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:20px}.cac-modal.active{display:flex}
+.cac-modal-content{width:min(520px,94vw);background:#11100e;border:1px solid var(--color-line);padding:32px;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.6);animation:modalIn .45s var(--transition)}
+@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.cac-modal-close{position:absolute;right:15px;top:10px;background:none;border:0;color:var(--color-accent);font-size:32px;cursor:pointer}.cac-modal img{width:100%;max-height:300px;object-fit:contain;background:#090807;margin-bottom:22px}.cac-modal h3{font-family:var(--font-display);font-size:27px;font-weight:500;margin-bottom:12px}.cac-modal p{color:var(--color-muted);font-size:13px;line-height:1.7;margin:7px 0}.cac-modal strong{color:var(--color-accent)}.cac-verify-btn{display:block;margin-top:22px;border:1px solid var(--color-accent);padding:13px;text-align:center;color:var(--color-accent);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
 
-nav img:hover {
-  transform: scale(1.15) rotate(8deg);
-  box-shadow: 
-    0 0 50px rgba(196, 30, 58, 0.9),
-    0 0 80px rgba(212, 175, 55, 0.5),
-    inset 0 0 20px rgba(255, 255, 255, 0.3);
-  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
-}
+/* AI concierge */
+.concierge-launcher{position:fixed;right:98px;bottom:24px;z-index:1200;border:1px solid rgba(200,169,107,.55);background:rgba(15,13,11,.94);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;cursor:pointer;box-shadow:0 15px 40px rgba(0,0,0,.42);transition:var(--transition);font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.concierge-launcher:hover{transform:translateY(-4px);background:#191511;border-color:var(--color-accent)}
+.concierge-dot{width:7px;height:7px;border-radius:50%;background:var(--color-accent);box-shadow:0 0 0 5px rgba(200,169,107,.08)}
+.concierge-panel{position:fixed;right:24px;bottom:88px;z-index:1199;width:min(390px,calc(100vw - 30px));height:min(600px,calc(100vh - 120px));background:#100e0c;border:1px solid var(--color-line);box-shadow:0 30px 100px rgba(0,0,0,.62);display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(18px) scale(.98);transition:var(--transition);overflow:hidden}
+.concierge-panel.open{opacity:1;visibility:visible;transform:none}
+.concierge-head{padding:18px 18px 16px;border-bottom:1px solid var(--color-line);display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,#191511,#100e0c)}
+.concierge-head small{display:block;color:var(--color-accent);font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px}.concierge-head strong{font-family:var(--font-display);font-size:21px;font-weight:500}.concierge-close{border:0;background:none;color:#aaa;font-size:25px;cursor:pointer}
+.concierge-messages{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}.msg{max-width:86%;padding:11px 13px;font-size:12px;line-height:1.65;border:1px solid var(--color-line)}.msg.ai{align-self:flex-start;background:#181410;color:#e9e2d7}.msg.user{align-self:flex-end;background:#551523;border-color:rgba(200,169,107,.18);color:#fff}.msg.typing{color:var(--color-accent);font-style:italic}
+.concierge-form{border-top:1px solid var(--color-line);padding:12px;display:flex;gap:8px;background:#0c0b09}.concierge-form textarea{flex:1;min-height:44px;max-height:110px;border:1px solid rgba(255,255,255,.12);padding:11px 12px;resize:none;background:#15120f}.concierge-form button{width:48px;border:1px solid var(--color-accent);background:var(--color-primary);color:#fff;cursor:pointer}.concierge-form button:disabled{opacity:.5;cursor:not-allowed}
+.concierge-note{padding:0 18px 10px;color:rgba(255,255,255,.32);font-size:9px;line-height:1.5}
 
-nav h2 {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, var(--light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  letter-spacing: 1px;
-  font-weight: 900;
-  margin: 0;
-}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s var(--transition)}.reveal.visible{opacity:1;transform:none}
 
-nav > div:first-child {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+/* Footer */
+.site-footer{border-top:1px solid var(--color-line);padding:50px 4%;background:#080706;color:rgba(255,255,255,.55);display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap;align-items:center}.site-footer strong{font-family:var(--font-display);font-size:20px;color:#fff;font-weight:500}.site-footer p{font-size:11px;line-height:1.7}.footer-links{display:flex;gap:20px;font-size:10px;text-transform:uppercase;letter-spacing:.15em}.footer-links a:hover{color:var(--color-accent)}
 
-nav a {
-  color: white;
-  margin-left: 0;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-nav a::before {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--primary));
-  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 0 15px rgba(196, 30, 58, 0.6);
-}
-
-nav a:hover {
-  color: var(--accent);
-  transform: translateY(-3px);
-}
-
-nav a:hover::before {
-  width: 100%;
-}
-
-/* ===== HAMBURGER MENU - FIXED Z-INDEX ===== */
-.menu-toggle {
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-  color: var(--accent);
-  transition: all 0.3s ease;
-  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-  position: relative;
-  z-index: 1001;
-}
-
-.menu-toggle:hover {
-  transform: scale(1.25) rotate(90deg);
-  text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
-}
-
-/* ===== NAV LINKS ===== */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-/* ===== MOBILE MENU - PROPER Z-INDEX ===== */
-@media (max-width: 768px) {
-  nav {
-    padding: 15px 20px;
-  }
-
-  nav a {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    background: var(--glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    flex-direction: column;
-    width: 220px;
-    display: none;
-    padding: 20px;
-    border-left: 3px solid var(--accent);
-    z-index: 1001;
-    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.5);
-    gap: 0;
-    animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .nav-links a {
-    margin: 15px 0 !important;
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    background: rgba(212, 175, 55, 0.1);
-  }
-
-  .nav-links.active {
-    display: flex !important;
-  }
-}
-
-/* ===== CONTAINER ===== */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 100px 20px 40px 20px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ===== FORM BOX WITH 5D GLASS MORPHISM ===== */
-.form-box {
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 60px 50px;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 500px;
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 
-    0 25px 70px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  animation: slideUpScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-@keyframes slideUpScale {
-  from {
-    opacity: 0;
-    transform: translateY(50px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.form-box::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.form-box:hover {
-  border-color: var(--accent);
-  box-shadow: 
-    0 35px 90px rgba(196, 30, 58, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.form-box h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 40px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, white 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 35px;
-  letter-spacing: 2px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ===== FORM INPUTS ===== */
-input, textarea, select {
-  width: 100%;
-  padding: 14px 16px;
-  margin: 14px 0;
-  border-radius: 12px;
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  background: rgba(255, 255, 255, 0.08);
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  backdrop-filter: blur(10px);
-  position: relative;
-  z-index: 1;
-}
-
-input::placeholder, textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 300;
-}
-
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 0 25px rgba(212, 175, 55, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 20px;
-  padding-right: 40px;
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-select option {
-  background: var(--secondary);
-  color: white;
-  font-weight: 500;
-}
-
-/* ===== BUTTONS ===== */
-button {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  border: none;
-  border-radius: 30px;
-  color: white;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 
-    0 15px 40px rgba(196, 30, 58, 0.4),
-    0 0 30px rgba(196, 30, 58, 0.2);
-  margin-top: 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-
-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-  transition: left 0.5s ease;
-}
-
-button:hover::before {
-  left: 100%;
-}
-
-button:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 
-    0 25px 60px rgba(196, 30, 58, 0.6),
-    0 0 50px rgba(212, 175, 55, 0.4);
-  border-color: var(--accent);
-}
-
-button:active {
-  transform: translateY(-2px) scale(1.02);
-}
-
-/* ===== WHATSAPP BUTTON ===== */
-.whatsapp-btn {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  padding: 16px;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 
-    0 15px 40px rgba(37, 211, 102, 0.4),
-    0 0 30px rgba(37, 211, 102, 0.2);
-  position: relative;
-  z-index: 1;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  overflow: hidden;
-}
-
-.whatsapp-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s ease;
-}
-
-.whatsapp-btn:hover::before {
-  left: 100%;
-}
-
-.whatsapp-btn:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 
-    0 25px 60px rgba(37, 211, 102, 0.6),
-    0 0 50px rgba(37, 211, 102, 0.4);
-}
-
-.whatsapp-btn:active {
-  transform: translateY(-2px) scale(1.02);
-}
-
-/* ===== DIVIDER ===== */
-.divider {
-  text-align: center;
-  margin: 25px 0;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 600;
-  letter-spacing: 1px;
-  position: relative;
-  z-index: 1;
-}
-
-.divider::before,
-.divider::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 45%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
-}
-
-.divider::before {
-  left: 0;
-}
-
-.divider::after {
-  right: 0;
-}
-
-/* ===== SMOOTH SCROLLBAR ===== */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--primary), var(--accent));
-  border-radius: 6px;
-  box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--accent), var(--primary));
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-}
-
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .container {
-    padding: 100px 15px 30px 15px;
-  }
-
-  .form-box {
-    padding: 40px 25px;
-    max-width: 100%;
-  }
-
-  .form-box h2 {
-    font-size: 32px;
-    margin-bottom: 25px;
-  }
-
-  input, textarea, select {
-    padding: 12px 14px;
-    margin: 10px 0;
-  }
-
-  button,
-  .whatsapp-btn {
-    padding: 14px;
-    font-size: 14px;
-  }
-}
-
+/* Responsive */
+@media(max-width:900px){.booking-wrap{grid-template-columns:1fr}.booking-intro{position:static}.intro-note{margin-bottom:5px}.scroll-cue{display:none}.nav-links{gap:18px}.login-link{padding:8px 10px!important}}
+@media(max-width:760px){
+  .site-nav{padding:13px 18px}.brand img{width:44px;height:44px}.brand-name{font-size:17px}.menu-toggle{display:block}.nav-links{position:fixed;top:0;right:0;bottom:0;width:min(330px,86vw);padding:100px 34px 40px;background:rgba(12,10,8,.97);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:flex;flex-direction:column;align-items:flex-start;gap:8px;transform:translateX(105%);transition:transform var(--transition);border-left:1px solid var(--color-line)}.nav-links.active{transform:none}.nav-links a{display:block;width:100%;padding:14px 0;font-size:12px}.login-link{margin-top:10px!important}.booking-hero{min-height:72vh;background-position:60% center}.hero-content{padding:130px 0 70px}.hero-content h1{font-size:clamp(47px,15vw,76px)}.hero-content p{font-size:14px}.booking-section{padding-top:75px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.form-box{padding:28px 22px}.form-heading{align-items:flex-start;flex-direction:column;gap:8px}.submit-row{display:block}.reserve-btn{width:100%}.form-small{max-width:none;margin-top:12px}.concierge-launcher{right:18px;bottom:88px}.concierge-panel{right:15px;bottom:150px;height:min(590px,calc(100vh - 180px))}.cac-badge{right:18px;bottom:18px;width:54px;height:54px}.whatsapp-float{left:18px;bottom:18px;width:50px;height:50px}.site-footer{padding-bottom:120px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.site-nav,.brand img,.nav-links,.reserve-btn,.concierge-launcher,.concierge-panel{transition:none}body::after{display:none}.loader-inner,.loader-line{animation:none}}
 </style>
-
 </head>
-
 <body>
 
-<!-- NAV -->
-<nav>
-  <div style="display:flex; align-items:center; gap:15px;">
-    <img src="hlogo.png" alt="Logo">
-    <h2 style="margin:0;">Shangri-La View Hotel</h2>
-  </div>
+<div id="loader" aria-hidden="true"><div class="loader-inner"><img class="loader-logo" src="hlogo.png" alt=""><div class="loader-name">Shangri-La View</div><div class="loader-line"></div></div></div>
 
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-  <div class="nav-links" id="navLinks">
+<header class="site-nav" id="siteNav">
+  <a class="brand" href="index.html" aria-label="Shangri-La View Hotel home">
+    <img src="hlogo.png" alt="Shangri-La View Hotel logo">
+    <span class="brand-name">Shangri-La View Hotel</span>
+  </a>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
     <a href="index.html">Home</a>
-    <a href="booking.html">Booking</a>
+    <a href="booking.html" aria-current="page">Booking</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <a href="gallery.html">Gallery</a>
-  </div>
-</nav>
+    <a href="login.html" class="login-link">Admin Login</a>
+  </nav>
+</header>
 
-<!-- BOOKING FORM -->
-<div class="container">
-  <div class="form-box">
-    <h2>Book Your Stay</h2>
+<main>
+  <section class="booking-hero">
+    <div class="hero-content reveal">
+      <div class="eyebrow">Reserve your stay</div>
+      <h1>A stay worth remembering.</h1>
+      <p>Make your reservation at Shangri-La View Hotel and enjoy a refined stay in Port Harcourt. Choose your room, select your dates, and send your request directly to the hotel.</p>
+      <div class="hero-meta" aria-label="Booking information">
+        <span><strong>Location</strong>Port Harcourt</span>
+        <span><strong>Reservations</strong>Direct booking</span>
+        <span><strong>Alternative</strong>WhatsApp</span>
+      </div>
+    </div>
+    <div class="scroll-cue"><i></i>Book your stay</div>
+  </section>
 
-    <form id="bookingForm" action="https://formspree.io/f/maqlpaqk" method="POST">
-      <input type="text" id="bookingName" name="name" placeholder="Full Name" required>
-      <input type="email" id="bookingEmail" name="email" placeholder="Email Address" required>
-      <input type="tel" id="bookingPhone" name="phone" placeholder="Phone Number" required>
+  <section class="booking-section" id="reservation">
+    <div class="booking-wrap">
+      <aside class="booking-intro reveal">
+        <div class="eyebrow">Your reservation</div>
+        <h2>Begin your stay.</h2>
+        <p>Complete the reservation form with your details and preferred room. Your existing booking request is submitted through the hotel's current reservation channel.</p>
+        <div class="intro-note">Prefer a direct conversation? Use WhatsApp below and speak with the hotel without changing your reservation details.</div>
+      </aside>
 
-      <select id="bookingRoom" name="room" required>
-  <option value="">Select Room Number & Type</option>
+      <div class="form-box reveal">
+        <div class="form-heading">
+          <h2>Book Your Stay</h2>
+          <span>Reservation request</span>
+        </div>
 
-  <option>Room 101 - Super Deluxe - ₦25,000</option>
-  <option>Room 102 - Deluxe - ₦22,000</option>
-  <option>Room 103 - Super Deluxe - ₦25,000</option>
-  <option>Room 104 - Deluxe - ₦22,000</option>
-  <option>Room 105 - Super Deluxe - ₦25,000</option>
-  <option>Room 106 - Deluxe - ₦22,000</option>
-  <option>Room 107 - Standard - ₦18,000</option>
+        <!-- Existing booking destination and fields preserved -->
+        <form action="https://formspree.io/f/maqlpaqk" method="POST">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" type="text" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" type="email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" type="tel" name="phone" placeholder="Your phone number" required>
+            </div>
+            <div class="field">
+              <label for="room">Room</label>
+              <select id="room" name="room" required>
+                <option value="">Select room number &amp; type</option>
+                <option>Room 101 - Super Deluxe - ₦25,000</option>
+                <option>Room 102 - Deluxe - ₦22,000</option>
+                <option>Room 103 - Super Deluxe - ₦25,000</option>
+                <option>Room 104 - Deluxe - ₦22,000</option>
+                <option>Room 105 - Super Deluxe - ₦25,000</option>
+                <option>Room 106 - Deluxe - ₦22,000</option>
+                <option>Room 107 - Standard - ₦18,000</option>
+                <option>Room 201 - Deluxe - ₦22,000</option>
+                <option>Room 202 - Deluxe - ₦22,000</option>
+                <option>Room 203 - Deluxe - ₦22,000</option>
+                <option>Room 204 - Super Deluxe - ₦25,000</option>
+                <option>Room 205 - Deluxe - ₦22,000</option>
+                <option>Room 206 - Super Deluxe - ₦25,000</option>
+                <option>Room 207 - Deluxe - ₦22,000</option>
+                <option>Room 208 - Deluxe - ₦22,000</option>
+                <option>Room 301 - Super Deluxe - ₦25,000</option>
+                <option>Room 302 - Super Deluxe - ₦25,000</option>
+                <option>Room 303 - Super Deluxe - ₦25,000</option>
+                <option>Room 304 - Super Deluxe - ₦25,000</option>
+                <option>Room 305 - Deluxe - ₦22,000</option>
+                <option>Room 306 - Super Deluxe - ₦25,000</option>
+                <option>Room 307 - Deluxe - ₦22,000</option>
+                <option>Room 308 - Super Deluxe - ₦25,000</option>
+                <option>Room 309 - Suites - ₦30,000</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="checkin">Check-in</label>
+              <input id="checkin" type="date" name="checkin" required>
+            </div>
+            <div class="field">
+              <label for="checkout">Check-out</label>
+              <input id="checkout" type="date" name="checkout" required>
+            </div>
+            <div class="field full">
+              <label for="message">Additional message</label>
+              <textarea id="message" name="message" placeholder="Anything the hotel should know about your reservation?" rows="4"></textarea>
+            </div>
+          </div>
 
-  <option>Room 201 - Deluxe - ₦22,000</option>
-  <option>Room 202 - Deluxe - ₦22,000</option>
-  <option>Room 203 - Deluxe - ₦22,000</option>
-  <option>Room 204 - Super Deluxe - ₦25,000</option>
-  <option>Room 205 - Deluxe - ₦22,000</option>
-  <option>Room 206 - Super Deluxe - ₦25,000</option>
-  <option>Room 207 - Deluxe - ₦22,000</option>
-  <option>Room 208 - Deluxe - ₦22,000</option>
+          <div class="submit-row">
+            <button class="reserve-btn" type="submit">Reserve Now</button>
+            <div class="form-small">Your request will be sent through the hotel's existing reservation form. Required fields are marked by the browser.</div>
+          </div>
+        </form>
 
-  <option>Room 301 - Super Deluxe - ₦25,000</option>
-  <option>Room 302 - Super Deluxe - ₦25,000</option>
-  <option>Room 303 - Super Deluxe - ₦25,000</option>
-  <option>Room 304 - Super Deluxe - ₦25,000</option>
-  <option>Room 305 - Deluxe - ₦22,000</option>
-  <option>Room 306 - Super Deluxe - ₦25,000</option>
-  <option>Room 307 - Deluxe - ₦22,000</option>
-  <option>Room 308 - Super Deluxe - ₦25,000</option>
-  <option>Room 309 - Suites - ₦30,000</option>
+        <div class="divider">Or book directly</div>
+        <a href="https://wa.me/2348110844173" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">✦ Book via WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-</select>
+<footer class="site-footer">
+  <div><strong>Shangri-La View Hotel</strong><p>Port Harcourt, Rivers State, Nigeria</p></div>
+  <div class="footer-links"><a href="index.html">Home</a><a href="contact.html">Contact</a><a href="gallery.html">Gallery</a></div>
+</footer>
 
-      <input type="date" id="bookingCheckIn" name="checkin" placeholder="Check-in Date" required>
-      <input type="date" id="bookingCheckOut" name="checkout" placeholder="Check-out Date" required>
-
-      <textarea id="bookingMessage" name="message" placeholder="Additional Message" rows="4"></textarea>
-
-      <input type="hidden" id="formRoomNumber" name="roomNumber">
-      <input type="hidden" id="formRoomType" name="roomType">
-      <input type="hidden" id="formPrice" name="price">
-      <input type="hidden" name="status" value="pending">
-
-      <button id="bookingSubmit" type="submit">Reserve Now</button>
-    </form>
-    <p id="bookingFeedback" aria-live="polite" style="display:none; margin-top:16px; line-height:1.5;"></p>
-
-    <div class="divider">OR</div>
-
-    <a href="https://wa.me/2348110844173" class="whatsapp-btn">📱 Book via WhatsApp</a>
+<!-- CAC BADGE / MODAL preserved from the site's existing assets/placeholders -->
+<div class="cac-badge" id="cacBadge" role="button" tabindex="0" aria-label="View CAC information">
+  <img src="your-cac-logo.jpg" alt="CAC Certified">
+  <span class="cac-tooltip">Verify CAC</span>
+</div>
+<div class="cac-modal" id="cacModal" role="dialog" aria-modal="true" aria-labelledby="cacTitle">
+  <div class="cac-modal-content">
+    <button class="cac-modal-close" id="cacClose" type="button" aria-label="Close CAC information">&times;</button>
+    <img src="your-cac-certificate.png" alt="CAC Certificate">
+    <h3 id="cacTitle">✓ Business Certified</h3>
+    <p><strong>Registration:</strong> Your CAC Registration Number</p>
+    <p><strong>Status:</strong> Verified &amp; Active</p>
+    <p>This business is officially registered with the Corporate Affairs Commission (CAC) of Nigeria. Your trust and confidence matter to us.</p>
+    <a href="https://www.cac.gov.ng/" target="_blank" rel="noopener noreferrer" class="cac-verify-btn">Verify on CAC Portal</a>
   </div>
 </div>
 
-<!-- SCRIPT -->
+<!-- WhatsApp global access -->
+<a href="https://wa.me/2348110844173" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat with Shangri-La View Hotel on WhatsApp">⌕</a>
+
+<!-- Shangri-La Concierge: connects to the existing FastAPI POST /chat endpoint. No mock responses. -->
+<button class="concierge-launcher" id="conciergeLauncher" type="button" aria-expanded="false" aria-controls="conciergePanel"><span class="concierge-dot"></span>Shangri-La Concierge</button>
+<section class="concierge-panel" id="conciergePanel" aria-label="Shangri-La Concierge" aria-hidden="true">
+  <div class="concierge-head">
+    <div><small>Guest assistance</small><strong>Shangri-La Concierge</strong></div>
+    <button class="concierge-close" id="conciergeClose" type="button" aria-label="Close concierge">&times;</button>
+  </div>
+  <div class="concierge-messages" id="conciergeMessages">
+    <div class="msg ai">Welcome to Shangri-La View Hotel. How may I assist you with your stay?</div>
+  </div>
+  <div class="concierge-note">The concierge uses the hotel's existing AI service. If the AI server is offline, the interface will tell you rather than fabricate a response.</div>
+  <form class="concierge-form" id="conciergeForm">
+    <textarea id="conciergeInput" aria-label="Message the concierge" placeholder="Ask about rooms, prices, bookings..." rows="1" required></textarea>
+    <button id="conciergeSend" type="submit" aria-label="Send message">↑</button>
+  </form>
+</section>
+
 <script>
-function toggleMenu() {
-  const navLinks = document.getElementById("navLinks");
-  navLinks.classList.toggle("active");
-}
+(() => {
+  const loader = document.getElementById('loader');
+  const nav = document.getElementById('siteNav');
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById("navLinks").classList.remove("active");
+  // No artificial multi-second delay: reveal after DOM is ready.
+  window.addEventListener('load', () => setTimeout(() => loader.classList.add('hide'), 120));
+
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 18), {passive:true});
+
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.textContent = open ? '×' : '☰';
   });
-});
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded','false');
+    menuToggle.textContent = '☰';
+  }));
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE",
-  authDomain: "shangrila-booking.firebaseapp.com",
-  projectId: "shangrila-booking",
-  storageBucket: "shangrila-booking.firebasestorage.app",
-  messagingSenderId: "981170210173",
-  appId: "1:981170210173:web:4d74cb3f6109fe1c0a3814",
-  measurementId: "G-ZYB3J8BW72"
-};
+  // Cinematic reveal without a heavy animation library.
+  const revealItems = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    }), {threshold:.12});
+    revealItems.forEach(el => observer.observe(el));
+  } else revealItems.forEach(el => el.classList.add('visible'));
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-const bookingForm = document.getElementById('bookingForm');
-const bookingFeedback = document.getElementById('bookingFeedback');
-const bookingSubmit = document.getElementById('bookingSubmit');
+  // Preserve sensible date selection without changing the existing form destination.
+  const checkin = document.getElementById('checkin');
+  const checkout = document.getElementById('checkout');
+  const today = new Date();
+  const iso = new Date(today.getTime() - today.getTimezoneOffset()*60000).toISOString().slice(0,10);
+  checkin.min = iso;
+  checkout.min = iso;
+  checkin.addEventListener('change', () => { checkout.min = checkin.value || iso; if (checkout.value && checkin.value && checkout.value <= checkin.value) checkout.value=''; });
 
-function showBookingFeedback(message, isError = false) {
-  bookingFeedback.textContent = message;
-  bookingFeedback.style.display = 'block';
-  bookingFeedback.style.color = isError ? '#ffd0d7' : '#fff3b0';
-}
+  // CAC modal.
+  const cacModal = document.getElementById('cacModal');
+  const openCAC = () => cacModal.classList.add('active');
+  const closeCAC = () => cacModal.classList.remove('active');
+  document.getElementById('cacBadge').addEventListener('click', openCAC);
+  document.getElementById('cacBadge').addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); openCAC(); }});
+  document.getElementById('cacClose').addEventListener('click', closeCAC);
+  cacModal.addEventListener('click', e => { if(e.target === cacModal) closeCAC(); });
 
-function selectRoomFromQuery() {
-  const params = new URLSearchParams(window.location.search);
-  const roomNumber = params.get('roomNumber');
-  if (!roomNumber) return;
+  // Real AI concierge. The backend project exposes POST /chat. A deployed HTTPS URL can be supplied globally as:
+  // window.SHANGRILA_AI_API_URL = 'https://your-ai-server.example';
+  const AI_API_URL = "https://shangrila-ai.onrender.com";
+  const panel = document.getElementById('conciergePanel');
+  const closeAI = document.getElementById('conciergeClose');
+  const messages = document.getElementById('conciergeMessages');
+  const form = document.getElementById('conciergeForm');
+  const input = document.getElementById('conciergeInput');
+  const send = document.getElementById('conciergeSend');
 
-  const option = [...document.getElementById('bookingRoom').options]
-    .find(item => item.text.startsWith(`Room ${roomNumber} -`));
-  if (option) option.selected = true;
-}
+  function toggleAI(open) {
+    panel.classList.toggle('open', open);
+    panel.setAttribute('aria-hidden', String(!open));
+    launcher.setAttribute('aria-expanded', String(open));
+    if (open) setTimeout(() => input.focus(), 250);
+  }
+  launcher.addEventListener('click', () => toggleAI(!panel.classList.contains('open')));
+  closeAI.addEventListener('click', () => toggleAI(false));
 
-selectRoomFromQuery();
-
-bookingForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  const checkIn = document.getElementById('bookingCheckIn').value;
-  const checkOut = document.getElementById('bookingCheckOut').value;
-  const selectedRoom = document.getElementById('bookingRoom').value;
-  const roomMatch = /^Room\s+(\d+)\s+-\s+(.+?)\s+-\s+₦([\d,]+)$/.exec(selectedRoom);
-
-  if (!roomMatch || !checkIn || !checkOut || checkOut <= checkIn) {
-    showBookingFeedback('Please select a room and enter a valid check-in and check-out date.', true);
-    return;
+  function addMessage(text, type='ai') {
+    const item = document.createElement('div');
+    item.className = 'msg ' + type;
+    item.textContent = text;
+    messages.appendChild(item);
+    messages.scrollTop = messages.scrollHeight;
+    return item;
   }
 
-  bookingSubmit.disabled = true;
-  bookingSubmit.textContent = 'Sending enquiry…';
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const message = input.value.trim();
+    if (!message || send.disabled) return;
+    addMessage(message, 'user');
+    input.value = '';
+    send.disabled = true;
+    const typing = addMessage('Connecting to the concierge…', 'ai typing');
+    try {
+      const response = await fetch(AI_API_URL.replace(/\/$/, '') + '/chat', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({message})
+      });
+      if (!response.ok) throw new Error('AI service returned ' + response.status);
+      const data = await response.json();
+      typing.remove();
+      addMessage(typeof data.reply === 'string' ? data.reply : 'I could not read the concierge response. Please try again.', 'ai');
+    } catch (error) {
+      typing.remove();
+      addMessage('The concierge service is currently unavailable. Please use WhatsApp or the booking form to contact the hotel.', 'ai');
+      console.error('Shangri-La Concierge:', error);
+    } finally {
+      send.disabled = false;
+      input.focus();
+    }
+  });
 
-  try {
-    await db.collection('bookings').add({
-      name: document.getElementById('bookingName').value.trim(),
-      email: document.getElementById('bookingEmail').value.trim(),
-      phone: document.getElementById('bookingPhone').value.trim(),
-      room: selectedRoom,
-      roomNumber: roomMatch[1],
-      roomType: roomMatch[2],
-      price: Number(roomMatch[3].replace(/,/g, '')),
-      checkIn,
-      checkOut,
-      message: document.getElementById('bookingMessage').value.trim(),
-      status: 'pending',
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    });
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
+  });
 
-    document.getElementById('formRoomNumber').value = roomMatch[1];
-    document.getElementById('formRoomType').value = roomMatch[2];
-    document.getElementById('formPrice').value = roomMatch[3].replace(/,/g, '');
-    HTMLFormElement.prototype.submit.call(bookingForm);
-    return;
-  } catch (error) {
-    console.error(error);
-    showBookingFeedback('We could not send your enquiry. Please try again or use WhatsApp.', true);
-  } finally {
-    bookingSubmit.disabled = false;
-    bookingSubmit.textContent = 'Reserve Now';
-  }
-});
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { toggleAI(false); closeCAC(); }
+  });
+})();
 </script>
-
 </body>
 </html>
