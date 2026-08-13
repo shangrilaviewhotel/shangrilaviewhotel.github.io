@@ -1,939 +1,3481 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us - Shangri-La View Hotel</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Discover the story, mission, vision, values, facilities and hospitality philosophy of Shangri-La View Hotel in Port Harcourt, Rivers State, Nigeria.">
+  <meta name="keywords" content="About Shangri-La View Hotel, Hotel Port Harcourt, Luxury Hotel Nigeria, Shangri-La View Hotel, Hospitality, Accommodation">
+  <meta name="author" content="Shangri-La View Hotel">
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <title>About Us | Shangri-La View Hotel</title>
 
-/* ===== ROOT COLOR VARIABLES ===== */
-:root {
-  --primary: #C41E3A;
-  --primary-dark: #8B1527;
-  --secondary: #1F3B6F;
-  --accent: #D4AF37;
-  --light: #F5F1E8;
-  --dark: #0a0e1a;
-  --glass: rgba(255, 255, 255, 0.08);
-  --glass-hover: rgba(255, 255, 255, 0.15);
-}
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JS8DGVZLYX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JS8DGVZLYX');
+  </script>
 
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: url('hotel4.JPG') no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
-  overflow-x: hidden;
-  position: relative;
-}
+  <!-- Social Preview -->
+  <meta property="og:title" content="About Shangri-La View Hotel">
+  <meta property="og:description" content="Discover the story, values and hospitality behind Shangri-La View Hotel in Port Harcourt.">
+  <meta property="og:image" content="https://shangrilaviewhotel.github.io/SSVH.jpg">
+  <meta property="og:url" content="https://shangrilaviewhotel.github.io/about.html">
+  <meta property="og:type" content="website">
 
-/* ===== MULTI-LAYERED BACKGROUND ===== */
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(196, 30, 58, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(31, 59, 111, 0.15) 0%, transparent 40%),
-    linear-gradient(180deg, rgba(5, 10, 30, 0.8) 0%, rgba(5, 10, 30, 0.9) 100%);
-  top: 0;
-  left: 0;
-  z-index: -2;
-}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Shangri-La View Hotel">
+  <meta name="twitter:description" content="Discover the story, values and hospitality behind Shangri-La View Hotel.">
+  <meta name="twitter:image" content="https://shangrilaviewhotel.github.io/SSVH.jpg">
 
-/* ===== LIVING AMBIENT EFFECT ===== */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(196, 30, 58, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 80%, rgba(31, 59, 111, 0.1) 0%, transparent 50%);
-  z-index: -1;
-  animation: ambientPulse 12s ease-in-out infinite;
-  pointer-events: none;
-}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-@keyframes ambientPulse {
-  0%, 100% { 
-    opacity: 0.6;
-    filter: blur(0px);
-  }
-  50% { 
-    opacity: 1;
-    filter: blur(1px);
-  }
-}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-/* ===== NAV WITH 5D GLASS MORPHISM ===== */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: var(--glass);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  z-index: 1000;
-  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+  <style>
 
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-    backdrop-filter: blur(0px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    backdrop-filter: blur(20px);
-  }
-}
+    /* =========================================================
+       GLOBAL DESIGN SYSTEM
+       MATCHES INDEX PAGE
+    ========================================================= */
 
-nav img {
-  width: 65px;
-  border-radius: 50%;
-  box-shadow: 
-    0 0 30px rgba(196, 30, 58, 0.6),
-    0 0 60px rgba(212, 175, 55, 0.3),
-    inset 0 0 20px rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 3px solid rgba(212, 175, 55, 0.4);
-}
+    :root{
+      --color-bg:#090707;
+      --color-surface:#120d0e;
+      --color-surface-2:#1a1113;
 
-nav img:hover {
-  transform: scale(1.15) rotate(8deg);
-  box-shadow: 
-    0 0 50px rgba(196, 30, 58, 0.9),
-    0 0 80px rgba(212, 175, 55, 0.5),
-    inset 0 0 20px rgba(255, 255, 255, 0.3);
-  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
-}
+      --color-primary:#7f1d2d;
+      --color-primary-dark:#4f111c;
 
-nav h2 {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, var(--light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  letter-spacing: 1px;
-  font-weight: 900;
-  margin: 0;
-}
+      --color-accent:#c7a86b;
+      --color-accent-soft:#e0c894;
 
-nav > div:first-child {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+      --color-text:#f7f2e9;
+      --color-muted:#b8afa4;
 
-nav a {
-  color: white;
-  margin-left: 0;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
+      --color-line:rgba(199,168,107,.22);
 
-nav a::before {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--primary));
-  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 0 15px rgba(196, 30, 58, 0.6);
-}
+      --font-display:'Cormorant Garamond',Georgia,serif;
+      --font-body:'Inter',Arial,sans-serif;
 
-nav a:hover {
-  color: var(--accent);
-  transform: translateY(-3px);
-}
+      --section:clamp(5rem,10vw,9rem);
 
-nav a:hover::before {
-  width: 100%;
-}
-
-/* ===== HAMBURGER MENU ===== */
-.menu-toggle {
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-  color: var(--accent);
-  transition: all 0.3s ease;
-  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-  position: relative;
-  z-index: 1001;
-}
-
-.menu-toggle:hover {
-  transform: scale(1.25) rotate(90deg);
-  text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
-}
-
-/* ===== NAV LINKS ===== */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-/* ===== MOBILE MENU ===== */
-@media (max-width: 768px) {
-  nav {
-    padding: 15px 20px;
-  }
-
-  nav a {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    left: auto;
-    background: var(--glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    flex-direction: column;
-    width: 220px;
-    display: none;
-    padding: 20px;
-    border-left: 3px solid var(--accent);
-    z-index: 2000;
-    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.5);
-    gap: 0;
-    animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(50px);
+      --ease:cubic-bezier(.2,.7,.2,1);
     }
-    to {
-      opacity: 1;
-      transform: translateX(0);
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
-  }
-
-  .nav-links a {
-    margin: 15px 0 !important;
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    background: rgba(212, 175, 55, 0.1);
-  }
-
-  .nav-links.active {
-    display: flex !important;
-  }
-}
-
-/* ===== CONTENT ===== */
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px 40px 60px 40px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ===== HERO SECTION ===== */
-.hero-section {
-  text-align: center;
-  margin-bottom: 100px;
-  animation: fadeInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-section h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 56px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, white 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
-  text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
-}
-
-.hero-section p {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto;
-  animation: fadeInUp 0.8s ease 0.2s both;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== SECTION STYLING ===== */
-.section {
-  margin-bottom: 100px;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 44px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, white 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 40px;
-  position: relative;
-  padding-bottom: 20px;
-  letter-spacing: 2px;
-}
-
-.section h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--primary));
-  border-radius: 2px;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
-}
-
-.section p {
-  font-size: 16px;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 25px;
-  text-align: justify;
-  transition: all 0.3s ease;
-}
-
-.section p:hover {
-  color: rgba(255, 255, 255, 0.95);
-  transform: translateX(5px);
-}
-
-/* ===== CARDS GRID WITH 5D DEPTH ===== */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.card {
-  background: var(--glass);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  padding: 45px 35px;
-  border-radius: 15px;
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-  transition: left 0.6s ease;
-}
-
-.card:hover::before {
-  left: 100%;
-}
-
-.card:hover {
-  border-color: var(--accent);
-  box-shadow: 
-    0 30px 80px rgba(196, 30, 58, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-15px);
-}
-
-.card-icon {
-  font-size: 56px;
-  margin-bottom: 20px;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.card:hover .card-icon {
-  transform: scale(1.2) rotate(10deg);
-  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
-}
-
-.card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  color: var(--accent);
-  margin-bottom: 15px;
-  font-weight: 700;
-}
-
-.card p {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.75);
-  text-align: center;
-  text-justify: auto;
-}
-
-/* ===== MISSION VISION VALUES ===== */
-.mvv-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.mvv-box {
-  background: var(--glass);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  padding: 45px 35px;
-  border-radius: 15px;
-  border-left: 5px solid var(--accent);
-  box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.mvv-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.mvv-box:hover {
-  transform: translateY(-12px);
-  border-left-color: white;
-  box-shadow: 
-    0 30px 80px rgba(196, 30, 58, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.mvv-box:hover::before {
-  opacity: 1;
-}
-
-.mvv-box h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  color: var(--accent);
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.mvv-box p {
-  font-size: 15px;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.8);
-  text-align: left;
-}
-
-/* ===== AMENITIES ===== */
-.amenities-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  margin-top: 50px;
-}
-
-.amenity-item {
-  display: flex;
-  align-items: center;
-  padding: 25px;
-  background: var(--glass);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  border-left: 4px solid var(--accent);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-.amenity-item:hover {
-  background: rgba(196, 30, 58, 0.1);
-  backdrop-filter: blur(15px);
-  transform: translateX(12px);
-  border-color: var(--accent);
-  box-shadow: 
-    0 20px 50px rgba(196, 30, 58, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.amenity-icon {
-  font-size: 36px;
-  margin-right: 18px;
-  min-width: 45px;
-  transition: all 0.3s ease;
-}
-
-.amenity-item:hover .amenity-icon {
-  transform: scale(1.2) rotate(15deg);
-  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
-}
-
-.amenity-text {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.85);
-  font-weight: 500;
-}
-
-/* ===== CTA SECTION ===== */
-.cta-section {
-  text-align: center;
-  margin-top: 100px;
-  padding: 70px 50px;
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border: 2px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-  animation: fadeInUp 0.8s ease 0.4s both;
-}
-
-.cta-section::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.cta-section h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--accent) 0%, white 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
-  position: relative;
-  z-index: 1;
-}
-
-.cta-section p {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 35px;
-  position: relative;
-  z-index: 1;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 16px 45px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: white;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 
-    0 15px 40px rgba(196, 30, 58, 0.4),
-    0 0 30px rgba(196, 30, 58, 0.2);
-  border: 2px solid transparent;
-  position: relative;
-  z-index: 1;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  overflow: hidden;
-}
-
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
-  transition: left 0.5s ease;
-}
-
-.cta-button:hover::before {
-  left: 100%;
-}
-
-.cta-button:hover {
-  transform: translateY(-5px) scale(1.08);
-  box-shadow: 
-    0 25px 60px rgba(196, 30, 58, 0.6),
-    0 0 50px rgba(212, 175, 55, 0.4);
-  border-color: var(--accent);
-}
-
-.cta-button:active {
-  transform: translateY(-2px) scale(1.05);
-}
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 40px 20px;
-  background: var(--glass);
-  backdrop-filter: blur(15px);
-  border-top: 2px solid rgba(212, 175, 55, 0.3);
-  margin-top: 80px;
-  position: relative;
-  z-index: 1;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-footer p {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 300;
-  letter-spacing: 0.5px;
-}
-
-/* ===== SMOOTH SCROLLBAR ===== */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--primary), var(--accent));
-  border-radius: 6px;
-  box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--accent), var(--primary));
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-}
-
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .content {
-    padding: 120px 20px 40px 20px;
-  }
-
-  .hero-section h1 {
-    font-size: 38px;
-  }
-
-  .hero-section p {
-    font-size: 16px;
-  }
-
-  .section h2 {
-    font-size: 32px;
-  }
-
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .mvv-container {
-    grid-template-columns: 1fr;
-  }
-
-  .amenities-list {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-section {
-    padding: 50px 25px;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .cta-section h3 {
-    font-size: 32px;
-  }
-
-  .cta-section p {
-    font-size: 16px;
-  }
-}
-
-</style>
 
+    html{
+      scroll-behavior:smooth;
+      background:var(--color-bg);
+    }
+
+    body{
+      font-family:var(--font-body);
+      background:var(--color-bg);
+      color:var(--color-text);
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:9997;
+      opacity:.035;
+
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    a{
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    .container{
+      width:min(1240px,calc(100% - 48px));
+      margin:auto;
+    }
+
+    .eyebrow{
+      font-size:11px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--color-accent);
+      font-weight:600;
+    }
+
+    .section-title{
+      font-family:var(--font-display);
+      font-size:clamp(3rem,7vw,6.5rem);
+      line-height:.9;
+      font-weight:600;
+      letter-spacing:-.035em;
+    }
+
+    .section-copy{
+      max-width:620px;
+      color:var(--color-muted);
+      font-size:15px;
+      line-height:1.9;
+    }
+
+
+    /* =========================================================
+       LOADER
+    ========================================================= */
+
+    #loader{
+      position:fixed;
+      inset:0;
+      background:#080606;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:10000;
+
+      transition:
+        opacity .65s ease,
+        visibility .65s ease;
+    }
+
+    #loader.hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+
+    .loader-inner{
+      text-align:center;
+    }
+
+    .loader-logo{
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      object-fit:cover;
+
+      border:1px solid var(--color-accent);
+
+      margin-bottom:20px;
+
+      opacity:0;
+      transform:scale(.9);
+
+      animation:
+        loaderIn 1s var(--ease) .05s forwards;
+    }
+
+    .loader-name{
+      font-family:var(--font-display);
+      font-size:28px;
+      letter-spacing:.08em;
+
+      opacity:0;
+      transform:translateY(10px);
+
+      animation:
+        loaderIn 1s var(--ease) .18s forwards;
+    }
+
+    .loader-line{
+      height:1px;
+      width:0;
+
+      background:var(--color-accent);
+
+      margin:18px auto 0;
+
+      animation:
+        loaderLine 1.1s ease .35s forwards;
+    }
+
+    @keyframes loaderIn{
+      to{
+        opacity:1;
+        transform:none;
+      }
+    }
+
+    @keyframes loaderLine{
+      to{
+        width:110px;
+      }
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+
+      width:100%;
+      height:86px;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      padding:0 36px;
+
+      z-index:5000;
+
+      transition:
+        background .45s ease,
+        backdrop-filter .45s ease,
+        border .45s ease;
+    }
+
+    nav.scrolled{
+      background:rgba(9,7,7,.84);
+
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+
+      border-bottom:1px solid var(--color-line);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:48px;
+      height:48px;
+
+      object-fit:cover;
+      border-radius:50%;
+
+      border:1px solid rgba(199,168,107,.7);
+    }
+
+    .brand-name{
+      font-family:var(--font-display);
+      font-size:24px;
+      letter-spacing:.04em;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:30px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+
+      text-transform:uppercase;
+
+      font-size:11px;
+      letter-spacing:.17em;
+
+      color:#eee8df;
+
+      position:relative;
+
+      transition:color .25s ease;
+    }
+
+    .nav-links a:not(.login-btn)::after{
+      content:"";
+
+      position:absolute;
+      left:0;
+      bottom:-8px;
+
+      width:0;
+      height:1px;
+
+      background:var(--color-accent);
+
+      transition:width .3s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--color-accent-soft);
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .login-btn{
+      padding:11px 18px;
+
+      border:1px solid var(--color-accent);
+
+      color:var(--color-accent)!important;
+    }
+
+    .menu-toggle{
+      display:none;
+
+      background:none;
+      border:0;
+
+      color:var(--color-accent);
+
+      font-size:28px;
+
+      cursor:pointer;
+    }
+
+
+    /* =========================================================
+       ABOUT HERO
+    ========================================================= */
+
+    .about-hero{
+      min-height:88svh;
+
+      position:relative;
+
+      display:flex;
+      align-items:flex-end;
+
+      overflow:hidden;
+
+      background:#100b0c;
+    }
+
+    .about-hero-media{
+      position:absolute;
+      inset:-4%;
+
+      background:
+        url('hotel4.JPG')
+        center/cover
+        no-repeat;
+
+      animation:
+        aboutHeroZoom 18s ease-out forwards;
+    }
+
+    .about-hero::before{
+      content:"";
+
+      position:absolute;
+      inset:0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.80) 0%,
+          rgba(0,0,0,.36) 52%,
+          rgba(0,0,0,.62) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(0,0,0,.82) 0%,
+          transparent 60%
+        );
+
+      z-index:1;
+    }
+
+    .about-hero::after{
+      content:"";
+
+      position:absolute;
+      inset:0;
+
+      background:
+        radial-gradient(
+          circle at 72% 30%,
+          rgba(199,168,107,.13),
+          transparent 35%
+        );
+
+      z-index:1;
+    }
+
+    @keyframes aboutHeroZoom{
+      from{
+        transform:scale(1.04);
+      }
+
+      to{
+        transform:scale(1.12);
+      }
+    }
+
+    .about-hero-content{
+      position:relative;
+      z-index:2;
+
+      width:min(1100px,calc(100% - 48px));
+
+      margin:0 auto;
+
+      padding:
+        0
+        0
+        13vh;
+    }
+
+    .about-hero-content h1{
+      font-family:var(--font-display);
+
+      font-size:
+        clamp(4rem,9vw,8.5rem);
+
+      font-weight:600;
+
+      line-height:.82;
+
+      letter-spacing:-.045em;
+
+      max-width:1000px;
+
+      margin:
+        18px
+        0
+        28px;
+    }
+
+    .about-hero-content p{
+      max-width:620px;
+
+      color:#ded5c9;
+
+      font-size:16px;
+
+      line-height:1.8;
+
+      margin-bottom:32px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+
+      align-items:center;
+      justify-content:center;
+
+      text-decoration:none;
+
+      text-transform:uppercase;
+
+      letter-spacing:.18em;
+
+      font-size:10px;
+
+      font-weight:600;
+
+      padding:16px 24px;
+
+      min-height:52px;
+
+      transition:
+        transform .35s var(--ease),
+        background .35s ease,
+        border .35s ease;
+    }
+
+    .btn-primary{
+      background:var(--color-primary);
+
+      border:1px solid var(--color-primary);
+
+      color:#fff;
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(247,242,233,.45);
+
+      color:#fff;
+
+      background:rgba(0,0,0,.12);
+
+      backdrop-filter:blur(5px);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-primary:hover{
+      background:#9a263a;
+    }
+
+    .scroll-indicator{
+      position:absolute;
+
+      right:36px;
+      bottom:42px;
+
+      z-index:2;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+
+      color:#d9d0c4;
+
+      font-size:9px;
+
+      letter-spacing:.22em;
+
+      text-transform:uppercase;
+
+      writing-mode:vertical-rl;
+    }
+
+    .scroll-indicator span{
+      width:1px;
+      height:58px;
+
+      background:
+        linear-gradient(
+          var(--color-accent),
+          transparent
+        );
+    }
+
+
+    /* =========================================================
+       INTRODUCTION
+    ========================================================= */
+
+    .story-intro{
+      padding:var(--section) 0;
+
+      background:var(--color-bg);
+    }
+
+    .story-grid{
+      display:grid;
+
+      grid-template-columns:.7fr 1.3fr;
+
+      gap:80px;
+
+      align-items:start;
+    }
+
+    .story-copy{
+      padding-top:20px;
+    }
+
+    .story-copy p{
+      margin-top:32px;
+    }
+
+
+    /* =========================================================
+       STORY EDITORIAL
+    ========================================================= */
+
+    .story-editorial{
+      padding:
+        0
+        0
+        var(--section);
+
+      background:var(--color-bg);
+    }
+
+    .story-editorial-grid{
+      display:grid;
+
+      grid-template-columns:
+        1.15fr
+        .85fr;
+
+      gap:24px;
+
+      align-items:stretch;
+    }
+
+    .story-image{
+      min-height:650px;
+
+      overflow:hidden;
+
+      position:relative;
+    }
+
+    .story-image img{
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      display:block;
+
+      transition:
+        transform 1.2s var(--ease);
+    }
+
+    .story-image:hover img{
+      transform:scale(1.035);
+    }
+
+    .story-panel{
+      display:flex;
+
+      flex-direction:column;
+
+      justify-content:space-between;
+
+      padding:52px;
+
+      background:var(--color-surface);
+
+      border:
+        1px solid
+        rgba(255,255,255,.05);
+    }
+
+    .story-panel h2{
+      font-family:var(--font-display);
+
+      font-size:
+        clamp(2.8rem,5vw,5.2rem);
+
+      line-height:.9;
+
+      font-weight:600;
+
+      margin-top:16px;
+    }
+
+    .story-panel p{
+      color:var(--color-muted);
+
+      margin-top:28px;
+
+      line-height:1.9;
+    }
+
+    .story-panel .story-number{
+      color:var(--color-accent);
+
+      font-size:11px;
+
+      letter-spacing:.25em;
+
+      text-transform:uppercase;
+    }
+
+
+    /* =========================================================
+       MISSION / VISION / VALUES
+    ========================================================= */
+
+    .mvv-section{
+      padding:var(--section) 0;
+
+      background:#0c090a;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.04);
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.04);
+    }
+
+    .mvv-head{
+      display:grid;
+
+      grid-template-columns:
+        .7fr
+        1.3fr;
+
+      gap:80px;
+
+      margin-bottom:55px;
+    }
+
+    .mvv-head h2{
+      margin-top:14px;
+    }
+
+    .mvv-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:18px;
+    }
+
+    .mvv-card{
+      min-height:400px;
+
+      padding:40px 34px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #171011,
+          #0f0b0c
+        );
+
+      border:
+        1px solid
+        rgba(199,168,107,.18);
+
+      position:relative;
+
+      overflow:hidden;
+
+      transition:
+        transform .5s var(--ease),
+        border-color .4s ease,
+        background .4s ease;
+    }
+
+    .mvv-card::before{
+      content:"";
+
+      position:absolute;
+
+      top:0;
+      left:0;
+
+      width:100%;
+      height:2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--color-accent),
+          transparent
+        );
+
+      opacity:.8;
+    }
+
+    .mvv-card::after{
+      content:"";
+
+      position:absolute;
+
+      width:220px;
+      height:220px;
+
+      right:-100px;
+      bottom:-100px;
+
+      border-radius:50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(199,168,107,.10),
+          transparent 70%
+        );
+    }
+
+    .mvv-card:hover{
+      transform:translateY(-10px);
+
+      border-color:
+        rgba(199,168,107,.5);
+
+      background:#1a1113;
+    }
+
+    .mvv-number{
+      font-family:var(--font-display);
+
+      font-size:68px;
+
+      line-height:1;
+
+      color:rgba(199,168,107,.15);
+
+      margin-bottom:30px;
+    }
+
+    .mvv-card h3{
+      font-family:var(--font-display);
+
+      font-size:38px;
+
+      font-weight:600;
+
+      color:var(--color-accent);
+
+      margin-bottom:20px;
+    }
+
+    .mvv-card p{
+      color:var(--color-muted);
+
+      font-size:14px;
+
+      line-height:1.9;
+    }
+
+
+    /* =========================================================
+       WHY CHOOSE US
+    ========================================================= */
+
+    .why-section{
+      padding:var(--section) 0;
+
+      background:var(--color-bg);
+    }
+
+    .why-head{
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:end;
+
+      gap:40px;
+
+      margin-bottom:50px;
+    }
+
+    .why-grid{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:18px;
+    }
+
+    .why-card{
+      position:relative;
+
+      min-height:330px;
+
+      overflow:hidden;
+
+      background:#120d0e;
+
+      border:
+        1px solid
+        rgba(255,255,255,.06);
+
+      padding:36px;
+
+      transition:
+        transform .5s var(--ease),
+        border-color .4s ease;
+    }
+
+    .why-card::before{
+      content:"";
+
+      position:absolute;
+
+      inset:0;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(199,168,107,.08),
+          transparent 45%
+        );
+
+      opacity:0;
+
+      transition:opacity .4s ease;
+    }
+
+    .why-card:hover{
+      transform:translateY(-8px);
+
+      border-color:
+        var(--color-line);
+    }
+
+    .why-card:hover::before{
+      opacity:1;
+    }
+
+    .why-icon{
+      font-size:30px;
+
+      width:58px;
+      height:58px;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      border:
+        1px solid
+        var(--color-line);
+
+      margin-bottom:40px;
+
+      position:relative;
+
+      z-index:1;
+    }
+
+    .why-card h3{
+      font-family:var(--font-display);
+
+      font-size:32px;
+
+      font-weight:600;
+
+      margin-bottom:15px;
+
+      position:relative;
+
+      z-index:1;
+    }
+
+    .why-card p{
+      color:var(--color-muted);
+
+      font-size:14px;
+
+      line-height:1.85;
+
+      position:relative;
+
+      z-index:1;
+    }
+
+
+    /* =========================================================
+       FACILITIES
+    ========================================================= */
+
+    .facilities-section{
+      padding:var(--section) 0;
+
+      background:#0c090a;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.04);
+    }
+
+    .facilities-head{
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:end;
+
+      gap:40px;
+
+      margin-bottom:45px;
+    }
+
+    .facilities-list{
+      display:grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      border-top:
+        1px solid
+        var(--color-line);
+    }
+
+    .facility{
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      padding:26px 10px 26px 0;
+
+      border-bottom:
+        1px solid
+        var(--color-line);
+
+      transition:
+        padding .35s var(--ease),
+        color .3s ease;
+    }
+
+    .facility:hover{
+      padding-left:10px;
+
+      color:var(--color-accent);
+    }
+
+    .facility-name{
+      font-family:var(--font-display);
+
+      font-size:25px;
+
+      font-weight:600;
+    }
+
+    .facility-number{
+      font-size:10px;
+
+      letter-spacing:.2em;
+
+      color:var(--color-accent);
+    }
+
+
+    /* =========================================================
+       PHOTO FEATURE
+    ========================================================= */
+
+    .feature-section{
+      padding:0 var(--section) var(--section);
+
+      background:#0c090a;
+    }
+
+    .feature-wrap{
+      min-height:650px;
+
+      position:relative;
+
+      overflow:hidden;
+
+      display:flex;
+
+      align-items:flex-end;
+    }
+
+    .feature-image{
+      position:absolute;
+
+      inset:0;
+
+      background:
+        url('wideR.JPG')
+        center/cover
+        no-repeat;
+
+      transition:
+        transform 1.2s var(--ease);
+    }
+
+    .feature-wrap:hover .feature-image{
+      transform:scale(1.035);
+    }
+
+    .feature-wrap::after{
+      content:"";
+
+      position:absolute;
+
+      inset:0;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(0,0,0,.88),
+          rgba(0,0,0,.15)
+        );
+    }
+
+    .feature-content{
+      position:relative;
+
+      z-index:2;
+
+      max-width:700px;
+
+      padding:65px;
+    }
+
+    .feature-content h2{
+      font-family:var(--font-display);
+
+      font-size:
+        clamp(3rem,6vw,6rem);
+
+      line-height:.9;
+
+      margin:
+        14px
+        0
+        25px;
+    }
+
+    .feature-content p{
+      color:#ddd4c8;
+
+      font-size:15px;
+
+      line-height:1.9;
+
+      max-width:570px;
+
+      margin-bottom:30px;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .about-cta{
+      padding:var(--section) 0;
+
+      background:var(--color-surface);
+    }
+
+    .cta-inner{
+      display:grid;
+
+      grid-template-columns:
+        1fr
+        .8fr;
+
+      gap:80px;
+
+      align-items:end;
+    }
+
+    .cta-inner h2{
+      margin-top:16px;
+    }
+
+    .cta-copy{
+      color:var(--color-muted);
+
+      font-size:15px;
+
+      line-height:1.9;
+
+      margin-bottom:28px;
+    }
+
+
+    /* =========================================================
+       CAC
+    ========================================================= */
+
+    .cac-badge{
+      position:fixed;
+
+      right:24px;
+      bottom:24px;
+
+      z-index:4000;
+
+      width:68px;
+      height:68px;
+
+      border-radius:50%;
+
+      background:#0e0b0c;
+
+      border:
+        1px solid
+        var(--color-accent);
+
+      padding:4px;
+
+      cursor:pointer;
+
+      box-shadow:
+        0 14px 40px
+        rgba(0,0,0,.45);
+
+      transition:
+        transform .3s ease;
+    }
+
+    .cac-badge:hover{
+      transform:translateY(-4px);
+    }
+
+    .cac-badge img{
+      width:100%;
+      height:100%;
+
+      border-radius:50%;
+
+      object-fit:cover;
+    }
+
+    .cac-tooltip{
+      position:absolute;
+
+      right:0;
+      bottom:78px;
+
+      white-space:nowrap;
+
+      background:#0f0b0c;
+
+      border:
+        1px solid
+        var(--color-line);
+
+      padding:9px 12px;
+
+      font-size:9px;
+
+      letter-spacing:.12em;
+
+      text-transform:uppercase;
+
+      opacity:0;
+
+      pointer-events:none;
+
+      transition:
+        opacity .25s;
+    }
+
+    .cac-badge:hover .cac-tooltip{
+      opacity:1;
+    }
+
+    .cac-modal{
+      display:none;
+
+      position:fixed;
+
+      inset:0;
+
+      z-index:9000;
+
+      background:rgba(0,0,0,.88);
+
+      align-items:center;
+      justify-content:center;
+
+      padding:24px;
+    }
+
+    .cac-modal.active{
+      display:flex;
+    }
+
+    .cac-modal-content{
+      width:min(550px,100%);
+
+      max-height:90vh;
+
+      overflow:auto;
+
+      background:#120d0e;
+
+      border:
+        1px solid
+        var(--color-line);
+
+      padding:36px;
+
+      position:relative;
+    }
+
+    .cac-modal-close{
+      position:absolute;
+
+      right:16px;
+      top:10px;
+
+      background:none;
+      border:0;
+
+      color:var(--color-accent);
+
+      font-size:34px;
+
+      cursor:pointer;
+    }
+
+    .cac-modal img{
+      width:100%;
+
+      display:block;
+
+      margin-bottom:24px;
+    }
+
+    .cac-modal h3{
+      font-family:var(--font-display);
+
+      font-size:30px;
+
+      color:var(--color-accent);
+
+      margin-bottom:14px;
+    }
+
+    .cac-modal p{
+      color:var(--color-muted);
+
+      font-size:14px;
+
+      margin:8px 0;
+    }
+
+    .cac-modal strong{
+      color:#eee8df;
+    }
+
+    .cac-verify-btn{
+      display:block;
+
+      text-align:center;
+
+      text-decoration:none;
+
+      margin-top:24px;
+
+      padding:14px;
+
+      background:var(--color-primary);
+
+      color:#fff;
+
+      text-transform:uppercase;
+
+      letter-spacing:.14em;
+
+      font-size:10px;
+    }
+
+
+    /* =========================================================
+       WHATSAPP
+    ========================================================= */
+
+    .whatsapp-float{
+      position:fixed;
+
+      left:24px;
+      bottom:24px;
+
+      width:54px;
+      height:54px;
+
+      border-radius:50%;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      background:#25D366;
+
+      color:#fff;
+
+      text-decoration:none;
+
+      font-size:24px;
+
+      z-index:4000;
+
+      box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.4);
+
+      transition:
+        transform .3s ease;
+    }
+
+    .whatsapp-float:hover{
+      transform:
+        translateY(-4px)
+        scale(1.03);
+    }
+
+
+    /* =========================================================
+       AI CONCIERGE
+    ========================================================= */
+
+    .concierge-trigger{
+      position:fixed;
+
+      right:24px;
+      bottom:106px;
+
+      z-index:5000;
+
+      border:
+        1px solid
+        var(--color-accent);
+
+      background:
+        rgba(13,9,10,.94);
+
+      color:#fff;
+
+      padding:13px 17px;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:10px;
+
+      cursor:pointer;
+
+      box-shadow:
+        0 16px 45px
+        rgba(0,0,0,.45);
+
+      backdrop-filter:blur(14px);
+
+      transition:
+        transform .3s ease,
+        background .3s ease;
+    }
+
+    .concierge-trigger:hover{
+      transform:translateY(-3px);
+
+      background:#1b1012;
+    }
+
+    .concierge-dot{
+      width:7px;
+      height:7px;
+
+      border-radius:50%;
+
+      background:var(--color-accent);
+
+      box-shadow:
+        0 0 12px
+        rgba(199,168,107,.8);
+    }
+
+    .concierge-trigger span:last-child{
+      font-size:9px;
+
+      letter-spacing:.18em;
+
+      text-transform:uppercase;
+    }
+
+    .concierge-panel{
+      position:fixed;
+
+      right:24px;
+      bottom:170px;
+
+      width:min(390px,calc(100vw - 32px));
+
+      height:min(600px,calc(100vh - 205px));
+
+      background:#0d090a;
+
+      border:
+        1px solid
+        var(--color-line);
+
+      z-index:6000;
+
+      box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.65);
+
+      display:none;
+
+      flex-direction:column;
+
+      overflow:hidden;
+    }
+
+    .concierge-panel.open{
+      display:flex;
+
+      animation:
+        conciergeIn .35s var(--ease);
+    }
+
+    @keyframes conciergeIn{
+      from{
+        opacity:0;
+        transform:
+          translateY(18px)
+          scale(.98);
+      }
+
+      to{
+        opacity:1;
+        transform:none;
+      }
+    }
+
+    .concierge-head{
+      padding:20px;
+
+      border-bottom:
+        1px solid
+        var(--color-line);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+    }
+
+    .concierge-head strong{
+      font-family:var(--font-display);
+
+      font-size:25px;
+
+      font-weight:600;
+    }
+
+    .concierge-head small{
+      display:block;
+
+      color:var(--color-accent);
+
+      text-transform:uppercase;
+
+      letter-spacing:.14em;
+
+      font-size:8px;
+
+      margin-top:2px;
+    }
+
+    .concierge-close{
+      background:none;
+      border:0;
+
+      color:var(--color-muted);
+
+      font-size:24px;
+
+      cursor:pointer;
+    }
+
+    .concierge-messages{
+      flex:1;
+
+      overflow:auto;
+
+      padding:20px;
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:12px;
+    }
+
+    .concierge-message{
+      max-width:86%;
+
+      padding:12px 14px;
+
+      font-size:13px;
+
+      line-height:1.65;
+
+      white-space:pre-wrap;
+    }
+
+    .concierge-message.ai{
+      background:#171011;
+
+      border-left:
+        1px solid
+        var(--color-accent);
+
+      align-self:flex-start;
+
+      color:#eee8df;
+    }
+
+    .concierge-message.user{
+      background:var(--color-primary);
+
+      align-self:flex-end;
+
+      color:#fff;
+    }
+
+    .concierge-status{
+      padding:0 20px 8px;
+
+      color:var(--color-accent);
+
+      font-size:9px;
+
+      letter-spacing:.1em;
+
+      min-height:18px;
+    }
+
+    .concierge-form{
+      display:flex;
+
+      border-top:
+        1px solid
+        var(--color-line);
+    }
+
+    .concierge-input{
+      flex:1;
+
+      background:#100b0c;
+
+      color:#fff;
+
+      border:0;
+
+      padding:15px;
+
+      outline:0;
+
+      font-size:13px;
+    }
+
+    .concierge-send{
+      width:62px;
+
+      border:0;
+
+      background:var(--color-primary);
+
+      color:#fff;
+
+      cursor:pointer;
+
+      font-size:16px;
+    }
+
+    .concierge-send:disabled{
+      opacity:.5;
+
+      cursor:wait;
+    }
+
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal{
+      opacity:0;
+
+      transform:translateY(30px);
+
+      transition:
+        opacity 1s var(--ease),
+        transform 1s var(--ease);
+    }
+
+    .reveal.visible{
+      opacity:1;
+
+      transform:none;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer{
+      padding:34px 0;
+
+      background:#080606;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.05);
+
+      color:#8f8880;
+
+      font-size:11px;
+
+      text-align:center;
+
+      letter-spacing:.08em;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media(max-width:900px){
+
+      nav{
+        height:76px;
+        padding:0 20px;
+      }
+
+      .brand-name{
+        font-size:20px;
+      }
+
+      .brand img{
+        width:42px;
+        height:42px;
+      }
+
+      .menu-toggle{
+        display:block;
+      }
+
+      .nav-links{
+        display:none;
+
+        position:absolute;
+
+        top:76px;
+
+        left:0;
+        right:0;
+
+        background:rgba(9,7,7,.98);
+
+        padding:20px;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:0;
+
+        border-bottom:
+          1px solid
+          var(--color-line);
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .nav-links a{
+        padding:16px 4px;
+      }
+
+      .login-btn{
+        text-align:center;
+
+        margin-top:8px;
+      }
+
+      .story-grid,
+      .story-editorial-grid,
+      .mvv-head,
+      .cta-inner{
+        grid-template-columns:1fr;
+
+        gap:40px;
+      }
+
+      .story-image{
+        min-height:500px;
+      }
+
+      .story-panel{
+        min-height:430px;
+      }
+
+      .mvv-grid{
+        grid-template-columns:1fr;
+      }
+
+      .why-grid{
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .facilities-list{
+        grid-template-columns:1fr;
+      }
+
+      .why-head,
+      .facilities-head{
+        display:block;
+      }
+
+      .why-head .section-copy,
+      .facilities-head .section-copy{
+        margin-top:20px;
+      }
+
+      .feature-section{
+        padding:
+          0
+          24px
+          var(--section);
+      }
+
+      .feature-wrap{
+        min-height:570px;
+      }
+
+      .feature-content{
+        padding:40px;
+      }
+
+      .scroll-indicator{
+        display:none;
+      }
+    }
+
+
+    @media(max-width:600px){
+
+      .container,
+      .about-hero-content{
+        width:min(100% - 32px,1240px);
+      }
+
+      .about-hero{
+        min-height:88svh;
+      }
+
+      .about-hero-content{
+        padding-bottom:100px;
+      }
+
+      .about-hero-content h1{
+        font-size:
+          clamp(3.6rem,18vw,5.2rem);
+      }
+
+      .about-hero-content p{
+        font-size:14px;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+      }
+
+      .story-image{
+        min-height:390px;
+      }
+
+      .story-panel{
+        padding:34px;
+      }
+
+      .mvv-card{
+        min-height:350px;
+      }
+
+      .why-grid{
+        grid-template-columns:1fr;
+      }
+
+      .why-card{
+        min-height:280px;
+      }
+
+      .facility-name{
+        font-size:21px;
+      }
+
+      .feature-wrap{
+        min-height:500px;
+      }
+
+      .feature-content{
+        padding:32px;
+      }
+
+      .feature-content h2{
+        font-size:
+          clamp(3rem,15vw,4.8rem);
+      }
+
+      .cac-badge{
+        width:58px;
+        height:58px;
+
+        right:16px;
+        bottom:16px;
+      }
+
+      .whatsapp-float{
+        left:16px;
+        bottom:16px;
+      }
+
+      .concierge-trigger{
+        right:16px;
+        bottom:88px;
+
+        padding:11px 13px;
+      }
+
+      .concierge-panel{
+        right:16px;
+
+        bottom:154px;
+
+        width:
+          calc(100vw - 32px);
+
+        height:
+          min(
+            580px,
+            calc(100vh - 180px)
+          );
+      }
+    }
+
+
+    @media(prefers-reduced-motion:reduce){
+
+      html{
+        scroll-behavior:auto;
+      }
+
+      .about-hero-media{
+        animation:none;
+      }
+
+      .reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+      }
+
+      .loader-logo,
+      .loader-name,
+      .loader-line{
+        animation:none;
+
+        opacity:1;
+
+        transform:none;
+      }
+
+      .concierge-panel.open{
+        animation:none;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-  <div style="display:flex; align-items:center; gap:15px;">
-    <img src="hlogo.png" alt="Logo">
-    <h2 style="margin:0;">Shangri-La View Hotel</h2>
-  </div>
+  <!-- =======================================================
+       LOADER
+  ======================================================== -->
 
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <div id="loader" aria-hidden="true">
 
-  <div class="nav-links" id="navLinks">
-    <a href="index.html">Home</a>
-    <a href="booking.html">Booking</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="gallery.html">Gallery</a>
-  </div>
-</nav>
+    <div class="loader-inner">
 
-<!-- CONTENT -->
-<div class="content">
+      <img
+        class="loader-logo"
+        src="hlogo.png"
+        alt="Shangri-La View Hotel"
+      >
 
-  <!-- HERO SECTION -->
-  <div class="hero-section">
-    <h1>About Shangri-La View Hotel</h1>
-    <p>Discover the story of excellence, comfort, and hospitality. Welcome to a world where every moment becomes a cherished memory.</p>
-  </div>
-
-  <!-- OUR STORY -->
-  <div class="section">
-    <h2>Our Story</h2>
-    <p>
-      Shangri-La View Hotel stands as a beacon of luxury and excellence in Port Harcourt, Nigeria. Founded with a vision to redefine hospitality, our hotel has been dedicated to providing guests with an unforgettable experience that seamlessly blends elegance, comfort, and world-class service. Located in the prestigious Rumuosi Victory Estate along the iconic Airport Road, we have established ourselves as the premier destination for both business and leisure travelers.
-    </p>
-    <p>
-      Over the years, Shangri-La View Hotel has earned a stellar reputation for its commitment to excellence. From our meticulously designed rooms to our state-of-the-art facilities, every aspect of our hotel has been carefully crafted to ensure that your stay is nothing short of extraordinary. Our team of dedicated professionals works tirelessly to anticipate your needs and exceed your expectations.
-    </p>
-  </div>
-
-  <!-- MISSION VISION VALUES -->
-  <div class="section">
-    <h2>Our Mission, Vision & Values</h2>
-    <div class="mvv-container">
-      <div class="mvv-box">
-        <h3>🎯 Mission</h3>
-        <p>To deliver exceptional hospitality experiences that create lasting memories for our guests while maintaining the highest standards of quality, comfort, and personalized service in a warm and welcoming environment.</p>
+      <div class="loader-name">
+        Shangri-La View Hotel
       </div>
-      <div class="mvv-box">
-        <h3>✨ Vision</h3>
-        <p>To be the most trusted and preferred luxury hotel destination in Port Harcourt, recognized for our innovative approach, outstanding service, and commitment to creating unforgettable moments for every guest who walks through our doors.</p>
-      </div>
-      <div class="mvv-box">
-        <h3>💎 Values</h3>
-        <p>Excellence in service, integrity in business, respect for our guests, commitment to quality, teamwork and collaboration, innovation and continuous improvement, and social responsibility to our community.</p>
-      </div>
+
+      <div class="loader-line"></div>
+
     </div>
+
   </div>
 
-  <!-- WHY CHOOSE US -->
-  <div class="section">
-    <h2>Why Choose Us</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <span class="card-icon">🏆</span>
-        <h3>Premium Quality</h3>
-        <p>Luxury accommodations with world-class amenities and attention to every detail for your ultimate comfort.</p>
+
+  <div id="content">
+
+
+    <!-- =====================================================
+         CAC BADGE
+    ====================================================== -->
+
+    <div
+      class="cac-badge"
+      onclick="openCACModal()"
+      role="button"
+      tabindex="0"
+      aria-label="Verify CAC"
+    >
+
+      <img
+        src="your-cac-logo.jpg"
+        alt="CAC Certified"
+      >
+
+      <div class="cac-tooltip">
+        Verify CAC
       </div>
-      <div class="card">
-        <span class="card-icon">👥</span>
-        <h3>Expert Staff</h3>
-        <p>Highly trained professionals dedicated to providing exceptional service and warm hospitality around the clock.</p>
-      </div>
-      <div class="card">
-        <span class="card-icon">📍</span>
-        <h3>Prime Location</h3>
-        <p>Strategically situated in Rumuosi Victory Estate with easy access to key business centers and attractions.</p>
-      </div>
-      <div class="card">
-        <span class="card-icon">🎁</span>
-        <h3>Exclusive Experiences</h3>
-        <p>Curated dining, entertainment, and leisure activities designed to make your stay truly special.</p>
-      </div>
-      <div class="card">
-        <span class="card-icon">💰</span>
-        <h3>Best Value</h3>
-        <p>Competitive pricing with flexible packages and special offers to suit every budget and requirement.</p>
-      </div>
-      <div class="card">
-        <span class="card-icon">🌟</span>
-        <h3>Unforgettable Service</h3>
-        <p>Personalized attention to create memorable experiences that exceed your expectations every time.</p>
-      </div>
+
     </div>
-  </div>
 
-  <!-- FACILITIES & AMENITIES -->
-  <div class="section">
-    <h2>Our Facilities & Amenities</h2>
-    <div class="amenities-list">
-      <div class="amenity-item">
-        <span class="amenity-icon">🛏️</span>
-        <span class="amenity-text">Luxury Rooms & Suites</span>
+
+    <!-- =====================================================
+         CAC MODAL
+    ====================================================== -->
+
+    <div
+      class="cac-modal"
+      id="cacModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="CAC verification"
+    >
+
+      <div class="cac-modal-content">
+
+        <button
+          class="cac-modal-close"
+          onclick="closeCACModal()"
+          aria-label="Close"
+        >
+          &times;
+        </button>
+
+        <img
+          src="your-cac-certificate.png"
+          alt="CAC Certificate"
+        >
+
+        <h3>
+          ✓ Business Certified
+        </h3>
+
+        <p>
+          <strong>Registration:</strong>
+          Your CAC Registration Number
+        </p>
+
+        <p>
+          <strong>Status:</strong>
+          Verified &amp; Active
+        </p>
+
+        <p>
+          This business is officially registered with
+          the Corporate Affairs Commission (CAC) of Nigeria.
+          Your trust and confidence matter to us.
+        </p>
+
+        <a
+          href="https://www.cac.gov.ng/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cac-verify-btn"
+        >
+          Verify on CAC Portal
+        </a>
+
       </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🍽️</span>
-        <span class="amenity-text">Fine Dining Restaurant</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🍸</span>
-        <span class="amenity-text">VIP Bar & Lounge</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🏊</span>
-        <span class="amenity-text">Swimming Pool</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">💼</span>
-        <span class="amenity-text">Business Center</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🎓</span>
-        <span class="amenity-text">Conference Rooms</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🛎️</span>
-        <span class="amenity-text">24/7 Concierge Service</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🚗</span>
-        <span class="amenity-text">Complimentary Parking</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">📡</span>
-        <span class="amenity-text">High-Speed WiFi</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🏋️</span>
-        <span class="amenity-text">Fitness Center</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🧖</span>
-        <span class="amenity-text">Spa & Wellness</span>
-      </div>
-      <div class="amenity-item">
-        <span class="amenity-icon">🎉</span>
-        <span class="amenity-text">Event Spaces</span>
-      </div>
+
     </div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav id="mainNav">
+
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Shangri-La View Hotel home"
+      >
+
+        <img
+          src="hlogo.png"
+          alt="Shangri-La View Hotel logo"
+        >
+
+        <span class="brand-name">
+          Shangri-La View Hotel
+        </span>
+
+      </a>
+
+
+      <button
+        class="menu-toggle"
+        onclick="toggleMenu()"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+
+      <div
+        class="nav-links"
+        id="navLinks"
+      >
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="booking.html">
+          Booking
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+        <a href="gallery.html">
+          Gallery
+        </a>
+
+        <a
+          href="login.html"
+          class="login-btn"
+        >
+          Admin Login
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <header class="about-hero">
+
+      <div
+        class="about-hero-media"
+        aria-hidden="true"
+      ></div>
+
+
+      <div class="about-hero-content reveal">
+
+        <div class="eyebrow">
+          The Story Behind The Stay
+        </div>
+
+        <h1>
+          More than a hotel.
+          <br>
+          A place to belong.
+        </h1>
+
+        <p>
+          Discover the story, philosophy and hospitality
+          behind Shangri-La View Hotel — a destination
+          created around comfort, elegance and memorable
+          experiences in Port Harcourt.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            href="booking.html"
+            class="btn btn-primary"
+          >
+            Book Your Stay
+          </a>
+
+          <a
+            href="#story"
+            class="btn btn-secondary"
+          >
+            Discover Our Story
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="scroll-indicator">
+
+        <span></span>
+
+        Scroll
+
+      </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         INTRODUCTION
+    ====================================================== -->
+
+    <section
+      class="story-intro"
+      id="story"
+    >
+
+      <div class="container story-grid">
+
+        <div class="reveal">
+
+          <div class="eyebrow">
+            Our Story
+          </div>
+
+        </div>
+
+
+        <div class="story-copy reveal">
+
+          <h2 class="section-title">
+            Hospitality,
+            <br>
+            thoughtfully delivered.
+          </h2>
+
+          <p class="section-copy">
+            Shangri-La View Hotel stands as a destination
+            where comfort, elegance and genuine hospitality
+            come together. Located in Rumuosi Victory Estate
+            along Airport Road, Port Harcourt, the hotel
+            provides a welcoming environment for guests
+            seeking quality accommodation, relaxation,
+            business convenience and memorable experiences.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         STORY EDITORIAL
+    ====================================================== -->
+
+    <section class="story-editorial">
+
+      <div class="container story-editorial-grid">
+
+        <div class="story-image reveal">
+
+          <img
+            src="hotelFVV.jpg"
+            alt="Shangri-La View Hotel"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="story-panel reveal">
+
+          <div>
+
+            <div class="story-number">
+              01 · The Beginning
+            </div>
+
+            <h2>
+              Built around
+              <br>
+              the guest.
+            </h2>
+
+            <p>
+              Shangri-La View Hotel was established with
+              a simple but meaningful purpose: to create a
+              hotel experience where guests can feel
+              comfortable, respected and genuinely welcomed.
+            </p>
+
+            <p>
+              From accommodation and hospitality to our
+              leisure spaces and guest services, every part
+              of the experience is designed with the guest
+              in mind.
+            </p>
+
+          </div>
+
+
+          <a
+            href="gallery.html"
+            class="btn btn-secondary"
+            style="align-self:flex-start"
+          >
+            Explore The Hotel
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MISSION / VISION / VALUES
+    ====================================================== -->
+
+    <section class="mvv-section">
+
+      <div class="container">
+
+        <div class="mvv-head reveal">
+
+          <div>
+
+            <div class="eyebrow">
+              What Guides Us
+            </div>
+
+            <h2
+              class="section-title"
+              style="margin-top:14px"
+            >
+              Our philosophy.
+            </h2>
+
+          </div>
+
+
+          <p class="section-copy">
+
+            Everything we do is guided by a commitment
+            to quality hospitality, thoughtful service
+            and an environment where every guest can
+            feel at ease.
+
+          </p>
+
+        </div>
+
+
+        <div class="mvv-grid">
+
+
+          <!-- MISSION -->
+
+          <article class="mvv-card reveal">
+
+            <div class="mvv-number">
+              01
+            </div>
+
+            <h3>
+              Mission
+            </h3>
+
+            <p>
+              To deliver exceptional hospitality experiences
+              that create lasting memories for our guests
+              while maintaining high standards of quality,
+              comfort and personalized service in a warm
+              and welcoming environment.
+            </p>
+
+          </article>
+
+
+          <!-- VISION -->
+
+          <article class="mvv-card reveal">
+
+            <div class="mvv-number">
+              02
+            </div>
+
+            <h3>
+              Vision
+            </h3>
+
+            <p>
+              To become a trusted and preferred hotel
+              destination in Port Harcourt, recognized
+              for outstanding service, thoughtful hospitality,
+              innovation and our commitment to creating
+              unforgettable moments for every guest.
+            </p>
+
+          </article>
+
+
+          <!-- VALUES -->
+
+          <article class="mvv-card reveal">
+
+            <div class="mvv-number">
+              03
+            </div>
+
+            <h3>
+              Values
+            </h3>
+
+            <p>
+              Excellence, integrity, respect, quality,
+              teamwork, continuous improvement and
+              genuine care for our guests and community
+              form the foundation of the Shangri-La View
+              Hotel experience.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WHY CHOOSE US
+    ====================================================== -->
+
+    <section class="why-section">
+
+      <div class="container">
+
+        <div class="why-head reveal">
+
+          <div>
+
+            <div class="eyebrow">
+              The Difference
+            </div>
+
+            <h2
+              class="section-title"
+              style="margin-top:14px"
+            >
+              Why stay with us?
+            </h2>
+
+          </div>
+
+
+          <p class="section-copy">
+
+            From the moment you arrive to the moment
+            you leave, our goal is to make your experience
+            comfortable, effortless and memorable.
+
+          </p>
+
+        </div>
+
+
+        <div class="why-grid">
+
+
+          <article class="why-card reveal">
+
+            <div class="why-icon">
+              ✦
+            </div>
+
+            <h3>
+              Premium Comfort
+            </h3>
+
+            <p>
+              Carefully prepared accommodation designed
+              to give guests a comfortable and relaxing
+              place to rest.
+            </p>
+
+          </article>
+
+
+          <article class="why-card reveal">
+
+            <div class="why-icon">
+              ◇
+            </div>
+
+            <h3>
+              Genuine Hospitality
+            </h3>
+
+            <p>
+              A warm and attentive approach to service
+              that puts the needs and comfort of our
+              guests first.
+            </p>
+
+          </article>
+
+
+          <article class="why-card reveal">
+
+            <div class="why-icon">
+              ◎
+            </div>
+
+            <h3>
+              Convenient Location
+            </h3>
+
+            <p>
+              Situated in Rumuosi Victory Estate along
+              Airport Road, providing convenient access
+              around Port Harcourt.
+            </p>
+
+          </article>
+
+
+          <article class="why-card reveal">
+
+            <div class="why-icon">
+              ✧
+            </div>
+
+            <h3>
+              Memorable Spaces
+            </h3>
+
+            <p>
+              A selection of hotel spaces created for
+              relaxation, social moments, dining and
+              different occasions.
+            </p>
+
+          </article>
+
+
+          <article class="why-card reveal">
+
+            <div class="why-icon">
+              +
+            </div>
+
+            <h3>
+              Personal Attention
+            </h3>
+
+            <p>
+              We believe good hospitality goes beyond
+              facilities. It is about how guests feel
+              throughout their stay.
+            </p>
+
+          </article>
+
+
+          <article class="why-card reveal">
+
+            <div class="why-icon">
+              ∞
+            </div>
+
+            <h3>
+              Value
+            </h3>
+
+            <p>
+              A balanced hotel experience focused on
+              quality, comfort and service while giving
+              guests meaningful value.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FACILITIES
+    ====================================================== -->
+
+    <section class="facilities-section">
+
+      <div class="container">
+
+        <div class="facilities-head reveal">
+
+          <div>
+
+            <div class="eyebrow">
+              Spaces & Facilities
+            </div>
+
+            <h2
+              class="section-title"
+              style="margin-top:14px"
+            >
+              Designed for
+              <br>
+              your stay.
+            </h2>
+
+          </div>
+
+
+          <p class="section-copy">
+
+            Explore the spaces and facilities available
+            throughout Shangri-La View Hotel.
+
+          </p>
+
+        </div>
+
+
+        <div class="facilities-list">
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              Luxury Rooms & Suites
+            </span>
+
+            <span class="facility-number">
+              01
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              Restaurant & Dining
+            </span>
+
+            <span class="facility-number">
+              02
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              VIP Bar & Lounge
+            </span>
+
+            <span class="facility-number">
+              03
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              Swimming Pool
+            </span>
+
+            <span class="facility-number">
+              04
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              Conference Spaces
+            </span>
+
+            <span class="facility-number">
+              05
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              Event Spaces
+            </span>
+
+            <span class="facility-number">
+              06
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              Concierge Service
+            </span>
+
+            <span class="facility-number">
+              07
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              Parking
+            </span>
+
+            <span class="facility-number">
+              08
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              High-Speed WiFi
+            </span>
+
+            <span class="facility-number">
+              09
+            </span>
+
+          </div>
+
+
+          <div class="facility reveal">
+
+            <span class="facility-name">
+              Leisure & Relaxation
+            </span>
+
+            <span class="facility-number">
+              10
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PHOTO FEATURE
+    ====================================================== -->
+
+    <section class="feature-section">
+
+      <div class="feature-wrap reveal">
+
+        <div
+          class="feature-image"
+          aria-hidden="true"
+        ></div>
+
+
+        <div class="feature-content">
+
+          <div class="eyebrow">
+            Your Stay
+          </div>
+
+          <h2>
+            Come for the stay.
+            <br>
+            Remember the experience.
+          </h2>
+
+          <p>
+            Whether you are visiting Port Harcourt for
+            business, leisure, celebration or simply
+            looking for a comfortable place to unwind,
+            Shangri-La View Hotel welcomes you.
+          </p>
+
+          <a
+            href="gallery.html"
+            class="btn btn-secondary"
+          >
+            View Our Gallery
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="about-cta">
+
+      <div class="container cta-inner">
+
+        <div class="reveal">
+
+          <div class="eyebrow">
+            Your Next Stay
+          </div>
+
+          <h2 class="section-title">
+            Make your next
+            <br>
+            stay memorable.
+          </h2>
+
+        </div>
+
+
+        <div class="reveal">
+
+          <p class="cta-copy">
+
+            Experience the comfort, atmosphere and
+            hospitality of Shangri-La View Hotel in
+            Port Harcourt.
+
+          </p>
+
+          <a
+            href="booking.html"
+            class="btn btn-primary"
+          >
+            Book Your Stay
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         AI CONCIERGE
+    ====================================================== -->
+
+    <button
+      class="concierge-trigger"
+      id="conciergeTrigger"
+      type="button"
+      aria-expanded="false"
+      aria-controls="conciergePanel"
+    >
+
+      <span class="concierge-dot"></span>
+
+      <span>
+        Shangri-La Concierge
+      </span>
+
+    </button>
+
+
+    <section
+      class="concierge-panel"
+      id="conciergePanel"
+      aria-label="Shangri-La Concierge"
+    >
+
+      <div class="concierge-head">
+
+        <div>
+
+          <strong>
+            Shangri-La
+          </strong>
+
+          <small>
+            Concierge
+          </small>
+
+        </div>
+
+
+        <button
+          class="concierge-close"
+          id="conciergeClose"
+          type="button"
+          aria-label="Close concierge"
+        >
+          &times;
+        </button>
+
+      </div>
+
+
+      <div
+        class="concierge-messages"
+        id="conciergeMessages"
+      >
+
+        <div class="concierge-message ai">
+          Welcome to Shangri-La View Hotel.
+          How may I assist you?
+        </div>
+
+      </div>
+
+
+      <div
+        class="concierge-status"
+        id="conciergeStatus"
+      ></div>
+
+
+      <form
+        class="concierge-form"
+        id="conciergeForm"
+      >
+
+        <input
+          class="concierge-input"
+          id="conciergeInput"
+          autocomplete="off"
+          placeholder="Ask the concierge…"
+          aria-label="Message the concierge"
+        >
+
+        <button
+          class="concierge-send"
+          id="conciergeSend"
+          type="submit"
+          aria-label="Send"
+        >
+          ➤
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         WHATSAPP
+    ====================================================== -->
+
+    <a
+      href="https://wa.me/2348037093649"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-float"
+      aria-label="WhatsApp Booking"
+    >
+      ☎
+    </a>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+      Shangri-La View Hotel
+      ·
+      Port Harcourt
+
+    </footer>
+
+
   </div>
 
-  <!-- CTA SECTION -->
-  <div class="cta-section">
-    <h3>Ready for Your Perfect Stay?</h3>
-    <p>Experience luxury, comfort, and exceptional service at Shangri-La View Hotel</p>
-    <a href="booking.html" class="cta-button">Book Your Stay Now</a>
-  </div>
 
-</div>
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
 
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2024 Shangri-La View Hotel. All rights reserved. | Rumuosi Victory Estate, Airport Road, Port Harcourt, Nigeria</p>
-</footer>
+  <script>
 
-<!-- SCRIPT -->
-<script>
-function toggleMenu() {
-  const navLinks = document.getElementById("navLinks");
-  navLinks.classList.toggle("active");
-}
+    /* =====================================================
+       LOADER
+    ====================================================== */
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById("navLinks").classList.remove("active");
-  });
-});
-</script>
+    const loader =
+      document.getElementById('loader');
+
+    function showSite(){
+      loader.classList.add('hidden');
+    }
+
+    if(
+      document.readyState === 'loading'
+    ){
+
+      document.addEventListener(
+        'DOMContentLoaded',
+        showSite,
+        {once:true}
+      );
+
+    }else{
+
+      showSite();
+
+    }
+
+    window.addEventListener(
+      'load',
+      showSite,
+      {once:true}
+    );
+
+
+    /* =====================================================
+       NAVIGATION
+    ====================================================== */
+
+    const nav =
+      document.getElementById('mainNav');
+
+    const navLinks =
+      document.getElementById('navLinks');
+
+    const menuButton =
+      document.querySelector('.menu-toggle');
+
+
+    function toggleMenu(){
+
+      const active =
+        navLinks.classList.toggle('active');
+
+      menuButton.setAttribute(
+        'aria-expanded',
+        String(active)
+      );
+
+    }
+
+
+    window.addEventListener(
+      'scroll',
+      () => {
+
+        nav.classList.toggle(
+          'scrolled',
+          window.scrollY > 35
+        );
+
+      },
+      {passive:true}
+    );
+
+
+    navLinks
+      .querySelectorAll('a')
+      .forEach(a => {
+
+        a.addEventListener(
+          'click',
+          () => {
+
+            navLinks.classList.remove(
+              'active'
+            );
+
+            menuButton.setAttribute(
+              'aria-expanded',
+              'false'
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       CAC
+    ====================================================== */
+
+    function openCACModal(){
+
+      document
+        .getElementById('cacModal')
+        .classList.add('active');
+
+    }
+
+
+    function closeCACModal(){
+
+      document
+        .getElementById('cacModal')
+        .classList.remove('active');
+
+    }
+
+
+    window.addEventListener(
+      'click',
+      e => {
+
+        const modal =
+          document.getElementById('cacModal');
+
+        if(e.target === modal){
+          closeCACModal();
+        }
+
+      }
+    );
+
+
+    document
+      .querySelector('.cac-badge')
+      .addEventListener(
+        'keydown',
+        e => {
+
+          if(
+            e.key === 'Enter' ||
+            e.key === ' '
+          ){
+
+            e.preventDefault();
+
+            openCACModal();
+
+          }
+
+        }
+      );
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ====================================================== */
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if(entry.isIntersecting){
+
+                entry.target.classList.add(
+                  'visible'
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold:.12
+        }
+      );
+
+
+    document
+      .querySelectorAll('.reveal')
+      .forEach(
+        el => observer.observe(el)
+      );
+
+
+    /* =====================================================
+       AI CONCIERGE
+    ====================================================== */
+
+    const AI_ENDPOINT =
+      'https://shangrila-ai.onrender.com/chat';
+
+
+    const conciergeTrigger =
+      document.getElementById(
+        'conciergeTrigger'
+      );
+
+    const conciergePanel =
+      document.getElementById(
+        'conciergePanel'
+      );
+
+    const conciergeClose =
+      document.getElementById(
+        'conciergeClose'
+      );
+
+    const conciergeForm =
+      document.getElementById(
+        'conciergeForm'
+      );
+
+    const conciergeInput =
+      document.getElementById(
+        'conciergeInput'
+      );
+
+    const conciergeMessages =
+      document.getElementById(
+        'conciergeMessages'
+      );
+
+    const conciergeStatus =
+      document.getElementById(
+        'conciergeStatus'
+      );
+
+    const conciergeSend =
+      document.getElementById(
+        'conciergeSend'
+      );
+
+
+    function openConcierge(){
+
+      conciergePanel.classList.add(
+        'open'
+      );
+
+      conciergeTrigger.setAttribute(
+        'aria-expanded',
+        'true'
+      );
+
+      setTimeout(
+        () => conciergeInput.focus(),
+        100
+      );
+
+    }
+
+
+    function closeConcierge(){
+
+      conciergePanel.classList.remove(
+        'open'
+      );
+
+      conciergeTrigger.setAttribute(
+        'aria-expanded',
+        'false'
+      );
+
+    }
+
+
+    conciergeTrigger.addEventListener(
+      'click',
+      () => {
+
+        conciergePanel.classList.contains(
+          'open'
+        )
+          ? closeConcierge()
+          : openConcierge();
+
+      }
+    );
+
+
+    conciergeClose.addEventListener(
+      'click',
+      closeConcierge
+    );
+
+
+    function addMessage(
+      text,
+      type
+    ){
+
+      const el =
+        document.createElement('div');
+
+      el.className =
+        `concierge-message ${type}`;
+
+      el.textContent = text;
+
+      conciergeMessages.appendChild(
+        el
+      );
+
+      conciergeMessages.scrollTop =
+        conciergeMessages.scrollHeight;
+
+    }
+
+
+    conciergeForm.addEventListener(
+      'submit',
+      async e => {
+
+        e.preventDefault();
+
+
+        const message =
+          conciergeInput.value.trim();
+
+
+        if(!message){
+          return;
+        }
+
+
+        addMessage(
+          message,
+          'user'
+        );
+
+
+        conciergeInput.value='';
+
+        conciergeInput.disabled=true;
+
+        conciergeSend.disabled=true;
+
+        conciergeStatus.textContent =
+          'Concierge is responding…';
+
+
+        try{
+
+          const response =
+            await fetch(
+              AI_ENDPOINT,
+              {
+                method:'POST',
+
+                headers:{
+                  'Content-Type':
+                    'application/json'
+                },
+
+                body:JSON.stringify({
+                  message
+                })
+              }
+            );
+
+
+          if(!response.ok){
+
+            throw new Error(
+              `HTTP ${response.status}`
+            );
+
+          }
+
+
+          const data =
+            await response.json();
+
+
+          if(
+            !data ||
+            typeof data.reply !== 'string'
+          ){
+
+            throw new Error(
+              'Invalid AI response'
+            );
+
+          }
+
+
+          addMessage(
+            data.reply,
+            'ai'
+          );
+
+
+        }catch(error){
+
+          console.error(
+            'Shangri-La Concierge error:',
+            error
+          );
+
+
+          addMessage(
+            'I’m unable to connect to the concierge service right now. Please contact the hotel directly or use WhatsApp for assistance.',
+            'ai'
+          );
+
+
+        }finally{
+
+          conciergeInput.disabled=false;
+
+          conciergeSend.disabled=false;
+
+          conciergeStatus.textContent='';
+
+          conciergeInput.focus();
+
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
