@@ -1,462 +1,2674 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact - Shangri-La View Hotel</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Contact Shangri-La View Hotel in Port Harcourt, Rivers State. Reach us for bookings, accommodation, events, enquiries and hotel assistance.">
+  <meta name="keywords" content="Contact Shangri-La View Hotel, Hotel Port Harcourt, Hotel Booking Port Harcourt, Shangri-La View Hotel Contact">
+  <meta name="author" content="Shangri-La View Hotel">
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <title>Contact | Shangri-La View Hotel</title>
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: url('hotel12.JPG') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  overflow-x: hidden;
-}
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JS8DGVZLYX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JS8DGVZLYX');
+  </script>
 
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(5,10,30,0.85);
-  top: 0;
-  left: 0;
-  z-index: -2;
-}
+  <!-- Social Preview -->
+  <meta property="og:title" content="Contact | Shangri-La View Hotel">
+  <meta property="og:description" content="Get in touch with Shangri-La View Hotel in Port Harcourt.">
+  <meta property="og:image" content="https://shangrilaviewhotel.github.io/SSVH.jpg">
+  <meta property="og:url" content="https://shangrilaviewhotel.github.io/contact.html">
+  <meta property="og:type" content="website">
 
-/* ANIMATED BACKGROUND GLOW */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(196, 30, 58, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(31, 59, 111, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 50% 80%, rgba(196, 30, 58, 0.05) 0%, transparent 50%);
-  z-index: -1;
-  animation: ambientGlow 8s ease-in-out infinite;
-}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact | Shangri-La View Hotel">
+  <meta name="twitter:description" content="Get in touch with Shangri-La View Hotel in Port Harcourt.">
+  <meta name="twitter:image" content="https://shangrilaviewhotel.github.io/SSVH.jpg">
 
-@keyframes ambientGlow {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(31,59,111,0.6) 100%);
-  position: relative;
-  backdrop-filter: blur(10px);
-  border-bottom: 3px solid #C41E3A;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
+  <style>
+    :root{
+      --color-bg:#090707;
+      --color-surface:#120d0e;
+      --color-surface-2:#1a1113;
+      --color-primary:#7f1d2d;
+      --color-primary-dark:#4f111c;
+      --color-accent:#c7a86b;
+      --color-accent-soft:#e0c894;
+      --color-text:#f7f2e9;
+      --color-muted:#b8afa4;
+      --color-line:rgba(199,168,107,.22);
 
-nav img {
-  width: 70px;
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(196, 30, 58, 0.6);
-  transition: all 0.3s ease;
-}
+      --font-display:'Cormorant Garamond',Georgia,serif;
+      --font-body:'Inter',Arial,sans-serif;
 
-nav img:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 30px rgba(196, 30, 58, 0.9);
-}
+      --section:clamp(5rem,10vw,9rem);
+      --ease:cubic-bezier(.2,.7,.2,1);
+    }
 
-nav h2 {
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-nav div:first-child {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+    html{
+      scroll-behavior:smooth;
+      background:var(--color-bg);
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-}
+    body{
+      font-family:var(--font-body);
+      background:var(--color-bg);
+      color:var(--color-text);
+      overflow-x:hidden;
+      line-height:1.6;
+    }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #C41E3A;
-  transition: width 0.3s ease;
-}
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:9997;
+      opacity:.035;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
 
-nav a:hover {
-  color: #C41E3A;
-  transform: translateY(-2px);
-}
+    a{
+      color:inherit;
+    }
 
-nav a:hover::after {
-  width: 100%;
-}
+    img{
+      max-width:100%;
+    }
 
-/* HAMBURGER */
-.menu-toggle {
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-  color: #C41E3A;
-  transition: all 0.3s ease;
-}
+    button,
+    input,
+    textarea{
+      font:inherit;
+    }
 
-.menu-toggle:hover {
-  transform: scale(1.2) rotate(90deg);
-}
+    .container{
+      width:min(1240px,calc(100% - 48px));
+      margin:auto;
+    }
 
-/* NAV LINKS */
-.nav-links {
-  display: flex;
-  align-items: center;
-}
+    .eyebrow{
+      font-size:11px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--color-accent);
+      font-weight:600;
+    }
 
-.nav-links a {
-  margin-left: 20px;
-}
+    .section-title{
+      font-family:var(--font-display);
+      font-size:clamp(3rem,7vw,6.5rem);
+      line-height:.9;
+      font-weight:600;
+      letter-spacing:-.035em;
+    }
 
-/* MOBILE */
-@media (max-width: 768px) {
+    .section-copy{
+      max-width:620px;
+      color:var(--color-muted);
+      font-size:15px;
+      line-height:1.9;
+    }
 
-  .menu-toggle {
-    display: block;
-  }
+    /* =========================
+       LOADER
+    ========================= */
 
-  .nav-links {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(31,59,111,0.9) 100%);
-    flex-direction: column;
-    width: 220px;
-    display: none;
-    padding: 20px;
-    border-left: 3px solid #C41E3A;
-    backdrop-filter: blur(10px);
-    z-index: 1001;
-  }
+    #loader{
+      position:fixed;
+      inset:0;
+      background:#080606;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:10000;
+      transition:opacity .65s ease,visibility .65s ease;
+    }
 
-  .nav-links a {
-    margin: 10px 0;
-  }
+    #loader.hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
 
-  .nav-links.active {
-    display: flex;
-  }
-}
+    .loader-inner{
+      text-align:center;
+    }
 
-/* CONTAINER */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  padding: 60px 20px;
-  position: relative;
-  z-index: 1;
-}
+    .loader-logo{
+      width:74px;
+      height:74px;
+      border-radius:50%;
+      object-fit:cover;
+      border:1px solid var(--color-accent);
+      margin-bottom:20px;
+      opacity:0;
+      transform:scale(.9);
+      animation:loaderIn 1s var(--ease) .05s forwards;
+    }
 
-/* BOXES */
-.info-box, .form-box {
-  background: linear-gradient(135deg, rgba(31, 59, 111, 0.9) 0%, rgba(0, 0, 0, 0.85) 100%);
-  padding: 30px;
-  border-radius: 15px;
-  border: 2px solid rgba(196, 30, 58, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
+    .loader-name{
+      font-family:var(--font-display);
+      font-size:28px;
+      letter-spacing:.08em;
+      opacity:0;
+      transform:translateY(10px);
+      animation:loaderIn 1s var(--ease) .18s forwards;
+    }
 
-.info-box {
-  width: 300px;
-}
+    .loader-line{
+      height:1px;
+      width:0;
+      background:var(--color-accent);
+      margin:18px auto 0;
+      animation:loaderLine 1.1s ease .35s forwards;
+    }
 
-.form-box {
-  width: 350px;
-}
+    @keyframes loaderIn{
+      to{
+        opacity:1;
+        transform:none;
+      }
+    }
 
-.info-box:hover, .form-box:hover {
-  border-color: rgba(196, 30, 58, 0.6);
-  box-shadow: 0 15px 50px rgba(196, 30, 58, 0.2);
-}
+    @keyframes loaderLine{
+      to{
+        width:110px;
+      }
+    }
 
-.info-box h2, .form-box h2 {
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 15px;
-}
+    /* =========================
+       NAVIGATION
+    ========================= */
 
-.contact-icons {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 36px;
+      z-index:5000;
+      transition:
+        background .45s ease,
+        backdrop-filter .45s ease,
+        border .45s ease;
+    }
 
-.icon-btn {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
-  text-decoration: none;
-  font-size: 22px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(196, 30, 58, 0.3);
-}
+    nav.scrolled{
+      background:rgba(9,7,7,.84);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--color-line);
+    }
 
-.icon-btn:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 10px 30px rgba(196, 30, 58, 0.5);
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-decoration:none;
+    }
 
-/* ✅ SOCIAL ICONS */
-.social-icons {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-}
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:cover;
+      border-radius:50%;
+      border:1px solid rgba(199,168,107,.7);
+    }
 
-.social-icons a img {
-  width: 40px;
-  height: 40px;
-  transition: all 0.3s ease;
-}
+    .brand-name{
+      font-family:var(--font-display);
+      font-size:24px;
+      letter-spacing:.04em;
+    }
 
-.social-icons a:hover img {
-  transform: scale(1.2);
-}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:30px;
+    }
 
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 2px solid rgba(196, 30, 58, 0.3);
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  transition: all 0.3s ease;
-}
+    .nav-links a{
+      text-decoration:none;
+      text-transform:uppercase;
+      font-size:11px;
+      letter-spacing:.17em;
+      color:#eee8df;
+      position:relative;
+      transition:color .25s ease;
+    }
 
-input:focus, textarea:focus {
-  outline: none;
-  border-color: #C41E3A;
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 10px rgba(196, 30, 58, 0.3);
-}
+    .nav-links a:not(.login-btn)::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-8px;
+      width:0;
+      height:1px;
+      background:var(--color-accent);
+      transition:width .3s ease;
+    }
 
-input::placeholder, textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
+    .nav-links a:hover{
+      color:var(--color-accent-soft);
+    }
 
-button {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
-  border: none;
-  border-radius: 25px;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(196, 30, 58, 0.3);
-}
+    .nav-links a:hover::after{
+      width:100%;
+    }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(196, 30, 58, 0.5);
-}
+    .nav-links a.active{
+      color:var(--color-accent-soft);
+    }
 
-button:active {
-  transform: translateY(0);
-}
+    .nav-links a.active::after{
+      width:100%;
+    }
 
-/* MAP SECTION */
-.map-section {
-  padding: 60px 20px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
+    .login-btn{
+      padding:11px 18px;
+      border:1px solid var(--color-accent);
+      color:var(--color-accent)!important;
+    }
 
-.map-section h2 {
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 10px;
-}
+    .menu-toggle{
+      display:none;
+      background:none;
+      border:0;
+      color:var(--color-accent);
+      font-size:28px;
+      cursor:pointer;
+    }
 
-.map-section p {
-  color: #C41E3A;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
+    /* =========================
+       HERO
+    ========================= */
 
-.map-container {
-  max-width: 900px;
-  margin: 20px auto;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
+    .hero{
+      min-height:88svh;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      background:#100b0c;
+    }
 
-.map-container:hover {
-  box-shadow: 0 30px 70px rgba(196, 30, 58, 0.2);
-}
+    .hero-media{
+      position:absolute;
+      inset:-4%;
+      background:url('hotelFVV.jpg') center/cover no-repeat;
+      animation:heroZoom 18s ease-out forwards;
+      transform-origin:center;
+    }
 
-.map-container a {
-  display: block;
-  text-decoration: none;
-}
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.78) 0%,
+          rgba(0,0,0,.38) 55%,
+          rgba(0,0,0,.58) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(0,0,0,.85) 0%,
+          transparent 65%
+        );
+      z-index:1;
+    }
 
-.map-container iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
-  display: block;
-}
-</style>
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(
+          circle at 75% 30%,
+          rgba(199,168,107,.12),
+          transparent 35%
+        );
+      z-index:1;
+    }
 
+    @keyframes heroZoom{
+      from{
+        transform:scale(1.04);
+      }
+      to{
+        transform:scale(1.12);
+      }
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:min(1100px,calc(100% - 48px));
+      margin:0 auto;
+      padding:0 0 13vh;
+    }
+
+    .hero-content h1{
+      font-family:var(--font-display);
+      font-size:clamp(4rem,9.5vw,9rem);
+      font-weight:600;
+      line-height:.82;
+      letter-spacing:-.045em;
+      max-width:900px;
+      margin:18px 0 28px;
+    }
+
+    .hero-content p{
+      max-width:580px;
+      color:#ded5c9;
+      font-size:16px;
+      line-height:1.8;
+      margin-bottom:32px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:10px;
+      font-weight:600;
+      padding:16px 24px;
+      min-height:52px;
+      transition:
+        transform .35s var(--ease),
+        background .35s ease,
+        border .35s ease;
+    }
+
+    .btn-primary{
+      background:var(--color-primary);
+      border:1px solid var(--color-primary);
+      color:#fff;
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(247,242,233,.45);
+      color:#fff;
+      background:rgba(0,0,0,.12);
+      backdrop-filter:blur(5px);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-primary:hover{
+      background:#9a263a;
+    }
+
+    .scroll-indicator{
+      position:absolute;
+      right:36px;
+      bottom:42px;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#d9d0c4;
+      font-size:9px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      writing-mode:vertical-rl;
+    }
+
+    .scroll-indicator span{
+      width:1px;
+      height:58px;
+      background:linear-gradient(
+        var(--color-accent),
+        transparent
+      );
+    }
+
+    /* =========================
+       CONTACT INTRO
+    ========================= */
+
+    .contact-intro{
+      padding:var(--section) 0;
+      background:var(--color-bg);
+    }
+
+    .contact-intro-grid{
+      display:grid;
+      grid-template-columns:.7fr 1.3fr;
+      gap:80px;
+      align-items:start;
+    }
+
+    .contact-intro-copy{
+      padding-top:20px;
+    }
+
+    .contact-intro-copy p{
+      margin-top:32px;
+    }
+
+    /* =========================
+       CONTACT INFORMATION
+    ========================= */
+
+    .contact-main{
+      padding:0 0 var(--section);
+      background:var(--color-bg);
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .contact-panel{
+      background:var(--color-surface);
+      border:1px solid rgba(255,255,255,.05);
+      padding:52px;
+      min-height:590px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contact-panel::after{
+      content:"";
+      position:absolute;
+      width:280px;
+      height:280px;
+      right:-130px;
+      bottom:-150px;
+      border-radius:50%;
+      background:rgba(199,168,107,.055);
+      pointer-events:none;
+    }
+
+    .contact-panel h2{
+      font-family:var(--font-display);
+      font-size:clamp(3rem,5vw,5rem);
+      line-height:.9;
+      font-weight:600;
+      margin-top:14px;
+      max-width:520px;
+    }
+
+    .contact-panel > p{
+      color:var(--color-muted);
+      font-size:14px;
+      line-height:1.9;
+      max-width:520px;
+      margin-top:28px;
+    }
+
+    .contact-details{
+      margin-top:44px;
+      display:grid;
+      gap:0;
+    }
+
+    .contact-item{
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      padding:21px 0;
+      border-bottom:1px solid var(--color-line);
+    }
+
+    .contact-item:first-child{
+      border-top:1px solid var(--color-line);
+    }
+
+    .contact-item small{
+      flex-shrink:0;
+      color:var(--color-accent);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:9px;
+      padding-top:3px;
+    }
+
+    .contact-item a,
+    .contact-item span{
+      font-size:14px;
+      text-decoration:none;
+      color:#eee8df;
+      text-align:right;
+      transition:color .25s ease;
+    }
+
+    .contact-item a:hover{
+      color:var(--color-accent);
+    }
+
+    /* =========================
+       QUICK ACTIONS
+    ========================= */
+
+    .quick-actions{
+      margin-top:38px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .quick-action{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      border:1px solid rgba(199,168,107,.28);
+      background:#100b0c;
+      padding:13px 16px;
+      color:#eee8df;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:9px;
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+    }
+
+    .quick-action:hover{
+      transform:translateY(-3px);
+      border-color:var(--color-accent);
+      background:#191012;
+    }
+
+    .quick-action-icon{
+      color:var(--color-accent);
+      font-size:14px;
+    }
+
+    /* =========================
+       CONTACT VISUAL
+    ========================= */
+
+    .contact-visual{
+      padding:0 0 var(--section);
+      background:var(--color-bg);
+    }
+
+    .visual-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .visual-image{
+      min-height:600px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .visual-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform 1.2s var(--ease);
+    }
+
+    .visual-image:hover img{
+      transform:scale(1.035);
+    }
+
+    .visual-side{
+      background:var(--color-surface);
+      border:1px solid rgba(255,255,255,.05);
+      padding:52px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .visual-side h2{
+      font-family:var(--font-display);
+      font-size:clamp(2.8rem,5vw,5.2rem);
+      line-height:.9;
+      font-weight:600;
+    }
+
+    .visual-side p{
+      color:var(--color-muted);
+      margin-top:28px;
+      line-height:1.9;
+      font-size:14px;
+    }
+
+    .location-note{
+      margin-top:42px;
+      padding-top:22px;
+      border-top:1px solid var(--color-line);
+    }
+
+    .location-note small{
+      color:var(--color-accent);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:9px;
+    }
+
+    .location-note p{
+      color:#eee8df;
+      margin-top:8px;
+    }
+
+    /* =========================
+       MAP
+    ========================= */
+
+    .map-section{
+      padding:var(--section) 0;
+      background:var(--color-surface);
+      border-top:1px solid rgba(255,255,255,.04);
+    }
+
+    .map-header{
+      display:flex;
+      justify-content:space-between;
+      gap:40px;
+      align-items:end;
+      margin-bottom:42px;
+    }
+
+    .map-header h2{
+      margin-top:14px;
+    }
+
+    .map-container{
+      overflow:hidden;
+      border:1px solid var(--color-line);
+      background:#0c090a;
+      box-shadow:0 30px 80px rgba(0,0,0,.3);
+    }
+
+    .map-container a{
+      display:block;
+    }
+
+    .map-container iframe{
+      display:block;
+      width:100%;
+      height:500px;
+      border:0;
+      filter:saturate(.65) contrast(1.05);
+    }
+
+    /* =========================
+       FINAL CTA
+    ========================= */
+
+    .contact-cta{
+      padding:var(--section) 0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(127,29,45,.88),
+          rgba(79,17,28,.88)
+        ),
+        url('hotelEN.jpg') center/cover;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contact-cta::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.32);
+    }
+
+    .cta-inner{
+      position:relative;
+      z-index:1;
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:50px;
+    }
+
+    .cta-inner h2{
+      font-family:var(--font-display);
+      font-size:clamp(3rem,7vw,6.5rem);
+      line-height:.88;
+      max-width:760px;
+      font-weight:600;
+    }
+
+    .cta-inner p{
+      color:#eee4d7;
+      max-width:500px;
+      margin-top:24px;
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .cta-actions{
+      flex-shrink:0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .cta-actions .btn-secondary{
+      background:rgba(0,0,0,.2);
+    }
+
+    /* =========================
+       CAC
+    ========================= */
+
+    .cac-badge{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      z-index:4000;
+      width:68px;
+      height:68px;
+      border-radius:50%;
+      background:#0e0b0c;
+      border:1px solid var(--color-accent);
+      padding:4px;
+      cursor:pointer;
+      box-shadow:0 14px 40px rgba(0,0,0,.45);
+      transition:transform .3s ease;
+    }
+
+    .cac-badge:hover{
+      transform:translateY(-4px);
+    }
+
+    .cac-badge img{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      object-fit:cover;
+    }
+
+    .cac-tooltip{
+      position:absolute;
+      right:0;
+      bottom:78px;
+      white-space:nowrap;
+      background:#0f0b0c;
+      border:1px solid var(--color-line);
+      padding:9px 12px;
+      font-size:9px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s;
+    }
+
+    .cac-badge:hover .cac-tooltip{
+      opacity:1;
+    }
+
+    .cac-modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:9000;
+      background:rgba(0,0,0,.88);
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+
+    .cac-modal.active{
+      display:flex;
+    }
+
+    .cac-modal-content{
+      width:min(550px,100%);
+      max-height:90vh;
+      overflow:auto;
+      background:#120d0e;
+      border:1px solid var(--color-line);
+      padding:36px;
+      position:relative;
+    }
+
+    .cac-modal-close{
+      position:absolute;
+      right:16px;
+      top:10px;
+      background:none;
+      border:0;
+      color:var(--color-accent);
+      font-size:34px;
+      cursor:pointer;
+    }
+
+    .cac-modal img{
+      width:100%;
+      display:block;
+      margin-bottom:24px;
+    }
+
+    .cac-modal h3{
+      font-family:var(--font-display);
+      font-size:30px;
+      color:var(--color-accent);
+      margin-bottom:14px;
+    }
+
+    .cac-modal p{
+      color:var(--color-muted);
+      font-size:14px;
+      margin:8px 0;
+    }
+
+    .cac-modal strong{
+      color:#eee8df;
+    }
+
+    .cac-verify-btn{
+      display:block;
+      text-align:center;
+      text-decoration:none;
+      margin-top:24px;
+      padding:14px;
+      background:var(--color-primary);
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:10px;
+    }
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+    .whatsapp-float{
+      position:fixed;
+      left:24px;
+      bottom:24px;
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#25D366;
+      color:#fff;
+      text-decoration:none;
+      font-size:24px;
+      z-index:4000;
+      box-shadow:0 12px 35px rgba(0,0,0,.4);
+      transition:transform .3s ease;
+    }
+
+    .whatsapp-float:hover{
+      transform:translateY(-4px) scale(1.03);
+    }
+
+    /* =========================
+       AI CONCIERGE
+    ========================= */
+
+    .concierge-trigger{
+      position:fixed;
+      right:24px;
+      bottom:106px;
+      z-index:5000;
+      border:1px solid var(--color-accent);
+      background:rgba(13,9,10,.94);
+      color:#fff;
+      padding:13px 17px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      box-shadow:0 16px 45px rgba(0,0,0,.45);
+      backdrop-filter:blur(14px);
+      transition:
+        transform .3s ease,
+        background .3s ease;
+    }
+
+    .concierge-trigger:hover{
+      transform:translateY(-3px);
+      background:#1b1012;
+    }
+
+    .concierge-dot{
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--color-accent);
+      box-shadow:0 0 12px rgba(199,168,107,.8);
+    }
+
+    .concierge-trigger span:last-child{
+      font-size:9px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .concierge-panel{
+      position:fixed;
+      right:24px;
+      bottom:170px;
+      width:min(390px,calc(100vw - 32px));
+      height:min(600px,calc(100vh - 205px));
+      background:#0d090a;
+      border:1px solid var(--color-line);
+      z-index:6000;
+      box-shadow:0 30px 90px rgba(0,0,0,.65);
+      display:none;
+      flex-direction:column;
+      overflow:hidden;
+    }
+
+    .concierge-panel.open{
+      display:flex;
+      animation:conciergeIn .35s var(--ease);
+    }
+
+    @keyframes conciergeIn{
+      from{
+        opacity:0;
+        transform:translateY(18px) scale(.98);
+      }
+      to{
+        opacity:1;
+        transform:none;
+      }
+    }
+
+    .concierge-head{
+      padding:20px;
+      border-bottom:1px solid var(--color-line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .concierge-head strong{
+      font-family:var(--font-display);
+      font-size:25px;
+      font-weight:600;
+    }
+
+    .concierge-head small{
+      display:block;
+      color:var(--color-accent);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:8px;
+      margin-top:2px;
+    }
+
+    .concierge-close{
+      background:none;
+      border:0;
+      color:var(--color-muted);
+      font-size:24px;
+      cursor:pointer;
+    }
+
+    .concierge-messages{
+      flex:1;
+      overflow:auto;
+      padding:20px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .concierge-message{
+      max-width:86%;
+      padding:12px 14px;
+      font-size:13px;
+      line-height:1.65;
+      white-space:pre-wrap;
+    }
+
+    .concierge-message.ai{
+      background:#171011;
+      border-left:1px solid var(--color-accent);
+      align-self:flex-start;
+      color:#eee8df;
+    }
+
+    .concierge-message.user{
+      background:var(--color-primary);
+      align-self:flex-end;
+      color:#fff;
+    }
+
+    .concierge-status{
+      padding:0 20px 8px;
+      color:var(--color-accent);
+      font-size:9px;
+      letter-spacing:.1em;
+      min-height:18px;
+    }
+
+    .concierge-form{
+      display:flex;
+      border-top:1px solid var(--color-line);
+    }
+
+    .concierge-input{
+      flex:1;
+      background:#100b0c;
+      color:#fff;
+      border:0;
+      padding:15px;
+      outline:0;
+      font-size:13px;
+    }
+
+    .concierge-send{
+      width:62px;
+      border:0;
+      background:var(--color-primary);
+      color:#fff;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    .concierge-send:disabled{
+      opacity:.5;
+      cursor:wait;
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:
+        opacity 1s var(--ease),
+        transform 1s var(--ease);
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer{
+      padding:34px 0;
+      background:#080606;
+      border-top:1px solid rgba(255,255,255,.05);
+      color:#8f8880;
+      font-size:11px;
+      text-align:center;
+      letter-spacing:.08em;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:900px){
+
+      nav{
+        height:76px;
+        padding:0 20px;
+      }
+
+      .brand-name{
+        font-size:20px;
+      }
+
+      .brand img{
+        width:42px;
+        height:42px;
+      }
+
+      .menu-toggle{
+        display:block;
+      }
+
+      .nav-links{
+        display:none;
+        position:absolute;
+        top:76px;
+        left:0;
+        right:0;
+        background:rgba(9,7,7,.98);
+        padding:20px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        border-bottom:1px solid var(--color-line);
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .nav-links a{
+        padding:16px 4px;
+      }
+
+      .login-btn{
+        text-align:center;
+        margin-top:8px;
+      }
+
+      .contact-intro-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .contact-panel{
+        min-height:auto;
+      }
+
+      .visual-grid{
+        grid-template-columns:1fr;
+      }
+
+      .visual-image{
+        min-height:500px;
+      }
+
+      .visual-side{
+        min-height:470px;
+      }
+
+      .map-header{
+        display:block;
+      }
+
+      .map-header .section-copy{
+        margin-top:20px;
+      }
+
+      .cta-inner{
+        display:block;
+      }
+
+      .cta-actions{
+        margin-top:35px;
+      }
+
+      .scroll-indicator{
+        display:none;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .container,
+      .hero-content{
+        width:min(100% - 32px,1240px);
+      }
+
+      .hero{
+        min-height:82svh;
+      }
+
+      .hero-content{
+        padding-bottom:100px;
+      }
+
+      .hero-content h1{
+        font-size:clamp(3.6rem,18vw,5.2rem);
+      }
+
+      .hero-content p{
+        font-size:14px;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+      }
+
+      .contact-panel{
+        padding:34px;
+      }
+
+      .contact-item{
+        display:block;
+      }
+
+      .contact-item a,
+      .contact-item span{
+        display:block;
+        text-align:left;
+        margin-top:8px;
+        line-height:1.6;
+      }
+
+      .quick-actions{
+        display:grid;
+      }
+
+      .quick-action{
+        width:100%;
+      }
+
+      .visual-image{
+        min-height:390px;
+      }
+
+      .visual-side{
+        padding:34px;
+      }
+
+      .map-container iframe{
+        height:360px;
+      }
+
+      .cta-inner h2{
+        font-size:clamp(3.2rem,15vw,5rem);
+      }
+
+      .cta-actions .btn{
+        width:100%;
+      }
+
+      .cac-badge{
+        width:58px;
+        height:58px;
+        right:16px;
+        bottom:16px;
+      }
+
+      .whatsapp-float{
+        left:16px;
+        bottom:16px;
+      }
+
+      .concierge-trigger{
+        right:16px;
+        bottom:88px;
+        padding:11px 13px;
+      }
+
+      .concierge-panel{
+        right:16px;
+        bottom:154px;
+        width:calc(100vw - 32px);
+        height:min(580px,calc(100vh - 180px));
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+
+      html{
+        scroll-behavior:auto;
+      }
+
+      .hero-media{
+        animation:none;
+      }
+
+      .reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+      }
+
+      .loader-logo,
+      .loader-name,
+      .loader-line{
+        animation:none;
+        opacity:1;
+        transform:none;
+      }
+
+      .concierge-panel.open{
+        animation:none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-  <div>
-    <img src="hlogo.png" alt="Logo">
-    <h2 style="margin:0;">Shangri-La View Hotel</h2>
+  <!-- =========================
+       LOADER
+  ========================= -->
+
+  <div id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <img
+        class="loader-logo"
+        src="hlogo.png"
+        alt="Shangri-La View Hotel"
+      >
+
+      <div class="loader-name">
+        Shangri-La View Hotel
+      </div>
+
+      <div class="loader-line"></div>
+    </div>
   </div>
 
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-  <div class="nav-links" id="navLinks">
-    <a href="index.html">Home</a>
-    <a href="booking.html">Booking</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="gallery.html">Gallery</a>
-  </div>
-</nav>
+  <div id="content">
 
-<!-- CONTACT -->
-<div class="container">
+    <!-- =========================
+         CAC BADGE
+    ========================= -->
 
-  <div class="info-box">
-    <h2>Contact Us</h2>
-    <p>Tap any icon to reach us instantly</p>
+    <div
+      class="cac-badge"
+      onclick="openCACModal()"
+      role="button"
+      tabindex="0"
+      aria-label="Verify CAC"
+    >
+      <img
+        src="your-cac-logo.jpg"
+        alt="CAC Certified"
+      >
 
-    <div class="contact-icons">
-      <a href="tel:+2348037093649" class="icon-btn">📞</a>
-      <a href="https://wa.me/+2348037093649" class="icon-btn" target="_blank">💬</a>
-      <a href="mailto:shangrilaviewhotel@gmail.com" class="icon-btn">✉️</a>
+      <div class="cac-tooltip">
+        Verify CAC
+      </div>
     </div>
 
-    <p style="margin-top:20px;"><strong>Location:</strong> Port Harcourt</p>
 
-    <!-- ✅ SOCIAL ICONS -->
-    <div class="social-icons">
-      <a href="https://wa.me/+2348037093649" target="_blank" title="WhatsApp">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%2325d366' d='M24 0C10.7 0 0 10.7 0 24c0 4.2 1.1 8.3 3.2 11.8L0 48l12.6-3.2C16.7 47.3 20.3 48 24 48c13.3 0 24-10.7 24-24S37.3 0 24 0zm0 44c-3.6 0-7.1-.8-10.4-2.3l-.7-.4-7.5 1.9 1.9-7.5-.4-.7C4.8 31.1 4 27.6 4 24 4 12.9 12.9 4 24 4s20 8.9 20 20-8.9 20-20 20z'/%3E%3Cpath fill='%23fff' d='M35.5 32.8c-1.1.6-6.5 3.2-7.5 3.5-1 .4-1.7.3-2.4-1-1.2-2-1.5-2.6-2.9-2.6-1.4 0-3.4.8-4 1.8-.6 1-2.4 2.4-2.4 5.8 0 3.4 2.5 6.8 2.8 7.2.3.4 4 6.1 9.7 8.5 5.7 2.3 5.7 1.5 6.8 1.4 1.1-.1 3.5-1.4 4-2.8.5-1.3.5-2.5.4-2.7-.1-.2-.7-.4-1.5-.9z'/%3E%3C/svg%3E" alt="WhatsApp">
-      </a>
+    <!-- =========================
+         CAC MODAL
+    ========================= -->
 
-      <a href="https://www.instagram.com/ohakwe7869?igsh=cnYyNTY4NGdqY3Zh" target="_blank" title="Instagram">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3CradialGradient id='a' cx='11%25' cy='110%25' r='130%25'%3E%3Cstop offset='0%25' stop-color='%23fdf497'/%3E%3Cstop offset='5%25' stop-color='%23fdf497'/%3E%3Cstop offset='45%25' stop-color='%23fd5949'/%3E%3Cstop offset='60%25' stop-color='%23d6249f'/%3E%3Cstop offset='90%25' stop-color='%23285AEB'/%3E%3C/radialGradient%3E%3Cpath fill='url(%23a)' d='M24 0C10.7 0 0 10.7 0 24s10.7 24 24 24 24-10.7 24-24S37.3 0 24 0zm0 44c-11 0-20-9-20-20S13 4 24 4s20 9 20 20-9 20-20 20z'/%3E%3Cpath fill='url(%23a)' d='M24 10.6c-7.4 0-13.4 6-13.4 13.4S16.6 37.4 24 37.4 37.4 31.4 37.4 24 31.4 10.6 24 10.6zm0 22c-4.7 0-8.6-3.9-8.6-8.6s3.9-8.6 8.6-8.6 8.6 3.9 8.6 8.6-3.9 8.6-8.6 8.6zm10.8-22.8c-1.2 0-2.2 1-2.2 2.2s1 2.2 2.2 2.2 2.2-1 2.2-2.2-1-2.2-2.2-2.2z'/%3E%3C/svg%3E" alt="Instagram">
-      </a>
+    <div
+      class="cac-modal"
+      id="cacModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="CAC verification"
+    >
 
-      <a href="https://www.facebook.com/share/1GJgvMDN6t/?mibextid=wwXIfr" target="_blank" title="Facebook">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%231877f2' d='M24 0C10.7 0 0 10.7 0 24s10.7 24 24 24 24-10.7 24-24S37.3 0 24 0zm6.3 25h-4.2v13.2h-5.5V25h-2.6v-4.6h2.6v-3c0-2.1.5-5.4 5.3-5.4h4.1v4.2h-3c-.5 0-.8.2-.8.9v2.3h3.8l-.5 4.6z'/%3E%3C/svg%3E" alt="Facebook">
-      </a>
+      <div class="cac-modal-content">
+
+        <button
+          class="cac-modal-close"
+          onclick="closeCACModal()"
+          aria-label="Close"
+        >
+          &times;
+        </button>
+
+        <img
+          src="your-cac-certificate.png"
+          alt="CAC Certificate"
+        >
+
+        <h3>
+          ✓ Business Certified
+        </h3>
+
+        <p>
+          <strong>Registration:</strong>
+          Your CAC Registration Number
+        </p>
+
+        <p>
+          <strong>Status:</strong>
+          Verified &amp; Active
+        </p>
+
+        <p>
+          This business is officially registered with
+          the Corporate Affairs Commission (CAC) of Nigeria.
+          Your trust and confidence matter to us.
+        </p>
+
+        <a
+          href="https://www.cac.gov.ng/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cac-verify-btn"
+        >
+          Verify on CAC Portal
+        </a>
+
+      </div>
     </div>
 
-  </div>
 
-  <div class="form-box">
-    <h2>Send Us a Message</h2>
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
-    <form action="https://formspree.io/f/maqlpaqk" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Write your message..." rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
+    <nav id="mainNav">
 
-</div>
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Shangri-La View Hotel home"
+      >
 
-<!-- MAP -->
-<section class="map-section">
-  <h2>Shangrilaview Hotel</h2>
-  <p>Tap the map for directions</p>
+        <img
+          src="hlogo.png"
+          alt="Shangri-La View Hotel logo"
+        >
 
-  <div class="map-container">
+        <span class="brand-name">
+          Shangri-La View Hotel
+        </span>
 
-    <!-- Clickable official Google Maps link -->
-    <a href="https://maps.app.goo.gl/PpvaBJ83icvKEzGR9?g_st=ac" target="_blank">
+      </a>
 
-      <!-- Embedded map using business name -->
-      <iframe 
-        src="https://www.google.com/maps?q=Shangrilaviewhotel&output=embed"
-        loading="lazy">
-      </iframe>
 
+      <button
+        class="menu-toggle"
+        onclick="toggleMenu()"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+
+      <div
+        class="nav-links"
+        id="navLinks"
+      >
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="booking.html">
+          Booking
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a
+          href="contact.html"
+          class="active"
+        >
+          Contact
+        </a>
+
+        <a href="gallery.html">
+          Gallery
+        </a>
+
+        <a
+          href="login.html"
+          class="login-btn"
+        >
+          Admin Login
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <header class="hero">
+
+      <div
+        class="hero-media"
+        aria-hidden="true"
+      ></div>
+
+      <div class="hero-content reveal">
+
+        <div class="eyebrow">
+          Shangri-La View Hotel · Port Harcourt
+        </div>
+
+        <h1>
+          Let's stay<br>
+          connected.
+        </h1>
+
+        <p>
+          Whether you are planning a stay, making an enquiry,
+          arranging an event or simply need assistance,
+          our team is ready to help.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            href="tel:+2348110844173"
+            class="btn btn-primary"
+          >
+            Call The Hotel
+          </a>
+
+          <a
+            href="https://wa.me/2348037093649"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            WhatsApp Us
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="scroll-indicator">
+        <span></span>
+        Scroll
+      </div>
+
+    </header>
+
+
+    <!-- =========================
+         INTRODUCTION
+    ========================= -->
+
+    <section class="contact-intro">
+
+      <div class="container contact-intro-grid">
+
+        <div class="reveal">
+
+          <div class="eyebrow">
+            Contact Us
+          </div>
+
+        </div>
+
+
+        <div class="contact-intro-copy reveal">
+
+          <h2 class="section-title">
+            We are here<br>
+            when you need us.
+          </h2>
+
+          <p class="section-copy">
+            From reservations and accommodation enquiries to
+            events, directions and general assistance,
+            Shangri-La View Hotel is only a call or message away.
+            Choose whichever contact option is most convenient
+            for you.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT INFORMATION
+    ========================= -->
+
+    <section class="contact-main">
+
+      <div class="container contact-grid">
+
+
+        <!-- DETAILS -->
+
+        <div class="contact-panel reveal">
+
+          <div class="eyebrow">
+            Get In Touch
+          </div>
+
+          <h2>
+            Speak with<br>
+            Shangri-La.
+          </h2>
+
+          <p>
+            Contact our team directly for room reservations,
+            hotel information, event enquiries and any assistance
+            you may need before or during your stay.
+          </p>
+
+
+          <div class="contact-details">
+
+            <div class="contact-item">
+
+              <small>
+                Phone
+              </small>
+
+              <a href="tel:+2348110844173">
+                +234 08110844173
+              </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <small>
+                WhatsApp
+              </small>
+
+              <a
+                href="https://wa.me/2348037093649"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                +234 08037093649
+              </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <small>
+                Email
+              </small>
+
+              <a href="mailto:shangrilaviewhotel@gmail.com">
+                shangrilaviewhotel@gmail.com
+              </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+              <small>
+                Address
+              </small>
+
+              <span>
+                Rumuosi Victory Estate,
+                Airport Road,
+                Port Harcourt
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="quick-actions">
+
+            <a
+              class="quick-action"
+              href="tel:+2348110844173"
+            >
+              <span class="quick-action-icon">
+                ☎
+              </span>
+
+              Call Hotel
+            </a>
+
+
+            <a
+              class="quick-action"
+              href="https://wa.me/2348037093649"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="quick-action-icon">
+                ◉
+              </span>
+
+              WhatsApp
+            </a>
+
+
+            <a
+              class="quick-action"
+              href="mailto:shangrilaviewhotel@gmail.com"
+            >
+              <span class="quick-action-icon">
+                ✉
+              </span>
+
+              Send Email
+            </a>
+
+
+            <a
+              class="quick-action"
+              href="https://maps.app.goo.gl/PpvaBJ83icvKEzGR9?g_st=ac"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="quick-action-icon">
+                ⌖
+              </span>
+
+              Directions
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- CONTACT EXPERIENCE -->
+
+        <div class="contact-panel reveal">
+
+          <div class="eyebrow">
+            Concierge
+          </div>
+
+          <h2>
+            Need an<br>
+            answer?
+          </h2>
+
+          <p>
+            Our Shangri-La Concierge can assist with common
+            hotel questions and guide you toward the right
+            information. You can also contact our team directly
+            whenever you prefer personal assistance.
+          </p>
+
+
+          <div
+            style="
+              margin-top:42px;
+              padding:30px;
+              background:#0e0a0b;
+              border:1px solid var(--color-line);
+            "
+          >
+
+            <div
+              style="
+                display:flex;
+                align-items:center;
+                gap:12px;
+                margin-bottom:18px;
+              "
+            >
+
+              <span
+                style="
+                  width:9px;
+                  height:9px;
+                  border-radius:50%;
+                  background:var(--color-accent);
+                  box-shadow:0 0 15px rgba(199,168,107,.7);
+                "
+              ></span>
+
+              <span
+                style="
+                  color:var(--color-accent);
+                  text-transform:uppercase;
+                  letter-spacing:.18em;
+                  font-size:9px;
+                  font-weight:600;
+                "
+              >
+                Shangri-La Concierge
+              </span>
+
+            </div>
+
+
+            <p
+              style="
+                margin:0;
+                font-family:var(--font-display);
+                font-size:29px;
+                line-height:1;
+                color:#f7f2e9;
+              "
+            >
+              Ask us anything about
+              your stay.
+            </p>
+
+
+            <button
+              class="btn btn-primary"
+              id="openConciergeFromContact"
+              type="button"
+              style="margin-top:28px;"
+            >
+              Open Concierge
+            </button>
+
+          </div>
+
+
+          <div class="location-note">
+
+            <small>
+              Located in Port Harcourt
+            </small>
+
+            <p>
+              Rumuosi Victory Estate,
+              Airport Road, Port Harcourt,
+              Rivers State, Nigeria.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         HOTEL IMAGE / EXPERIENCE
+    ========================= -->
+
+    <section class="contact-visual">
+
+      <div class="container visual-grid">
+
+        <div class="visual-image reveal">
+
+          <img
+            src="hotelEN.jpg"
+            alt="Shangri-La View Hotel exterior"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="visual-side reveal">
+
+          <div>
+
+            <div class="eyebrow">
+              Visit Us
+            </div>
+
+            <h2>
+              Your next stay
+              starts with a
+              conversation.
+            </h2>
+
+            <p>
+              Conveniently located on Airport Road in Port Harcourt,
+              Shangri-La View Hotel provides a welcoming setting for
+              guests looking for comfort, hospitality and a refined
+              hotel experience.
+            </p>
+
+          </div>
+
+
+          <a
+            href="booking.html"
+            class="btn btn-secondary"
+            style="align-self:flex-start"
+          >
+            Book Your Stay
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAP
+    ========================= -->
+
+    <section class="map-section">
+
+      <div class="container">
+
+        <div class="map-header reveal">
+
+          <div>
+
+            <div class="eyebrow">
+              Location
+            </div>
+
+            <h2
+              class="section-title"
+            >
+              Find us in<br>
+              Port Harcourt.
+            </h2>
+
+          </div>
+
+          <p class="section-copy">
+            Use the map below to locate Shangri-La View Hotel.
+            You can also open Google Maps for directions from
+            your current location.
+          </p>
+
+        </div>
+
+
+        <div class="map-container reveal">
+
+          <a
+            href="https://maps.app.goo.gl/PpvaBJ83icvKEzGR9?g_st=ac"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Shangri-La View Hotel in Google Maps"
+          >
+
+            <iframe
+              src="https://www.google.com/maps?q=Shangrilaviewhotel&output=embed"
+              title="Shangri-La View Hotel location"
+              loading="lazy"
+            ></iframe>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINAL CTA
+    ========================= -->
+
+    <section class="contact-cta">
+
+      <div class="container cta-inner">
+
+        <div class="reveal">
+
+          <div class="eyebrow">
+            Shangri-La View Hotel
+          </div>
+
+          <h2>
+            Ready when<br>
+            you are.
+          </h2>
+
+          <p>
+            Make your reservation, send us a message or speak
+            directly with our team. We look forward to welcoming
+            you to Shangri-La View Hotel.
+          </p>
+
+        </div>
+
+
+        <div class="cta-actions reveal">
+
+          <a
+            href="booking.html"
+            class="btn btn-primary"
+          >
+            Book Your Stay
+          </a>
+
+          <a
+            href="https://wa.me/2348037093649"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         AI CONCIERGE
+    ========================= -->
+
+    <button
+      class="concierge-trigger"
+      id="conciergeTrigger"
+      type="button"
+      aria-expanded="false"
+      aria-controls="conciergePanel"
+    >
+
+      <span class="concierge-dot"></span>
+
+      <span>
+        Shangri-La Concierge
+      </span>
+
+    </button>
+
+
+    <section
+      class="concierge-panel"
+      id="conciergePanel"
+      aria-label="Shangri-La Concierge"
+    >
+
+      <div class="concierge-head">
+
+        <div>
+
+          <strong>
+            Shangri-La
+          </strong>
+
+          <small>
+            Concierge
+          </small>
+
+        </div>
+
+        <button
+          class="concierge-close"
+          id="conciergeClose"
+          type="button"
+          aria-label="Close concierge"
+        >
+          &times;
+        </button>
+
+      </div>
+
+
+      <div
+        class="concierge-messages"
+        id="conciergeMessages"
+      >
+
+        <div class="concierge-message ai">
+          Welcome to Shangri-La View Hotel.
+          How may I assist you?
+        </div>
+
+      </div>
+
+
+      <div
+        class="concierge-status"
+        id="conciergeStatus"
+      ></div>
+
+
+      <form
+        class="concierge-form"
+        id="conciergeForm"
+      >
+
+        <input
+          class="concierge-input"
+          id="conciergeInput"
+          autocomplete="off"
+          placeholder="Ask the concierge…"
+          aria-label="Message the concierge"
+        >
+
+        <button
+          class="concierge-send"
+          id="conciergeSend"
+          type="submit"
+          aria-label="Send"
+        >
+          ➤
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- =========================
+         WHATSAPP
+    ========================= -->
+
+    <a
+      href="https://wa.me/2348037093649"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-float"
+      aria-label="WhatsApp Booking"
+    >
+      ☎
     </a>
 
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+      Shangri-La View Hotel · Port Harcourt
+    </footer>
+
   </div>
-</section>
 
-<!-- SCRIPT -->
-<script>
-function toggleMenu() {
-  const navLinks = document.getElementById("navLinks");
-  navLinks.classList.toggle("active");
-}
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById("navLinks").classList.remove("active");
-  });
-});
-</script>
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    const loader = document.getElementById('loader');
+
+    function showSite(){
+      loader.classList.add('hidden');
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener(
+        'DOMContentLoaded',
+        showSite,
+        {once:true}
+      );
+    }else{
+      showSite();
+    }
+
+    window.addEventListener(
+      'load',
+      showSite,
+      {once:true}
+    );
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    const nav =
+      document.getElementById('mainNav');
+
+    const navLinks =
+      document.getElementById('navLinks');
+
+    const menuButton =
+      document.querySelector('.menu-toggle');
+
+
+    function toggleMenu(){
+
+      const active =
+        navLinks.classList.toggle('active');
+
+      menuButton.setAttribute(
+        'aria-expanded',
+        String(active)
+      );
+    }
+
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        nav.classList.toggle(
+          'scrolled',
+          window.scrollY > 35
+        );
+      },
+      {passive:true}
+    );
+
+
+    navLinks
+      .querySelectorAll('a')
+      .forEach(a => {
+
+        a.addEventListener(
+          'click',
+          () => {
+
+            navLinks.classList.remove('active');
+
+            menuButton.setAttribute(
+              'aria-expanded',
+              'false'
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =========================
+       CAC
+    ========================= */
+
+    function openCACModal(){
+
+      document
+        .getElementById('cacModal')
+        .classList.add('active');
+
+    }
+
+
+    function closeCACModal(){
+
+      document
+        .getElementById('cacModal')
+        .classList.remove('active');
+
+    }
+
+
+    window.addEventListener(
+      'click',
+      e => {
+
+        const modal =
+          document.getElementById('cacModal');
+
+        if(e.target === modal){
+          closeCACModal();
+        }
+
+      }
+    );
+
+
+    document
+      .querySelector('.cac-badge')
+      .addEventListener(
+        'keydown',
+        e => {
+
+          if(
+            e.key === 'Enter' ||
+            e.key === ' '
+          ){
+
+            e.preventDefault();
+
+            openCACModal();
+
+          }
+
+        }
+      );
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+              entry.target
+                .classList
+                .add('visible');
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold:.12
+        }
+      );
+
+
+    document
+      .querySelectorAll('.reveal')
+      .forEach(el => observer.observe(el));
+
+
+    /* =========================
+       AI CONCIERGE
+    ========================= */
+
+    const AI_ENDPOINT =
+      'https://shangrila-ai.onrender.com/chat';
+
+
+    const conciergeTrigger =
+      document.getElementById(
+        'conciergeTrigger'
+      );
+
+    const conciergePanel =
+      document.getElementById(
+        'conciergePanel'
+      );
+
+    const conciergeClose =
+      document.getElementById(
+        'conciergeClose'
+      );
+
+    const conciergeForm =
+      document.getElementById(
+        'conciergeForm'
+      );
+
+    const conciergeInput =
+      document.getElementById(
+        'conciergeInput'
+      );
+
+    const conciergeMessages =
+      document.getElementById(
+        'conciergeMessages'
+      );
+
+    const conciergeStatus =
+      document.getElementById(
+        'conciergeStatus'
+      );
+
+    const conciergeSend =
+      document.getElementById(
+        'conciergeSend'
+      );
+
+
+    function openConcierge(){
+
+      conciergePanel.classList.add(
+        'open'
+      );
+
+      conciergeTrigger.setAttribute(
+        'aria-expanded',
+        'true'
+      );
+
+      setTimeout(
+        () => conciergeInput.focus(),
+        100
+      );
+
+    }
+
+
+    function closeConcierge(){
+
+      conciergePanel.classList.remove(
+        'open'
+      );
+
+      conciergeTrigger.setAttribute(
+        'aria-expanded',
+        'false'
+      );
+
+    }
+
+
+    conciergeTrigger.addEventListener(
+      'click',
+      () => {
+
+        if(
+          conciergePanel.classList.contains(
+            'open'
+          )
+        ){
+
+          closeConcierge();
+
+        }else{
+
+          openConcierge();
+
+        }
+
+      }
+    );
+
+
+    conciergeClose.addEventListener(
+      'click',
+      closeConcierge
+    );
+
+
+    const contactConciergeButton =
+      document.getElementById(
+        'openConciergeFromContact'
+      );
+
+
+    if(contactConciergeButton){
+
+      contactConciergeButton.addEventListener(
+        'click',
+        openConcierge
+      );
+
+    }
+
+
+    function addMessage(
+      text,
+      type
+    ){
+
+      const el =
+        document.createElement('div');
+
+      el.className =
+        `concierge-message ${type}`;
+
+      el.textContent = text;
+
+      conciergeMessages.appendChild(el);
+
+      conciergeMessages.scrollTop =
+        conciergeMessages.scrollHeight;
+
+    }
+
+
+    conciergeForm.addEventListener(
+      'submit',
+      async e => {
+
+        e.preventDefault();
+
+        const message =
+          conciergeInput.value.trim();
+
+        if(!message){
+          return;
+        }
+
+
+        addMessage(
+          message,
+          'user'
+        );
+
+
+        conciergeInput.value = '';
+
+        conciergeInput.disabled = true;
+
+        conciergeSend.disabled = true;
+
+        conciergeStatus.textContent =
+          'Concierge is responding…';
+
+
+        try{
+
+          const response =
+            await fetch(
+              AI_ENDPOINT,
+              {
+                method:'POST',
+
+                headers:{
+                  'Content-Type':
+                    'application/json'
+                },
+
+                body:JSON.stringify({
+                  message
+                })
+              }
+            );
+
+
+          if(!response.ok){
+
+            throw new Error(
+              `HTTP ${response.status}`
+            );
+
+          }
+
+
+          const data =
+            await response.json();
+
+
+          if(
+            !data ||
+            typeof data.reply !== 'string'
+          ){
+
+            throw new Error(
+              'Invalid AI response'
+            );
+
+          }
+
+
+          addMessage(
+            data.reply,
+            'ai'
+          );
+
+
+        }catch(error){
+
+          console.error(
+            'Shangri-La Concierge error:',
+            error
+          );
+
+
+          addMessage(
+            'I’m unable to connect to the concierge service right now. Please contact the hotel directly or use WhatsApp for assistance.',
+            'ai'
+          );
+
+
+        }finally{
+
+          conciergeInput.disabled =
+            false;
+
+          conciergeSend.disabled =
+            false;
+
+          conciergeStatus.textContent =
+            '';
+
+          conciergeInput.focus();
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       ESCAPE KEY
+    ========================= */
+
+    document.addEventListener(
+      'keydown',
+      e => {
+
+        if(e.key === 'Escape'){
+
+          closeConcierge();
+
+          closeCACModal();
+
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
-  </html>
-  
+</html>
+```
