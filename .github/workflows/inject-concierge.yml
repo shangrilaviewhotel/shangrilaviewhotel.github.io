@@ -1,0 +1,55 @@
+name: Keep Hotel Concierge on Every Page
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inject-concierge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Inject shared concierge into HTML pages
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          marker = '<script src="concierge.js" defer></script>'
+          changed = []
+          for path in Path('.').glob('*.html'):
+              text = path.read_text(encoding='utf-8')
+              if marker in text:
+                  continue
+              lower = text.lower()
+              if '</head>' in lower:
+                  pos = lower.index('</head>')
+                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
+              elif '</body>' in lower:
+                  pos = lower.index('</body>')
+                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
+              else:
+                  text += '\n' + marker + '\n'
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+          print('Injected concierge into:', ', '.join(changed) if changed else 'no files needed changes')
+          PY
+
+      - name: Commit generated page changes
+        run: |
+          if git diff --quiet; then
+            echo 'No concierge injection changes needed.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '*.html'
+          git commit -m 'Add hotel concierge to every page [skip ci]'
+          git push
