@@ -3,506 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery - Shangri-La View Hotel</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<meta name="description" content="Explore the rooms, spaces, atmosphere and hospitality of Shangri-La View Hotel in Port Harcourt, Rivers State, Nigeria.">
+<title>Gallery | Shangri-La View Hotel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="concierge.js" defer></script>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: url('hotel10.JPG') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  overflow-x: hidden;
-}
-
-/* OVERLAY */
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(5,10,30,0.85);
-  top: 0;
-  left: 0;
-  z-index: -2;
-}
-
-/* ANIMATED BACKGROUND GLOW */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(196, 30, 58, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(31, 59, 111, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 50% 80%, rgba(196, 30, 58, 0.05) 0%, transparent 50%);
-  z-index: -1;
-  animation: ambientGlow 8s ease-in-out infinite;
-}
-
-@keyframes ambientGlow {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(31,59,111,0.6) 100%);
-  position: relative;
-  backdrop-filter: blur(10px);
-  border-bottom: 3px solid #C41E3A;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
-
-nav img {
-  width: 65px;
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(196, 30, 58, 0.6);
-  transition: all 0.3s ease;
-}
-
-nav img:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 30px rgba(196, 30, 58, 0.9);
-}
-
-nav h2 {
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-nav div:first-child {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #C41E3A;
-  transition: width 0.3s ease;
-}
-
-nav a:hover {
-  color: #C41E3A;
-  transform: translateY(-2px);
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* HAMBURGER */
-.menu-toggle {
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-  color: #C41E3A;
-  transition: all 0.3s ease;
-}
-
-.menu-toggle:hover {
-  transform: scale(1.2) rotate(90deg);
-}
-
-/* NAV LINKS */
-.nav-links {
-  display: flex;
-  align-items: center;
-}
-
-.nav-links a {
-  margin-left: 20px;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(31,59,111,0.9) 100%);
-    flex-direction: column;
-    width: 220px;
-    display: none;
-    padding: 20px;
-    border-left: 3px solid #C41E3A;
-    backdrop-filter: blur(10px);
-    z-index: 1001;
-  }
-
-  .nav-links a {
-    margin: 10px 0;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-/* TITLE */
-.title {
-  text-align: center;
-  margin-top: 40px;
-  position: relative;
-  z-index: 1;
-  animation: fadeInDown 0.8s ease-out;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.title h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 2px;
-}
-
-.title p {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 10px;
-}
-
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 60px 40px;
-  position: relative;
-  z-index: 1;
-}
-
-.gallery-item {
-  position: relative;
-  perspective: 1000px;
-  cursor: pointer;
-  animation: float 6s ease-in-out infinite;
-}
-
-/* STAGGERED FLOATING ANIMATIONS */
-.gallery-item:nth-child(1) { animation: float 6s ease-in-out infinite; }
-.gallery-item:nth-child(2) { animation: float 6.5s ease-in-out infinite 0.2s; }
-.gallery-item:nth-child(3) { animation: float 7s ease-in-out infinite 0.4s; }
-.gallery-item:nth-child(4) { animation: float 6.2s ease-in-out infinite 0.6s; }
-.gallery-item:nth-child(5) { animation: float 6.8s ease-in-out infinite 0.8s; }
-.gallery-item:nth-child(6) { animation: float 6.5s ease-in-out infinite 1s; }
-.gallery-item:nth-child(7) { animation: float 7.2s ease-in-out infinite 1.2s; }
-.gallery-item:nth-child(8) { animation: float 6.3s ease-in-out infinite 1.4s; }
-.gallery-item:nth-child(9) { animation: float 6.9s ease-in-out infinite 1.6s; }
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotateZ(0deg);
-  }
-  25% {
-    transform: translateY(-20px) rotateZ(2deg);
-  }
-  50% {
-    transform: translateY(-40px) rotateZ(-1deg);
-  }
-  75% {
-    transform: translateY(-15px) rotateZ(1deg);
-  }
-}
-
-.gallery-item img {
-  width: 100%;
-  border-radius: 15px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  display: block;
-  user-select: none;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.1) perspective(1200px) rotateY(5deg);
-  box-shadow: 0 25px 60px rgba(196, 30, 58, 0.4);
-  filter: brightness(1.1);
-}
-
-/* LIGHTBOX */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.lightbox.active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lightbox-content {
-  position: relative;
-  width: 90%;
-  max-width: 900px;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lightbox-image {
-  max-width: 100%;
-  max-height: 85vh;
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 0 50px rgba(196, 30, 58, 0.5);
-  animation: zoomIn 0.3s ease;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  color: #C41E3A;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 2001;
-  transition: all 0.3s ease;
-}
-
-.lightbox-close:hover {
-  color: #1F3B6F;
-  transform: scale(1.2);
-}
-
-.lightbox-prev, .lightbox-next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: #C41E3A;
-  font-weight: bold;
-  font-size: 32px;
-  transition: 0.3s ease;
-  border-radius: 3px;
-  user-select: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2001;
-}
-
-.lightbox-prev {
-  left: 10px;
-}
-
-.lightbox-next {
-  right: 10px;
-}
-
-.lightbox-prev:hover, .lightbox-next:hover {
-  background-color: rgba(196, 30, 58, 0.8);
-  color: #fff;
-  transform: scale(1.15);
-}
-
-@media (max-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    padding: 40px 20px;
-  }
-
-  .lightbox-prev, .lightbox-next {
-    padding: 12px;
-    font-size: 24px;
-  }
-}
+:root{--bg:#090707;--surface:#120d0e;--surface2:#1a1113;--wine:#7f1d2d;--wine-dark:#4f111c;--gold:#c7a86b;--gold-soft:#e0c894;--text:#f7f2e9;--muted:#b8afa4;--line:rgba(199,168,107,.22);--display:'Cormorant Garamond',Georgia,serif;--body:'Inter',Arial,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9997;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}a{color:inherit}.container{width:min(1240px,calc(100% - 48px));margin:auto}.eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600}.display{font-family:var(--display);font-weight:600;letter-spacing:-.035em;line-height:.9}
+nav{position:fixed;top:0;left:0;width:100%;height:86px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;z-index:5000;transition:.45s ease}nav.scrolled{background:rgba(9,7,7,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:14px;text-decoration:none}.brand img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:1px solid rgba(199,168,107,.7)}.brand-name{font-family:var(--display);font-size:24px;letter-spacing:.04em}.nav-links{display:flex;align-items:center;gap:30px}.nav-links a{text-decoration:none;text-transform:uppercase;font-size:10px;letter-spacing:.17em;color:#eee8df;position:relative}.nav-links a:not(.login)::after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:1px;background:var(--gold);transition:width .3s ease}.nav-links a:hover{color:var(--gold-soft)}.nav-links a:hover::after,.nav-links a.active::after{width:100%}.nav-links a.active{color:var(--gold-soft)}.login{padding:10px 17px;border:1px solid var(--gold);color:var(--gold)!important}.menu-toggle{display:none;border:0;background:none;color:var(--gold);font-size:27px;cursor:pointer}
+.hero{min-height:82svh;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:#100b0c}.hero-media{position:absolute;inset:-4%;background:url('hotelEN.jpg') center/cover no-repeat;animation:heroZoom 18s ease-out forwards}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,0,0,.28) 60%,rgba(0,0,0,.55)),linear-gradient(0deg,rgba(0,0,0,.82),transparent 58%)}.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(199,168,107,.13),transparent 36%)}@keyframes heroZoom{from{transform:scale(1.04)}to{transform:scale(1.12)}}.hero-content{position:relative;z-index:2;width:min(1100px,calc(100% - 48px));margin:auto;padding:0 0 12vh}.hero h1{font-size:clamp(4.2rem,10vw,9rem);max-width:900px;margin:18px 0 24px}.hero p{max-width:560px;color:#ded5c9;font-size:15px;line-height:1.85}.hero-line{width:90px;height:1px;background:var(--gold);margin-top:30px}
+.intro{padding:clamp(5rem,10vw,9rem) 0 5rem}.intro-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:70px}.intro h2{font-size:clamp(3rem,6vw,5.8rem)}.intro-copy{max-width:680px;color:var(--muted);font-size:15px;line-height:1.95}.intro-copy p+p{margin-top:18px}
+.filters{padding:0 0 34px}.filter-row{display:flex;flex-wrap:wrap;gap:9px}.filter{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:10px 16px;border-radius:999px;font-size:9px;text-transform:uppercase;letter-spacing:.16em;cursor:pointer;transition:.3s}.filter:hover,.filter.active{background:var(--wine);border-color:var(--gold);color:#fff}.gallery{padding:0 0 clamp(6rem,10vw,9rem)}.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{position:relative;overflow:hidden;background:var(--surface2);cursor:pointer;border:1px solid rgba(255,255,255,.045);min-height:300px}.card:nth-child(1),.card:nth-child(6){grid-column:span 7;min-height:520px}.card:nth-child(2),.card:nth-child(3),.card:nth-child(7),.card:nth-child(8){grid-column:span 5}.card:nth-child(4),.card:nth-child(5),.card:nth-child(9){grid-column:span 4;min-height:390px}.card img{width:100%;height:100%;min-height:inherit;display:block;object-fit:cover;transition:transform 900ms var(--ease),filter 600ms ease}.card:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.85));pointer-events:none}.card:hover img{transform:scale(1.045);filter:brightness(.78)}.card-info{position:absolute;left:24px;right:24px;bottom:20px;z-index:2;transform:translateY(8px);transition:.45s var(--ease)}.card:hover .card-info{transform:none}.card-info small{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:.2em;font-size:8px;margin-bottom:5px}.card-info h3{font-family:var(--display);font-size:30px;font-weight:600}.card-info span{display:block;color:#d8cfc3;font-size:10px;margin-top:3px;opacity:.85}
+.cta{padding:clamp(5rem,9vw,8rem) 0;background:var(--surface);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}.cta-grid{display:flex;justify-content:space-between;align-items:end;gap:40px}.cta h2{font-size:clamp(3rem,6vw,6rem);max-width:720px}.cta-copy{max-width:430px;color:var(--muted);font-size:14px;line-height:1.9}.buttons{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 22px;text-decoration:none;text-transform:uppercase;letter-spacing:.17em;font-size:9px;font-weight:600;transition:.35s var(--ease)}.btn-primary{background:var(--wine);border:1px solid var(--wine)}.btn-secondary{border:1px solid var(--gold);color:var(--gold)}.btn:hover{transform:translateY(-3px)}
+.lightbox{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;background:rgba(5,4,4,.97);padding:28px}.lightbox.active{display:flex}.lightbox-inner{width:min(1180px,100%);height:min(90vh,850px);position:relative;display:flex;align-items:center;justify-content:center}.lightbox-image{max-width:100%;max-height:84vh;object-fit:contain;border:1px solid var(--line);box-shadow:0 25px 80px rgba(0,0,0,.6)}.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;border:1px solid var(--line);background:rgba(12,9,10,.9);color:var(--gold);cursor:pointer;display:grid;place-items:center;transition:.25s}.lightbox-close{top:0;right:0;width:48px;height:48px;font-size:27px}.lightbox-prev,.lightbox-next{top:50%;transform:translateY(-50%);width:52px;height:62px;font-size:26px}.lightbox-prev{left:0}.lightbox-next{right:0}.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:var(--wine);border-color:var(--gold);color:#fff}.lightbox-meta{position:absolute;left:0;bottom:0;padding:13px 16px;background:rgba(9,7,7,.78);border-left:2px solid var(--gold)}.lightbox-meta strong{font-family:var(--display);font-size:24px}.lightbox-meta small{display:block;color:var(--muted);font-size:9px;letter-spacing:.14em;text-transform:uppercase}.counter{position:absolute;right:0;bottom:0;color:var(--gold);font-size:10px;letter-spacing:.15em}
+@media(max-width:900px){.nav-links{gap:18px}.brand-name{font-size:21px}.intro-grid{grid-template-columns:1fr;gap:25px}.cta-grid{display:block}.cta-copy{margin-top:25px}.card:nth-child(n){grid-column:span 6;min-height:360px}.card:nth-child(1),.card:nth-child(6){min-height:470px}}
+@media(max-width:700px){nav{height:76px;padding:0 20px}.brand img{width:42px;height:42px}.brand-name{font-size:19px}.menu-toggle{display:block}.nav-links{position:absolute;top:76px;right:16px;width:min(270px,calc(100% - 32px));display:none;flex-direction:column;align-items:stretch;gap:0;padding:12px;background:rgba(12,9,10,.97);border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.5);backdrop-filter:blur(18px)}.nav-links.open{display:flex}.nav-links a{padding:13px 12px}.nav-links a:not(.login)::after{bottom:5px}.hero{min-height:75svh}.hero-content{width:calc(100% - 36px);padding-bottom:9vh}.hero h1{font-size:clamp(3.7rem,18vw,6rem)}.container{width:calc(100% - 36px)}.gallery-grid{gap:10px}.card:nth-child(n){grid-column:span 12;min-height:340px}.card:nth-child(1),.card:nth-child(6){min-height:430px}.card-info{left:16px;right:16px;bottom:15px}.card-info h3{font-size:27px}.lightbox{padding:12px}.lightbox-prev,.lightbox-next{width:42px;height:50px}.lightbox-meta{left:12px;bottom:12px}.counter{right:12px;bottom:12px}.lightbox-close{top:12px;right:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-media{animation:none}.card img,.card-info{transition:none}}
 </style>
-
-  <script src="concierge.js" defer></script>
 </head>
-
 <body>
-
-<!-- NAV -->
-<nav>
-  <div>
-    <img src="hlogo.png" alt="Logo">
-    <h2 style="margin:0;">Shangri-La View Hotel</h2>
-  </div>
-
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
+<nav id="siteNav">
+  <a class="brand" href="index.html" aria-label="Shangri-La View Hotel home"><img src="hlogo.png" alt="Shangri-La View Hotel logo"><span class="brand-name">Shangri-La View Hotel</span></a>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
   <div class="nav-links" id="navLinks">
-    <a href="index.html">Home</a>
-    <a href="booking.html">Booking</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="gallery.html">Gallery</a>
+    <a href="index.html">Home</a><a href="booking.html">Booking</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="gallery.html" class="active">Gallery</a>
   </div>
 </nav>
-
-<!-- TITLE -->
-<div class="title">
-  <h1>Our Gallery</h1>
-  <p>Explore the beauty of Shangri-La View Hotel</p>
-</div>
-
-<!-- GALLERY -->
-<div class="gallery">
-  <div class="gallery-item" onclick="openLightbox(0)"><img src="hotelEN.jpg" alt="Hotel Entrance"></div>
-  <div class="gallery-item" onclick="openLightbox(1)"><img src="hotel4.JPG" alt="Hotel View 4"></div>
-  <div class="gallery-item" onclick="openLightbox(2)"><img src="hotel5.JPG" alt="Hotel View 5"></div>
-  <div class="gallery-item" onclick="openLightbox(3)"><img src="hotel7.JPG" alt="Hotel View 7"></div>
-  <div class="gallery-item" onclick="openLightbox(4)"><img src="hotel8.JPG" alt="Hotel View 8"></div>
-  <div class="gallery-item" onclick="openLightbox(5)"><img src="hotel10.JPG" alt="Hotel View 10"></div>
-  <div class="gallery-item" onclick="openLightbox(6)"><img src="hlogo.png" alt="Hotel Logo"></div>
-  <div class="gallery-item" onclick="openLightbox(7)"><img src="hotel14.JPG" alt="Hotel View 14"></div>
-  <div class="gallery-item" onclick="openLightbox(8)"><img src="hotelFVV.jpg" alt="Hotel FVV"></div>
-</div>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox">
-  <div class="lightbox-content">
-    <img id="lightboxImage" class="lightbox-image" src="" alt="Enlarged image">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <a class="lightbox-prev" onclick="prevImage()">&#10094;</a>
-    <a class="lightbox-next" onclick="nextImage()">&#10095;</a>
-  </div>
-</div>
-
-<!-- SCRIPT -->
+<main>
+<section class="hero"><div class="hero-media" aria-hidden="true"></div><div class="hero-content"><span class="eyebrow">The Shangri-La Experience</span><h1 class="display">A glimpse into your stay.</h1><p>Explore the spaces, atmosphere and details that make Shangri-La View Hotel a destination for comfort, hospitality and memorable moments.</p><div class="hero-line"></div></div></section>
+<section class="intro"><div class="container intro-grid"><div><span class="eyebrow">Our Gallery</span><h2 class="display">See the<br>difference.</h2></div><div class="intro-copy"><p>Step inside Shangri-La View Hotel through our collection of photographs. From the entrance and hotel spaces to the details that shape your experience, discover the atmosphere before you arrive.</p><p>Open any photograph for a full-screen view, move through the collection and then continue to booking when you are ready to make your stay a reality.</p></div></div></section>
+<section class="filters"><div class="container"><div class="filter-row" role="group" aria-label="Gallery filters"><button class="filter active" data-filter="all" type="button">All</button><button class="filter" data-filter="hotel" type="button">Hotel</button><button class="filter" data-filter="rooms" type="button">Rooms</button><button class="filter" data-filter="spaces" type="button">Spaces</button></div></div></section>
+<section class="gallery"><div class="container"><div class="gallery-grid" id="galleryGrid">
+<article class="card" data-category="hotel" data-title="Hotel Entrance" data-caption="A warm first impression"><img src="hotelEN.jpg" alt="Shangri-La View Hotel entrance" loading="eager"><div class="card-info"><small>Hotel</small><h3>Hotel Entrance</h3><span>A warm first impression</span></div></article>
+<article class="card" data-category="hotel" data-title="Hotel View" data-caption="Discover the atmosphere"><img src="hotel4.JPG" alt="Shangri-La View Hotel view" loading="lazy"><div class="card-info"><small>Hotel</small><h3>Hotel View</h3><span>Discover the atmosphere</span></div></article>
+<article class="card" data-category="spaces" data-title="Hotel Space" data-caption="Designed for comfort"><img src="hotel5.JPG" alt="Shangri-La View Hotel space" loading="lazy"><div class="card-info"><small>Spaces</small><h3>Hotel Space</h3><span>Designed for comfort</span></div></article>
+<article class="card" data-category="spaces" data-title="Hotel View" data-caption="Moments worth remembering"><img src="hotel7.JPG" alt="Shangri-La View Hotel view" loading="lazy"><div class="card-info"><small>Spaces</small><h3>Hotel View</h3><span>Moments worth remembering</span></div></article>
+<article class="card" data-category="hotel" data-title="Hotel Details" data-caption="The Shangri-La experience"><img src="hotel8.JPG" alt="Shangri-La View Hotel details" loading="lazy"><div class="card-info"><small>Hotel</small><h3>Hotel Details</h3><span>The Shangri-La experience</span></div></article>
+<article class="card" data-category="hotel" data-title="Signature View" data-caption="A closer look"><img src="hotel10.JPG" alt="Shangri-La View Hotel signature view" loading="lazy"><div class="card-info"><small>Hotel</small><h3>Signature View</h3><span>A closer look</span></div></article>
+<article class="card" data-category="hotel" data-title="Hotel Identity" data-caption="Shangri-La View Hotel"><img src="hlogo.png" alt="Shangri-La View Hotel logo" loading="lazy"><div class="card-info"><small>Identity</small><h3>Shangri-La View</h3><span>Our signature</span></div></article>
+<article class="card" data-category="rooms" data-title="Hotel View" data-caption="Relax and unwind"><img src="hotel14.JPG" alt="Shangri-La View Hotel room and hotel view" loading="lazy"><div class="card-info"><small>Rooms</small><h3>Relax &amp; Unwind</h3><span>Comfort at every turn</span></div></article>
+<article class="card" data-category="rooms" data-title="Hotel Interior" data-caption="Made for memorable stays"><img src="hotelFVV.jpg" alt="Shangri-La View Hotel interior" loading="lazy"><div class="card-info"><small>Rooms</small><h3>Hotel Interior</h3><span>Made for memorable stays</span></div></article>
+</div></div></section>
+<section class="cta"><div class="container cta-grid"><div><span class="eyebrow">Your Stay Awaits</span><h2 class="display">Ready to experience it in person?</h2></div><div class="cta-copy"><p>Explore the hotel, choose your preferred room and contact our team when you are ready to plan your stay in Port Harcourt.</p><div class="buttons"><a class="btn btn-primary" href="booking.html">Book a Room</a><a class="btn btn-secondary" href="contact.html">Contact Us</a></div></div></div></section>
+</main>
+<div class="lightbox" id="lightbox" aria-hidden="true"><div class="lightbox-inner"><button class="lightbox-close" id="lbClose" type="button" aria-label="Close image">×</button><button class="lightbox-prev" id="lbPrev" type="button" aria-label="Previous image">‹</button><img class="lightbox-image" id="lbImage" src="" alt=""><button class="lightbox-next" id="lbNext" type="button" aria-label="Next image">›</button><div class="lightbox-meta"><strong id="lbTitle"></strong><small id="lbCaption"></small></div><div class="counter" id="lbCounter"></div></div></div>
 <script>
-function toggleMenu() {
-  const navLinks = document.getElementById("navLinks");
-  navLinks.classList.toggle("active");
-}
-
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById("navLinks").classList.remove("active");
-  });
-});
-
-/* LIGHTBOX FUNCTIONALITY */
-const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightboxImage');
-const galleryItems = document.querySelectorAll('.gallery-item img');
-const images = [];
-
-// Get all image sources
-galleryItems.forEach(img => {
-  images.push(img.src);
-});
-
-let currentImageIndex = 0;
-
-function openLightbox(index) {
-  currentImageIndex = index;
-  lightboxImage.src = images[currentImageIndex];
-  lightbox.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  lightbox.classList.remove('active');
-  document.body.style.overflow = 'auto';
-}
-
-function nextImage() {
-  currentImageIndex = (currentImageIndex + 1) % images.length;
-  lightboxImage.src = images[currentImageIndex];
-}
-
-function prevImage() {
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  lightboxImage.src = images[currentImageIndex];
-}
-
-// Close lightbox on background click
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) {
-    closeLightbox();
-  }
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-  if (lightbox.classList.contains('active')) {
-    if (e.key === 'ArrowLeft') prevImage();
-    if (e.key === 'ArrowRight') nextImage();
-    if (e.key === 'Escape') closeLightbox();
-  }
-});
+(()=>{const nav=document.getElementById('siteNav'),toggle=document.getElementById('menuToggle'),links=document.getElementById('navLinks');toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+const cards=[...document.querySelectorAll('.card')],filters=[...document.querySelectorAll('.filter')],lb=document.getElementById('lightbox'),img=document.getElementById('lbImage'),title=document.getElementById('lbTitle'),caption=document.getElementById('lbCaption'),counter=document.getElementById('lbCounter');let visible=cards.slice(),current=0;
+const refresh=()=>{const active=document.querySelector('.filter.active').dataset.filter;visible=cards.filter(c=>active==='all'||c.dataset.category===active);cards.forEach(c=>{c.hidden=!visible.includes(c)});if(current>=visible.length)current=0};filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));f.classList.add('active');refresh()}));
+const show=i=>{if(!visible.length)return;current=(i+visible.length)%visible.length;const c=visible[current],source=c.querySelector('img');img.src=source.currentSrc||source.src;img.alt=source.alt;title.textContent=c.dataset.title;caption.textContent=c.dataset.caption;counter.textContent=`${current+1} / ${visible.length}`;lb.classList.add('active');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'};const close=()=>{lb.classList.remove('active');lb.setAttribute('aria-hidden','true');document.body.style.overflow=''};cards.forEach(c=>c.addEventListener('click',()=>{current=visible.indexOf(c);show(current)}));document.getElementById('lbClose').addEventListener('click',close);document.getElementById('lbPrev').addEventListener('click',()=>show(current-1));document.getElementById('lbNext').addEventListener('click',()=>show(current+1));lb.addEventListener('click',e=>{if(e.target===lb)close()});document.addEventListener('keydown',e=>{if(!lb.classList.contains('active'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});refresh()})();
 </script>
-
 </body>
-  </html>
-  
+</html>
