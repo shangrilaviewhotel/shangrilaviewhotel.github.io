@@ -17,6 +17,9 @@ const boot=()=>{
  const items=admin?['Booking','Contact','Help']:booking?['Rooms','Rates','Contact']:contact?['Booking','Location','Help']:gallery?['Booking','Contact','About']:['Book a room','Rooms & rates','Contact'];items.forEach(label=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.onclick=()=>send(label);quick.appendChild(b)});
  $('form').onsubmit=e=>{e.preventDefault();const i=$('input'),t=i.value.trim();i.value='';send(t)};$('launcher').onclick=()=>{const open=!panel.classList.contains('open');panel.classList.toggle('open',open);panel.setAttribute('aria-hidden',String(!open));$('launcher').setAttribute('aria-expanded',String(open));if(open)$('input').focus()};$('close').onclick=()=>$('launcher').click();document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open'))$('close').click()});
  add(admin?'Welcome to the hotel concierge. I can help you navigate the hotel site and booking system.':booking?'Welcome. Need help choosing a room or making a reservation?':contact?'Welcome. I can help you find our contact and booking options.':gallery?'Welcome. I can help you explore the hotel and make a reservation.':'Welcome to Shangri-La View Hotel. How may I assist you today?');
+ if(booking && !document.querySelector('script[data-room-video-loader]')){
+   const s=document.createElement('script');s.src='booking-room-videos.js';s.defer=true;s.dataset.roomVideoLoader='true';document.head.appendChild(s);
+ }
 };
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
