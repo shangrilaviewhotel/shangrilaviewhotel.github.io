@@ -68,6 +68,32 @@ jobs:
               print('booking-room-videos.js is already loaded by booking.html')
           PY
 
+      - name: Ensure floating Book Now shortcut is loaded on booking page
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('booking.html')
+          marker = '<script src="booking-floating.js" defer></script>'
+          if not path.exists():
+              raise SystemExit('booking.html was not found')
+          text = path.read_text(encoding='utf-8')
+          if marker not in text:
+              lower = text.lower()
+              if '</head>' in lower:
+                  pos = lower.index('</head>')
+                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
+              elif '</body>' in lower:
+                  pos = lower.index('</body>')
+                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
+              else:
+                  text += '\n' + marker + '\n'
+              path.write_text(text, encoding='utf-8')
+              print('Injected booking-floating.js into booking.html')
+          else:
+              print('booking-floating.js is already loaded by booking.html')
+          PY
+
       - name: Commit generated page changes
         run: |
           if git diff --quiet; then
@@ -77,5 +103,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '*.html'
-          git commit -m 'Load hotel room video previews on booking page [skip ci]'
+          git commit -m 'Add floating Book Now shortcut to booking page [skip ci]'
           git push
