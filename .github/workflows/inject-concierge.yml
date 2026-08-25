@@ -22,8 +22,8 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          marker = '<script src="concierge.js" defer></script>'
           changed = []
+          marker = '<script src="concierge.js" defer></script>'
           for path in Path('.').glob('*.html'):
               text = path.read_text(encoding='utf-8')
               if marker in text:
@@ -42,14 +42,40 @@ jobs:
           print('Injected concierge into:', ', '.join(changed) if changed else 'no files needed changes')
           PY
 
+      - name: Ensure room video booking script is loaded on booking page
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('booking.html')
+          marker = '<script src="booking-room-videos.js" defer></script>'
+          if not path.exists():
+              raise SystemExit('booking.html was not found')
+          text = path.read_text(encoding='utf-8')
+          if marker not in text:
+              lower = text.lower()
+              if '</head>' in lower:
+                  pos = lower.index('</head>')
+                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
+              elif '</body>' in lower:
+                  pos = lower.index('</body>')
+                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
+              else:
+                  text += '\n' + marker + '\n'
+              path.write_text(text, encoding='utf-8')
+              print('Injected booking-room-videos.js into booking.html')
+          else:
+              print('booking-room-videos.js is already loaded by booking.html')
+          PY
+
       - name: Commit generated page changes
         run: |
           if git diff --quiet; then
-            echo 'No concierge injection changes needed.'
+            echo 'No generated page changes needed.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '*.html'
-          git commit -m 'Add hotel concierge to every page [skip ci]'
+          git commit -m 'Load hotel room video previews on booking page [skip ci]'
           git push
