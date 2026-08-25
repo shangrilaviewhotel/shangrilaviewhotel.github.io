@@ -6,7 +6,15 @@
   const videos = [
     { id: 'A1', file: 'WhatsApp Video 2026-07-29 at 9.53.58 PM (1).mp4' },
     { id: 'A2', file: 'WhatsApp Video 2026-07-29 at 9.53.58 PM (2).mp4' },
-    { id: 'A3', file: 'WhatsApp Video 2026-07-29 at 9.53.58 PM.mp4' }
+    { id: 'A3', file: 'WhatsApp Video 2026-07-29 at 9.53.58 PM.mp4' },
+    { id: 'A4', file: 'WhatsApp Video 2026-07-29 at 9.53.59 PM (1).mp4' },
+    { id: 'A5', file: 'WhatsApp Video 2026-07-29 at 9.53.59 PM (2).mp4' },
+    { id: 'A6', file: 'WhatsApp Video 2026-07-29 at 9.53.59 PM (3).mp4' },
+    { id: 'A7', file: 'WhatsApp Video 2026-07-29 at 9.53.59 PM (4).mp4' },
+    { id: 'A8', file: 'WhatsApp Video 2026-07-29 at 9.53.59 PM.mp4' },
+    { id: 'A9', file: 'WhatsApp Video 2026-07-29 at 9.54.00 PM.mp4' },
+    { id: 'A10', file: 'WhatsApp Video 2026-07-29 at 9.55.15 PM (1).mp4' },
+    { id: 'A11', file: 'WhatsApp Video 2026-07-29 at 9.55.15 PM.mp4' }
   ];
 
   const url = file => encodeURI(file);
