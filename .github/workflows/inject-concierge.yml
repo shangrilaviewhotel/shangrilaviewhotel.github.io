@@ -42,6 +42,23 @@ jobs:
           print('Injected concierge into:', ', '.join(changed) if changed else 'no files needed changes')
           PY
 
+      - name: Ensure live admin booking synchronisation is loaded
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('admin.html')
+          marker = '<script src="admin-booking-sync.js" defer></script>'
+          if path.exists():
+              text = path.read_text(encoding='utf-8')
+              if marker not in text:
+                  lower = text.lower()
+                  pos = lower.index('</head>') if '</head>' in lower else len(text)
+                  text = text[:pos] + '  ' + marker + '\n' + text[pos:]
+                  path.write_text(text, encoding='utf-8')
+                  print('Injected live admin booking synchronisation.')
+          PY
+
       - name: Ensure room video booking script is loaded on booking page
         shell: bash
         run: |
@@ -103,5 +120,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '*.html'
-          git commit -m 'Add floating Book Now shortcut to booking page [skip ci]'
+          git commit -m 'Load live booking synchronisation on admin page [skip ci]'
           git push
