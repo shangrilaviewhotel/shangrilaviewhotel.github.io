@@ -1,9 +1,11 @@
-/* Live booking synchronisation for the admin dashboard. */
+/* Live booking and room synchronisation for the admin dashboard. */
 (()=>{
 'use strict';
 if(window.__svhAdminBookingSync)return;window.__svhAdminBookingSync=true;
-const start=()=>{
+const loadRoomInventory=()=>new Promise((resolve,reject)=>{if(!location.pathname.toLowerCase().includes('admin'))return resolve();if(window.SVHRoomInventory)return resolve();const s=document.createElement('script');s.src='admin-room-inventory.js';s.defer=true;s.onload=resolve;s.onerror=reject;document.head.appendChild(s)});
+const start=async()=>{
   if(typeof firebase==='undefined'||typeof db==='undefined'||!location.pathname.toLowerCase().includes('admin'))return;
+  try{await loadRoomInventory();}catch(e){console.error('Room inventory loader failed:',e)}
   let first=true;
   db.collection('bookings').onSnapshot(snap=>{
     window.adminBookings=snap.docs.map(d=>({id:d.id,...d.data()}));
