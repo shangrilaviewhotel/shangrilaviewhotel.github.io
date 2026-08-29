@@ -2,7 +2,7 @@
 (()=>{
 'use strict';
 if(window.__svhConciergeLoaded)return;window.__svhConciergeLoaded=true;
-const firebaseConfig={apiKey:'AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE',authDomain:'shangrila-booking.firebaseapp.com',projectId:'shangrila-booking',storageBucket:'shangrila-booking.firebasestorage.app',messagingSenderId:'981170210173',appId:'1:981170210173:web:4d74cb3f6109fe1c0a3814',measurementId:'G-ZYB3J8BW72'};
+const firebaseConfig={apiKey:'AIzaSyDhwIAmuZr5Xqo6Ql7LDKxrPiklpG5GTE',authDomain:'shangrila-booking.firebaseapp.com',projectId:'shangrila-booking',storageBucket:'shangrila-booking.firebasestorage.app',messagingSenderId:'981170210173',appId:'1:981170210173:web:4d74cb3f6109fe1c0a3814',measurementId:'G-ZYB3J8BW72'};
 function loadScript(src){return new Promise((resolve,reject)=>{if(document.querySelector(`script[src="${src}"]`)){resolve();return}const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=reject;document.head.appendChild(s)})}
 async function getDb(){await loadScript('https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js');await loadScript('https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js');if(!window.firebase.apps.length)window.firebase.initializeApp(firebaseConfig);return window.firebase.firestore()}
 function textOf(sel){const e=document.querySelector(sel);return e?e.value.trim():''}
@@ -30,7 +30,7 @@ async function wireBookingForm(){
    finally{if(btn){btn.disabled=false;if(btn.textContent==='Saving reservation...')btn.textContent=old||'Reserve Now'}}
  });
 }
-function loadAdminEnhancements(){if(!/admin/.test(location.pathname.toLowerCase()))return;const s=document.createElement('script');s.src='admin-enhancements.js';s.defer=true;document.head.appendChild(s)}
+async function loadAdminEnhancements(){if(!/admin/.test(location.pathname.toLowerCase()))return;try{await loadScript('admin-enhancements.js');await loadScript('admin-history.js')}catch(e){console.error('Admin enhancement/history loader failed:',e)}}
 function start(){bootConcierge();if(/booking/.test(location.pathname.toLowerCase()))wireBookingForm();loadAdminEnhancements()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
 })();
