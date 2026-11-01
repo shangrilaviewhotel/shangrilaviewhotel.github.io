@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shangrilaviewhotel.github.io/sitemap.xml
