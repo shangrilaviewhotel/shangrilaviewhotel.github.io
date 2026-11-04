@@ -1998,6 +1998,19 @@
   <script src="social-links.js" defer></script>
   <link rel="icon" type="image/png" href="https://shangrilaviewhotel.github.io/hlogo.png">
   <link rel="apple-touch-icon" href="https://shangrilaviewhotel.github.io/hlogo.png">
+
+  <style id="svh-unified-floating-tools">
+    /* Use the shared circular AI Concierge launcher on every page. */
+    .concierge-launcher,
+    .concierge-trigger,
+    body > .concierge-panel,
+    main .concierge-panel,
+    footer ~ .concierge-panel { display: none !important; }
+    .cac-badge { right: 92px !important; bottom: 20px !important; }
+    @media (max-width: 600px) {
+      .cac-badge { right: 75px !important; bottom: 10px !important; }
+    }
+  </style>
 </head>
 
 <body>
