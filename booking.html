@@ -350,8 +350,13 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
 
-  // No artificial multi-second delay: reveal after DOM is ready.
-  window.addEventListener('load', () => setTimeout(() => loader.classList.add('hide'), 120));
+  // Hide the intro as soon as the page structure is ready; do not wait for room videos or external assets.
+  const hideLoader = () => { if (loader) loader.classList.add('hide'); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(hideLoader, 250), { once:true });
+  else setTimeout(hideLoader, 250);
+  window.addEventListener('load', hideLoader, { once:true });
+  // Safety fallback if a video or third-party asset never finishes loading.
+  setTimeout(hideLoader, 2500);
 
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 18), {passive:true});
 
@@ -396,6 +401,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
   // Real AI concierge. The backend project exposes POST /chat. A deployed HTTPS URL can be supplied globally as:
   // window.SHANGRILA_AI_API_URL = 'https://your-ai-server.example';
   const AI_API_URL = "https://shangrila-ai.onrender.com";
+  const launcher = document.getElementById('conciergeLauncher');
   const panel = document.getElementById('conciergePanel');
   const closeAI = document.getElementById('conciergeClose');
   const messages = document.getElementById('conciergeMessages');
