@@ -55,6 +55,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+
+    /* CITY LOCKDOWN campaign banner + conversion modal */
+    .city-lockdown-banner{position:relative;z-index:10;background:linear-gradient(105deg,#3b0d18,#861d31 55%,#241016);border-top:1px solid rgba(212,175,55,.45);border-bottom:1px solid rgba(212,175,55,.35);padding:17px 24px;text-align:center;color:#fff;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+    .city-lockdown-banner strong{font-family:var(--font-display);font-size:clamp(20px,3vw,29px);letter-spacing:.05em}.city-lockdown-banner span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#f2dfc1}.city-lockdown-banner a{display:inline-block;border:1px solid #d4af37;padding:9px 15px;color:#fff;text-decoration:none;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+    .city-event-modal{display:none;position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.84);align-items:center;justify-content:center;padding:20px}.city-event-modal.active{display:flex}.city-event-card{position:relative;width:min(520px,100%);padding:42px 30px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(143,32,51,.42),transparent 55%),#100b0d;border:1px solid rgba(212,175,55,.7);box-shadow:0 25px 90px #000}.city-event-card .eyebrow{color:#d4af37}.city-event-card h2{font-family:var(--font-display);font-size:clamp(42px,10vw,70px);line-height:.9;margin:16px 0;color:#fff}.city-event-card p{color:#d7cfc5;margin:12px 0 22px}.city-event-card .event-modal-close{position:absolute;right:13px;top:8px;border:0;background:none;color:#d4af37;font-size:30px;cursor:pointer}.city-event-card .btn{margin:5px}
+    @media(max-width:600px){.city-lockdown-banner{padding:14px 16px;gap:9px}.city-lockdown-banner span{width:100%;font-size:9px}.city-event-card{padding:38px 20px}}
     :root{
       --color-bg:#090707;
       --color-surface:#120d0e;
@@ -275,6 +281,12 @@
       </div>
     </nav>
 
+
+    <!-- CITY LOCKDOWN event announcement -->
+    <div class="city-lockdown-banner" role="region" aria-label="Upcoming event announcement">
+      <strong>CITY LOCKDOWN</strong><span>7 November · 5 PM · Shangri-La View Hotel</span><a href="event.html">Event details &amp; RSVP</a>
+    </div>
+
     <!-- HERO -->
     <header class="hero">
       <div class="hero-media" aria-hidden="true"></div>
@@ -377,6 +389,18 @@
     <!-- Existing WhatsApp destination preserved -->
     <a href="https://wa.me/2348037093649" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp Booking">☎</a>
 
+
+    <div class="city-event-modal" id="cityEventModal" role="dialog" aria-modal="true" aria-labelledby="cityEventTitle">
+      <div class="city-event-card">
+        <button class="event-modal-close" id="cityEventClose" aria-label="Close event announcement">&times;</button>
+        <div class="eyebrow" style="justify-content:center">Shangri-La View Hotel presents</div>
+        <h2 id="cityEventTitle">CITY<br>LOCKDOWN</h2>
+        <p>Dance · Music · Comedy · Networking · Entertainment<br><strong>7 November · 5:00 PM</strong></p>
+        <a class="btn btn-primary" href="event.html">View Event &amp; RSVP</a>
+        <a class="btn btn-secondary" href="https://wa.me/2348110831894?text=Hello%2C%20I%20want%20to%20make%20an%20enquiry%20about%20CITY%20LOCKDOWN." target="_blank" rel="noopener noreferrer">WhatsApp Enquiry</a>
+      </div>
+    </div>
+
     <footer>Shangri-La View Hotel · Port Harcourt</footer>
   </div>
 
@@ -386,6 +410,20 @@
     function showSite(){loader.classList.add('hidden');}
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',showSite,{once:true}); else showSite();
     window.addEventListener('load',showSite,{once:true});
+
+
+    /* CITY LOCKDOWN campaign popup: show once per browser session, after the site is usable. */
+    (function(){
+      const modal=document.getElementById('cityEventModal');
+      const close=document.getElementById('cityEventClose');
+      if(!modal||!close)return;
+      function hide(){modal.classList.remove('active');try{sessionStorage.setItem('svhCityEventDismissed','1')}catch(e){}}
+      close.addEventListener('click',hide);
+      modal.addEventListener('click',e=>{if(e.target===modal)hide()});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
+      let dismissed=false;try{dismissed=sessionStorage.getItem('svhCityEventDismissed')==='1'}catch(e){}
+      if(!dismissed)window.setTimeout(()=>modal.classList.add('active'),9000);
+    })();
 
     /* ===== Navigation ===== */
     const nav=document.getElementById('mainNav');
