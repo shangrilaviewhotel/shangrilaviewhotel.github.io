@@ -179,7 +179,7 @@
     .lightbox-prev{left:0}.lightbox-next{right:0}
 
     /* CAC */
-    .cac-badge{position:fixed;right:24px;bottom:24px;z-index:4000;width:68px;height:68px;border-radius:50%;background:#0e0b0c;border:1px solid var(--color-accent);padding:4px;cursor:pointer;box-shadow:0 14px 40px rgba(0,0,0,.45);transition:transform .3s ease}
+     .cac-badge{position:fixed;right:92px;bottom:20px;z-index:4000;width:68px;height:68px;border-radius:50%;background:#0e0b0c;border:1px solid var(--color-accent);padding:4px;cursor:pointer;box-shadow:0 14px 40px rgba(0,0,0,.45);transition:transform .3s ease}
     .cac-badge:hover{transform:translateY(-4px)}
     .cac-badge img{width:100%;height:100%;border-radius:50%;object-fit:cover}
     .cac-tooltip{position:absolute;right:0;bottom:78px;white-space:nowrap;background:#0f0b0c;border:1px solid var(--color-line);padding:9px 12px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -199,13 +199,6 @@
     .whatsapp-float:hover{transform:translateY(-4px) scale(1.03)}
 
     /* AI Concierge */
-    .concierge-trigger{position:fixed;right:24px;bottom:106px;z-index:5000;border:1px solid var(--color-accent);background:rgba(13,9,10,.94);color:#fff;padding:13px 17px;display:flex;align-items:center;gap:10px;cursor:pointer;box-shadow:0 16px 45px rgba(0,0,0,.45);backdrop-filter:blur(14px);transition:transform .3s ease,background .3s ease}
-    .concierge-trigger:hover{transform:translateY(-3px);background:#1b1012}
-    .concierge-dot{width:7px;height:7px;border-radius:50%;background:var(--color-accent);box-shadow:0 0 12px rgba(199,168,107,.8)}
-    .concierge-trigger span:last-child{font-size:9px;letter-spacing:.18em;text-transform:uppercase}
-    .concierge-panel{position:fixed;right:24px;bottom:170px;width:min(390px,calc(100vw - 32px));height:min(600px,calc(100vh - 205px));background:#0d090a;border:1px solid var(--color-line);z-index:6000;box-shadow:0 30px 90px rgba(0,0,0,.65);display:none;flex-direction:column;overflow:hidden}
-    .concierge-panel.open{display:flex;animation:conciergeIn .35s var(--ease)}
-    @keyframes conciergeIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
     .concierge-head{padding:20px;border-bottom:1px solid var(--color-line);display:flex;align-items:center;justify-content:space-between}
     .concierge-head strong{font-family:var(--font-display);font-size:25px;font-weight:600}
     .concierge-head small{display:block;color:var(--color-accent);text-transform:uppercase;letter-spacing:.14em;font-size:8px;margin-top:2px}
@@ -229,9 +222,9 @@
       nav{height:76px;padding:0 20px}.brand-name{font-size:20px}.brand img{width:42px;height:42px}.menu-toggle{display:block}.nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:rgba(9,7,7,.98);padding:20px;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--color-line)}.nav-links.active{display:flex}.nav-links a{padding:16px 4px}.login-btn{text-align:center;margin-top:8px}.intro-grid,.editorial-grid,.contact-grid{grid-template-columns:1fr;gap:40px}.editorial-image{min-height:500px}.editorial-side{min-height:430px}.section-head{display:block}.section-head .section-copy{margin-top:20px}.slide{width:78vw}.slide img{height:380px}.scroll-indicator{display:none}
     }
     @media(max-width:600px){
-      .container,.hero-content{width:min(100% - 32px,1240px)}.hero-content{padding-bottom:100px}.hero-content h1{font-size:clamp(3.6rem,18vw,5.2rem)}.hero-content p{font-size:14px}.hero-actions .btn{width:100%}.editorial-image{min-height:390px}.editorial-side{padding:34px}.slide{width:84vw}.slide img{height:340px}.map-container iframe{height:360px}.cac-badge{width:58px;height:58px;right:16px;bottom:16px}.whatsapp-float{left:16px;bottom:16px}.concierge-trigger{right:16px;bottom:88px;padding:11px 13px}.concierge-panel{right:16px;bottom:154px;width:calc(100vw - 32px);height:min(580px,calc(100vh - 180px))}
+      .container,.hero-content{width:min(100% - 32px,1240px)}.hero-content{padding-bottom:100px}.hero-content h1{font-size:clamp(3.6rem,18vw,5.2rem)}.hero-content p{font-size:14px}.hero-actions .btn{width:100%}.editorial-image{min-height:390px}.editorial-side{padding:34px}.slide{width:84vw}.slide img{height:340px}.map-container iframe{height:360px} .cac-badge{width:55px;height:55px;right:75px;bottom:10px}.whatsapp-float{left:16px;bottom:16px}
     }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-media{animation:none}.reveal{opacity:1;transform:none;transition:none}.slide-track{animation:none}.loader-logo,.loader-name,.loader-line{animation:none;opacity:1;transform:none}.concierge-panel.open{animation:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-media{animation:none}.reveal{opacity:1;transform:none;transition:none}.slide-track{animation:none}.loader-logo,.loader-name,.loader-line{animation:none;opacity:1;transform:none}}
   </style>
   <script src="social-links.js" defer></script>
   <script src="concierge.js" defer></script>
@@ -381,25 +374,6 @@
       </div>
     </div>
 
-    <!-- REAL AI CONCIERGE FRONTEND: calls the existing FastAPI POST /chat endpoint -->
-    <button class="concierge-trigger" id="conciergeTrigger" type="button" aria-expanded="false" aria-controls="conciergePanel">
-      <span class="concierge-dot"></span><span>Shangri-La Concierge</span>
-    </button>
-    <section class="concierge-panel" id="conciergePanel" aria-label="Shangri-La Concierge">
-      <div class="concierge-head">
-        <div><strong>Shangri-La</strong><small>Concierge</small></div>
-        <button class="concierge-close" id="conciergeClose" type="button" aria-label="Close concierge">&times;</button>
-      </div>
-      <div class="concierge-messages" id="conciergeMessages">
-        <div class="concierge-message ai">Welcome to Shangri-La View Hotel. How may I assist you?</div>
-      </div>
-      <div class="concierge-status" id="conciergeStatus"></div>
-      <form class="concierge-form" id="conciergeForm">
-        <input class="concierge-input" id="conciergeInput" autocomplete="off" placeholder="Ask the concierge…" aria-label="Message the concierge">
-        <button class="concierge-send" id="conciergeSend" type="submit" aria-label="Send">➤</button>
-      </form>
-    </section>
-
     <!-- Existing WhatsApp destination preserved -->
     <a href="https://wa.me/2348037093649" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp Booking">☎</a>
 
@@ -458,48 +432,7 @@
     lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox()});
     document.addEventListener('keydown',e=>{if(!lightbox.classList.contains('active'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')document.querySelector('.lightbox-prev').click();if(e.key==='ArrowRight')document.querySelector('.lightbox-next').click()});
 
-    /* ===== Shangri-La Concierge — real FastAPI /chat connection =====
-       The backend supplied with Shangrila-AI-main exposes POST /chat and returns { reply }.
-       For production, set window.SHANGRILA_AI_ENDPOINT to the deployed FastAPI /chat URL.
-       No mock/fake response is generated here.
-    */
-    const AI_ENDPOINT='https://shangrila-ai.onrender.com/chat';
-    const conciergeTrigger=document.getElementById('conciergeTrigger');
-    const conciergePanel=document.getElementById('conciergePanel');
-    const conciergeClose=document.getElementById('conciergeClose');
-    const conciergeForm=document.getElementById('conciergeForm');
-    const conciergeInput=document.getElementById('conciergeInput');
-    const conciergeMessages=document.getElementById('conciergeMessages');
-    const conciergeStatus=document.getElementById('conciergeStatus');
-    const conciergeSend=document.getElementById('conciergeSend');
 
-    function openConcierge(){conciergePanel.classList.add('open');conciergeTrigger.setAttribute('aria-expanded','true');setTimeout(()=>conciergeInput.focus(),100)}
-    function closeConcierge(){conciergePanel.classList.remove('open');conciergeTrigger.setAttribute('aria-expanded','false')}
-    conciergeTrigger.addEventListener('click',()=>conciergePanel.classList.contains('open')?closeConcierge():openConcierge());
-    conciergeClose.addEventListener('click',closeConcierge);
-
-    function addMessage(text,type){const el=document.createElement('div');el.className=`concierge-message ${type}`;el.textContent=text;conciergeMessages.appendChild(el);conciergeMessages.scrollTop=conciergeMessages.scrollHeight}
-
-    conciergeForm.addEventListener('submit',async e=>{
-      e.preventDefault();
-      const message=conciergeInput.value.trim();
-      if(!message)return;
-      addMessage(message,'user');
-      conciergeInput.value='';
-      conciergeInput.disabled=true;conciergeSend.disabled=true;conciergeStatus.textContent='Concierge is responding…';
-      try{
-        const response=await fetch(AI_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message})});
-        if(!response.ok)throw new Error(`HTTP ${response.status}`);
-        const data=await response.json();
-        if(!data || typeof data.reply!=='string')throw new Error('Invalid AI response');
-        addMessage(data.reply,'ai');
-      }catch(error){
-        console.error('Shangri-La Concierge error:',error);
-        addMessage('I’m unable to connect to the concierge service right now. Please contact the hotel directly or use WhatsApp for assistance.','ai');
-      }finally{
-        conciergeInput.disabled=false;conciergeSend.disabled=false;conciergeStatus.textContent='';conciergeInput.focus();
-      }
-    });
   </script>
 </body>
 </html>
