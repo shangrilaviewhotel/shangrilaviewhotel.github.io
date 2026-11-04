@@ -57,6 +57,18 @@ section{padding:75px 0}.section-title{text-align:center;font:600 clamp(39px,7vw,
 .faq{max-width:800px;margin:auto}.faq details{padding:18px 0;border-bottom:1px solid #493337}.faq summary{cursor:pointer;font-weight:700}.faq p{color:var(--muted);font-size:14px}
 .final{text-align:center;background:linear-gradient(135deg,#2c0d15,#100b0d);border-top:1px solid #5e3039;border-bottom:1px solid #5e3039}.final p{color:var(--muted)}
 footer{text-align:center;padding:30px 0;color:#a99d92;font-size:11px}footer a{color:var(--gold)}
+
+.countdown-panel{position:relative;max-width:720px;margin:34px auto 0;padding:26px 20px 25px;overflow:hidden;border:1px solid rgba(212,175,55,.7);border-radius:10px;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.19),transparent 65%),linear-gradient(135deg,rgba(20,9,13,.94),rgba(75,13,30,.86),rgba(15,8,11,.96));box-shadow:0 18px 55px rgba(0,0,0,.42),inset 0 0 35px rgba(212,175,55,.06)}
+.countdown-panel:before{content:"✦  ✧  ✦  ✧  ✦";display:block;color:rgba(212,175,55,.55);font-size:15px;letter-spacing:15px;margin-bottom:8px}
+.countdown-panel .countdown-heading{font:700 11px var(--sans);letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+.countdown-panel .countdown-caption{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#e1d3c8;margin:8px 0 18px}
+.countdown-grid{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.countdown-cell{width:clamp(65px,12vw,100px);padding:12px 5px 10px;background:rgba(0,0,0,.32);border:1px solid rgba(212,175,55,.5);border-radius:7px}
+.countdown-value{display:block;font:700 clamp(34px,6vw,48px)/1 var(--serif);color:#f5d77d;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(212,175,55,.25)}
+.countdown-unit-label{display:block;margin-top:6px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#eee3d8}
+.countdown-ended{font:600 clamp(27px,5vw,40px)/1.1 var(--serif);color:#f5d77d}
+@media(max-width:480px){.countdown-panel{padding:22px 10px}.countdown-grid{gap:7px}.countdown-cell{width:calc(25% - 6px);min-width:58px}.countdown-unit-label{font-size:7px;letter-spacing:.1em}}
+
 .sticky{position:fixed;z-index:9;bottom:12px;left:50%;transform:translateX(-50%);background:var(--red);border:1px solid var(--gold);padding:12px 20px;text-decoration:none;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 8px 30px #000;white-space:nowrap}
 @media(max-width:700px){.hero{min-height:640px}.grid{grid-template-columns:1fr}.details{gap:17px}.details>div{min-width:40%}section{padding:58px 0}nav strong{font-size:19px}}
 </style>
@@ -68,6 +80,18 @@ footer{text-align:center;padding:30px 0;color:#a99d92;font-size:11px}footer a{co
 <div class="eyebrow">Shangri-La View Hotel presents</div>
 <h1>CITY <span>LOCKDOWN</span></h1>
 <div class="tagline">Let's Shut The City Down</div>
+
+<div class="countdown-panel" aria-label="Live countdown to CITY LOCKDOWN">
+  <div class="countdown-heading">The countdown is on</div>
+  <div class="countdown-caption">Until the city lights up · 7 November · 5:00 PM</div>
+  <div class="countdown-grid" data-city-countdown>
+    <div class="countdown-cell"><span class="countdown-value" data-days>--</span><span class="countdown-unit-label">Days</span></div>
+    <div class="countdown-cell"><span class="countdown-value" data-hours>--</span><span class="countdown-unit-label">Hours</span></div>
+    <div class="countdown-cell"><span class="countdown-value" data-minutes>--</span><span class="countdown-unit-label">Minutes</span></div>
+    <div class="countdown-cell"><span class="countdown-value" data-seconds>--</span><span class="countdown-unit-label">Seconds</span></div>
+  </div>
+</div>
+
 <div class="details"><div><b>Date</b><span>Saturday, 7 November 2026</span></div><div><b>Time</b><span>5:00 PM</span></div><div><b>Venue</b><span>Shangri-La View Hotel</span></div></div>
 <div class="eyebrow">Dance · Music · Comedy · Networking · Entertainment</div>
 <div class="actions"><a class="btn primary" href="https://wa.me/2348110831894?text=Hello%2C%20I%20want%20to%20RSVP%20for%20CITY%20LOCKDOWN." target="_blank" rel="noopener">RSVP / Enquire on WhatsApp</a><a class="btn outline" href="#lineup">Meet the Line-up</a></div>
@@ -88,4 +112,27 @@ footer{text-align:center;padding:30px 0;color:#a99d92;font-size:11px}footer a{co
 </main>
 <footer><div class="wrap">CITY LOCKDOWN · Shangri-La View Hotel · Port Harcourt<br>Event enquiries: <a href="tel:+2348110831894">08110831894</a> · <a href="https://shangrilaviewhotel.github.io/">Hotel website</a></div></footer>
 <a class="sticky" href="https://wa.me/2348110831894?text=Hello%2C%20I%20want%20to%20RSVP%20for%20CITY%20LOCKDOWN." target="_blank" rel="noopener">RSVP / WhatsApp 08110831894</a>
+
+  <script>
+    /* CITY LOCKDOWN countdown — 5 PM West Africa Time (UTC+1). */
+    (function(){
+      const target=Date.parse('2026-11-07T17:00:00+01:00');
+      document.querySelectorAll('[data-city-countdown]').forEach(clock=>{
+        const fields={days:clock.querySelector('[data-days]'),hours:clock.querySelector('[data-hours]'),minutes:clock.querySelector('[data-minutes]'),seconds:clock.querySelector('[data-seconds]')};
+        function tick(){
+          let remaining=Math.max(0,target-Date.now());
+          const values={days:Math.floor(remaining/86400000),hours:Math.floor((remaining%86400000)/3600000),minutes:Math.floor((remaining%3600000)/60000),seconds:Math.floor((remaining%60000)/1000)};
+          Object.keys(fields).forEach(key=>{if(fields[key])fields[key].textContent=String(values[key]).padStart(2,'0')});
+          if(target-Date.now()<=0){
+            const parent=clock.parentElement;
+            clock.innerHTML='<div class="countdown-finished">The CITY LOCKDOWN moment is here!</div>';
+            const sub=parent.querySelector('.countdown-sub');if(sub)sub.textContent='Saturday, 7 November · Shangri-La View Hotel';
+            clearInterval(timer);
+          }
+        }
+        tick();const timer=setInterval(tick,1000);
+      });
+    })();
+  </script>
+
 </body></html>
