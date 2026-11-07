@@ -56,26 +56,6 @@
 
   <style>
 
-    /* CITY LOCKDOWN campaign banner + conversion modal */
-    .city-lockdown-banner{position:relative;z-index:10;background:linear-gradient(105deg,#3b0d18,#861d31 55%,#241016);border-top:1px solid rgba(212,175,55,.45);border-bottom:1px solid rgba(212,175,55,.35);padding:17px 24px;text-align:center;color:#fff;display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
-    .city-lockdown-banner strong{font-family:var(--font-display);font-size:clamp(20px,3vw,29px);letter-spacing:.05em}.city-lockdown-banner span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#f2dfc1}.city-lockdown-banner a{display:inline-block;border:1px solid #d4af37;padding:9px 15px;color:#fff;text-decoration:none;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
-    .city-event-modal{display:none;position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.84);align-items:center;justify-content:center;padding:20px}.city-event-modal.active{display:flex}.city-event-card{position:relative;width:min(520px,100%);padding:42px 30px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(143,32,51,.42),transparent 55%),#100b0d;border:1px solid rgba(212,175,55,.7);box-shadow:0 25px 90px #000}.city-event-card .eyebrow{color:#d4af37}.city-event-card h2{font-family:var(--font-display);font-size:clamp(42px,10vw,70px);line-height:.9;margin:16px 0;color:#fff}.city-event-card p{color:#d7cfc5;margin:12px 0 22px}.city-event-card .event-modal-close{position:absolute;right:13px;top:8px;border:0;background:none;color:#d4af37;font-size:30px;cursor:pointer}.city-event-card .btn{margin:5px}
-    @media(max-width:600px){.city-lockdown-banner{padding:14px 16px;gap:9px}.city-lockdown-banner span{width:100%;font-size:9px}.city-event-card{padding:38px 20px}}
-
-    /* CITY LOCKDOWN live countdown */
-    .city-countdown{position:relative;isolation:isolate;overflow:hidden;text-align:center;padding:48px 24px 52px;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.16),transparent 52%),linear-gradient(120deg,#10090c,#35101c 48%,#10090c);border-top:1px solid rgba(212,175,55,.55);border-bottom:1px solid rgba(212,175,55,.4)}
-    .city-countdown:before,.city-countdown:after{content:"✦  ✧  ✦";position:absolute;color:rgba(212,175,55,.24);font-size:25px;letter-spacing:18px;pointer-events:none}.city-countdown:before{top:18px;left:4%}.city-countdown:after{bottom:15px;right:4%}
-    .city-countdown .countdown-kicker{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#e2c77e;font-weight:700}
-    .city-countdown h2{font-family:var(--font-display);font-size:clamp(36px,6vw,62px);line-height:.95;margin:12px 0 9px;color:#fff}
-    .city-countdown .countdown-sub{color:#d9c9c0;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:25px}
-    .countdown-clock{display:flex;justify-content:center;gap:clamp(8px,2vw,18px);flex-wrap:wrap}
-    .countdown-unit{width:clamp(66px,13vw,112px);padding:14px 7px 11px;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(0,0,0,.28));border:1px solid rgba(212,175,55,.52);box-shadow:0 9px 28px rgba(0,0,0,.24);border-radius:8px}
-    .countdown-number{display:block;font-family:var(--font-display);font-size:clamp(34px,6vw,54px);font-weight:700;line-height:1;color:#f5d77d;text-shadow:0 0 18px rgba(212,175,55,.22);font-variant-numeric:tabular-nums}
-    .countdown-label{display:block;margin-top:7px;color:#e9ded5;font-size:9px;letter-spacing:.16em;text-transform:uppercase}
-    .countdown-cta{display:inline-block;margin-top:24px;padding:12px 20px;border:1px solid #d4af37;background:#8f2033;color:#fff;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:transform .25s,background .25s}
-    .countdown-cta:hover{transform:translateY(-3px);background:#a32940}
-    .countdown-finished{font-family:var(--font-display);font-size:clamp(30px,5vw,48px);color:#f5d77d}
-    @media(max-width:520px){.city-countdown{padding:38px 14px}.countdown-unit{width:calc(25% - 7px);min-width:62px;padding:12px 3px}.countdown-label{font-size:8px;letter-spacing:.1em}}
 
     :root{
       --color-bg:#090707;
@@ -298,10 +278,6 @@
     </nav>
 
 
-    <!-- CITY LOCKDOWN event announcement -->
-    <div class="city-lockdown-banner" role="region" aria-label="Upcoming event announcement">
-      <strong>CITY LOCKDOWN</strong><span>7 November · 5 PM · Shangri-La View Hotel</span><a href="event.html">Event details &amp; RSVP</a>
-    </div>
 
     <!-- HERO -->
     <header class="hero">
@@ -319,19 +295,6 @@
     </header>
 
 
-    <!-- CITY LOCKDOWN live countdown -->
-    <section class="city-countdown" aria-label="CITY LOCKDOWN countdown">
-      <div class="countdown-kicker">The excitement is building</div>
-      <h2>CITY LOCKDOWN</h2>
-      <p class="countdown-sub">The city goes live · Saturday, 7 November · 5:00 PM</p>
-      <div class="countdown-clock" data-city-countdown>
-        <div class="countdown-unit"><span class="countdown-number" data-days>--</span><span class="countdown-label">Days</span></div>
-        <div class="countdown-unit"><span class="countdown-number" data-hours>--</span><span class="countdown-label">Hours</span></div>
-        <div class="countdown-unit"><span class="countdown-number" data-minutes>--</span><span class="countdown-label">Minutes</span></div>
-        <div class="countdown-unit"><span class="countdown-number" data-seconds>--</span><span class="countdown-label">Seconds</span></div>
-      </div>
-      <a class="countdown-cta" href="event.html">Get Ready · Event Details &amp; RSVP</a>
-    </section>
 
     <!-- INTRODUCTION -->
     <section class="intro" id="hotel">
@@ -421,16 +384,6 @@
     <a href="https://wa.me/2348037093649" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp Booking">☎</a>
 
 
-    <div class="city-event-modal" id="cityEventModal" role="dialog" aria-modal="true" aria-labelledby="cityEventTitle">
-      <div class="city-event-card">
-        <button class="event-modal-close" id="cityEventClose" aria-label="Close event announcement">&times;</button>
-        <div class="eyebrow" style="justify-content:center">Shangri-La View Hotel presents</div>
-        <h2 id="cityEventTitle">CITY<br>LOCKDOWN</h2>
-        <p>Dance · Music · Comedy · Networking · Entertainment<br><strong>7 November · 5:00 PM</strong></p>
-        <a class="btn btn-primary" href="event.html">View Event &amp; RSVP</a>
-        <a class="btn btn-secondary" href="https://wa.me/2348110831894?text=Hello%2C%20I%20want%20to%20make%20an%20enquiry%20about%20CITY%20LOCKDOWN." target="_blank" rel="noopener noreferrer">WhatsApp Enquiry</a>
-      </div>
-    </div>
 
     <footer>Shangri-La View Hotel · Port Harcourt</footer>
   </div>
@@ -443,18 +396,6 @@
     window.addEventListener('load',showSite,{once:true});
 
 
-    /* CITY LOCKDOWN campaign popup: show once per browser session, after the site is usable. */
-    (function(){
-      const modal=document.getElementById('cityEventModal');
-      const close=document.getElementById('cityEventClose');
-      if(!modal||!close)return;
-      function hide(){modal.classList.remove('active');try{sessionStorage.setItem('svhCityEventDismissed','1')}catch(e){}}
-      close.addEventListener('click',hide);
-      modal.addEventListener('click',e=>{if(e.target===modal)hide()});
-      document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
-      let dismissed=false;try{dismissed=sessionStorage.getItem('svhCityEventDismissed')==='1'}catch(e){}
-      if(!dismissed)window.setTimeout(()=>modal.classList.add('active'),9000);
-    })();
 
     /* ===== Navigation ===== */
     const nav=document.getElementById('mainNav');
@@ -504,27 +445,6 @@
 
   </script>
 
-  <script>
-    /* CITY LOCKDOWN countdown — 5 PM West Africa Time (UTC+1). */
-    (function(){
-      const target=Date.parse('2026-11-07T17:00:00+01:00');
-      document.querySelectorAll('[data-city-countdown]').forEach(clock=>{
-        const fields={days:clock.querySelector('[data-days]'),hours:clock.querySelector('[data-hours]'),minutes:clock.querySelector('[data-minutes]'),seconds:clock.querySelector('[data-seconds]')};
-        function tick(){
-          let remaining=Math.max(0,target-Date.now());
-          const values={days:Math.floor(remaining/86400000),hours:Math.floor((remaining%86400000)/3600000),minutes:Math.floor((remaining%3600000)/60000),seconds:Math.floor((remaining%60000)/1000)};
-          Object.keys(fields).forEach(key=>{if(fields[key])fields[key].textContent=String(values[key]).padStart(2,'0')});
-          if(target-Date.now()<=0){
-            const parent=clock.parentElement;
-            clock.innerHTML='<div class="countdown-finished">The CITY LOCKDOWN moment is here!</div>';
-            const sub=parent.querySelector('.countdown-sub');if(sub)sub.textContent='Saturday, 7 November · Shangri-La View Hotel';
-            clearInterval(timer);
-          }
-        }
-        tick();const timer=setInterval(tick,1000);
-      });
-    })();
-  </script>
 
 </body>
 </html>
